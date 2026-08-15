@@ -1,0 +1,1350 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 300;
+    background-color: #09090b;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 28px 24px;
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Safe Dark Preloader Screen with POST Debug Codes --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #080808;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.post-code-stream {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0.12;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.pc-fan-svg {
+    width: 110px;
+    height: 110px;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+}
+
+.spinning-blades {
+    transform-origin: 50px 50px;
+    animation: fanRPM 0.5s linear infinite;
+}
+
+@keyframes fanRPM {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#preloader.dark-stutter-out {
+    animation: darkStutterBlink 0.4s steps(1) forwards;
+}
+
+@keyframes darkStutterBlink {
+    0% { opacity: 1; transform: translate(0, 0); }
+    15% { opacity: 0.2; transform: translate(-2px, 0); }
+    30% { opacity: 0.85; transform: translate(2px, 0); }
+    45% { opacity: 0.1; transform: translate(0, -1px); }
+    60% { opacity: 0.7; transform: translate(-1px, 0); }
+    75% { opacity: 0.05; }
+    90% { opacity: 0.4; }
+    100% { opacity: 0; visibility: hidden; display: none; }
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Motherboard Debug LED Styling */
+.post-led-box {
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-family: monospace;
+}
+
+.post-led-label {
+    font-size: 0.75rem;
+    color: #888888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.post-led-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* --- Navigation --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: rgba(9, 9, 11, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 100;
+}
+
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.logo:active {
+    transform: scale(0.95);
+}
+
+.logo .dot, .section-title .dot, .modal-card h2 .dot, .modal-product-info h3 .dot {
+    color: #ffffff;
+}
+
+/* Cartoonish Logo Speech Bubble */
+.cartoon-bubble {
+    position: absolute;
+    top: 140%;
+    left: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: 14px;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.6) translateY(-12px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease, visibility 0.25s ease;
+    pointer-events: none;
+    z-index: 300;
+}
+
+.cartoon-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 18px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+.cartoon-bubble.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a, .nav-contact-link {
+    color: #a0a0a0;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-contact-link:hover {
+    color: #ffffff;
+}
+
+/* --- Hero Section & Cyberpunk Chromatic Glitch Logo --- */
+.hero {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 0 1rem;
+}
+
+.hero-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.glitch-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-x-logo {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+}
+
+.glitch-logo {
+    animation: chromaticOutlineGlitch 3.2s infinite ease-in-out;
+}
+
+@keyframes chromaticOutlineGlitch {
+    0%, 84%, 100% {
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+    }
+    85% {
+        filter: drop-shadow(-3.5px -1px 0px rgba(0, 243, 255, 0.85)) 
+                drop-shadow(3.5px 1px 0px rgba(255, 0, 85, 0.85));
+    }
+    86.5% {
+        filter: drop-shadow(3.5px -1px 0px rgba(0, 243, 255, 0.85)) 
+                drop-shadow(-3.5px 1px 0px rgba(255, 0, 85, 0.85));
+    }
+    88% {
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+    }
+    93% {
+        filter: drop-shadow(-2.5px 1px 0px rgba(0, 243, 255, 0.75)) 
+                drop-shadow(2.5px -1px 0px rgba(255, 0, 85, 0.75));
+    }
+    94.5% {
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+    }
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    max-width: 600px;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+/* Why Trust Us Button Wrapper */
+.hero-trust-wrapper {
+    margin-bottom: 2.2rem;
+}
+
+.trust-link-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.25s ease, text-shadow 0.25s ease;
+    font-family: inherit;
+}
+
+.trust-link-btn:hover {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+/* Web Dev Bottom Teaser Styling */
+.webdev-teaser-wrapper {
+    margin-top: 1rem;
+}
+
+.webdev-link-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.2s ease;
+}
+
+.webdev-link-btn:hover {
+    transform: translateY(-2px);
+}
+
+.webdev-main-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-bottom: 0.2rem;
+}
+
+.webdev-sub-text {
+    font-size: 0.75rem;
+    color: #888888;
+    font-weight: 300;
+}
+
+/* --- BSOD Prank Overlay Styling --- */
+.bsod-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1061ce;
+    color: #ffffff;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10vh 12vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+
+.bsod-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bsod-content {
+    max-width: 900px;
+    text-align: left;
+}
+
+.bsod-face {
+    font-size: 8rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 2rem;
+    user-select: none;
+}
+
+.bsod-main-text {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+}
+
+.bsod-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bsod-small-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.bsod-jk-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.bsod-return-link {
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.bsod-return-link:hover {
+    opacity: 0.8;
+}
+
+/* --- Buttons --- */
+.btn {
+    position: relative;
+    padding: 0.8rem 2.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    background: none;
+}
+
+.btn-primary {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #e6e6e6;
+    border-color: #ffffff;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+.btn-secondary {
+    border: 1px solid #333333;
+    color: #a0a0a0;
+}
+
+.btn-secondary:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Hover Dialogue Tooltips --- */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 135%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background-color: #0f0f0f;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+    z-index: 200;
+}
+
+[data-tooltip]::after {
+    content: "";
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 200;
+}
+
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* --- Snap-In Reality Reveal Animations --- */
+@keyframes snapIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.98);
+        filter: blur(4px);
+    }
+    50% {
+        opacity: 0.7;
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+}
+
+.snap-in-1, .snap-in-2, .snap-in-3 {
+    opacity: 0;
+    animation: snapIn 0.3s steps(3) forwards;
+}
+
+.snap-in-1 { animation-delay: 1.6s; }
+.snap-in-2 { animation-delay: 1.75s; }
+.snap-in-3 { animation-delay: 1.9s; }
+
+/* --- Why Trust Us Reviews Modal & 3D Cylinder Physics Wheel --- */
+.reviews-modal-card {
+    max-width: 540px;
+    width: 92%;
+}
+
+.review-wheel-container {
+    perspective: 1000px;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    margin: 1.5rem 0 1rem;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.review-wheel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.review-wheel-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 440px;
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    will-change: transform, opacity;
+    transition: border-color 0.3s ease;
+}
+
+.review-quote {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+}
+
+.review-author {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: block;
+    text-align: right;
+    letter-spacing: 0.5px;
+}
+
+.reviews-footer-text {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    line-height: 1.55;
+    margin-top: 1rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #26262c;
+    text-align: center;
+}
+
+.reviews-trust-statement {
+    font-size: 0.85rem;
+    color: #ffffff;
+    font-weight: 400;
+    line-height: 1.55;
+    margin-top: 0.8rem;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* --- Slide-in Panel (Left Side Drawer) --- */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 950;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    max-width: 500px;
+    height: 100%;
+    background-color: #0f0f12;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    padding: 3.5rem 2rem 2rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-overlay.active .drawer-content {
+    transform: translateX(0);
+}
+
+.drawer-content .section-title {
+    font-size: 2rem;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 0.4rem;
+}
+
+.drawer-content .section-subtitle {
+    text-align: left;
+    color: #888888;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.services-grid-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- Service Cards & Accordion Styling (Optimized smooth expansion) --- */
+.service-card {
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+    border-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+}
+
+.service-card.expanded {
+    border-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+    border-bottom: 1px solid #26262c;
+}
+
+.card-content {
+    padding: 1.25rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-header h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.expand-icon {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.service-card.expanded .expand-icon {
+    transform: rotate(45deg);
+}
+
+.short-desc {
+    font-size: 0.9rem;
+    color: #999999;
+    line-height: 1.5;
+}
+
+.card-details-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: max-height;
+}
+
+.service-card.expanded .card-details-wrapper {
+    max-height: 600px;
+}
+
+.card-details {
+    padding-top: 0.2rem;
+}
+
+.detail-divider {
+    border: 0;
+    border-top: 1px solid #26262c;
+    margin: 1rem 0 0.8rem;
+}
+
+.card-details h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+}
+
+.card-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-details li {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.card-details li::before {
+    content: "•";
+    color: #ffffff;
+    position: absolute;
+    left: 0;
+}
+
+.card-details li strong {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/* Clickable Breakdown Term Styling */
+.clickable-term {
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+}
+
+.clickable-term:hover {
+    opacity: 0.8;
+}
+
+/* --- Deep Cleaning Modal & Highlighted IPA Bubble Styling --- */
+.modal-desc-paragraph {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.ipa-container-box {
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.location-disclaimer-box {
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: left;
+}
+
+.location-disclaimer-box h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+}
+
+.location-disclaimer-box p {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    line-height: 1.5;
+}
+
+.ipa-highlight {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    margin: 0 2px;
+    transition: background-color 0.2s ease;
+}
+
+.ipa-highlight:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ipa-bubble {
+    position: absolute;
+    bottom: 135%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background-color: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+    padding: 0.85rem 2.2rem 0.85rem 1rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 400;
+    line-height: 1.45;
+    width: 270px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 1200;
+    text-align: left;
+    white-space: normal;
+}
+
+.ipa-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.3) transparent transparent transparent;
+}
+
+.ipa-bubble.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.bubble-x-btn {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #888888;
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 4px;
+}
+
+.bubble-x-btn:hover {
+    color: #ffffff;
+}
+
+/* --- Catalogue Modal & Build Detail Drawer Styling --- */
+.catalogue-modal-card {
+    max-width: 600px;
+    width: 92%;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.catalogue-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.catalogue-card {
+    background-color: #141418;
+}
+
+.catalogue-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.2rem;
+    opacity: 0.8;
+}
+
+.catalogue-img {
+    height: 160px;
+}
+
+/* Sliding Build Detail Side Panel */
+.build-drawer-content {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1050;
+    padding: 3.5rem 2rem 2.5rem;
+}
+
+.detail-price-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.2rem;
+}
+
+.build-panel-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #26262c;
+    margin-bottom: 1.5rem;
+}
+
+.specs-box, .testing-box, .warranty-box, .faq-panel {
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.specs-box h4, .testing-box h4, .warranty-box h4, .faq-panel h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.specs-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.specs-box li {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.specs-box li::before {
+    content: "•";
+    color: #ffffff;
+    position: absolute;
+    left: 0;
+}
+
+.specs-box li strong {
+    color: #ffffff;
+}
+
+.testing-box p {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    line-height: 1.55;
+}
+
+.testing-box strong {
+    color: #ffffff;
+}
+
+.warranty-badge-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+}
+
+.warranty-pill {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+}
+
+.warranty-box p {
+    font-size: 0.82rem;
+    color: #999999;
+    line-height: 1.5;
+}
+
+.faq-item {
+    border-bottom: 1px solid #26262c;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.faq-item:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.faq-q {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.faq-a {
+    font-size: 0.82rem;
+    color: #999999;
+    line-height: 1.5;
+}
+
+.build-drawer-actions {
+    margin-top: 1.5rem;
+}
+
+.build-drawer-actions .btn {
+    width: 100%;
+}
+
+/* --- Pop-up Modals (Contact, Repasting, Deep Cleaning & Web Dev) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background-color: #0f0f12;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 2.2rem 2rem 2rem;
+    width: 92%;
+    max-width: 440px;
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+.image-modal-card {
+    max-width: 480px;
+    padding: 2.2rem 1.8rem 1.8rem;
+}
+
+.modal-product-img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    background-color: #141418;
+    border-radius: 8px;
+    border: 1px solid #26262c;
+    margin-bottom: 1.2rem;
+    display: block;
+}
+
+.modal-product-info h3 {
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.modal-product-info p {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    line-height: 1.55;
+}
+
+.close-btn {
+    position: sticky;
+    top: 0;
+    float: right;
+    margin-top: -0.5rem;
+    margin-right: -0.5rem;
+    background: rgba(15, 15, 18, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 20;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.modal-card h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.modal-sub {
+    font-size: 0.95rem;
+    color: #888888;
+    margin-bottom: 1.5rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #141418;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #26262c;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888888;
+    margin-bottom: 0.3rem;
+}
+
+.contact-value {
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.contact-value:hover {
+    text-decoration: underline;
+}
+
+/* --- Mobile Breakpoints & Portrait Optimizations --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a, .nav-contact-link {
+        font-size: 0.88rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 0.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .hero-x-logo {
+        max-width: 240px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    [data-tooltip]::before,
+    [data-tooltip]::after {
+        display: none;
+    }
+
+    .drawer-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 3.5rem 1.25rem 2rem;
+    }
+
+    /* Mobile BSOD Optimization */
+    .bsod-overlay {
+        padding: 8vh 8vw;
+    }
+
+    .bsod-face {
+        font-size: 5.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .bsod-main-text {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .bsod-small-text, .bsod-jk-text {
+        font-size: 0.82rem;
+    }
+
+    /* Mobile Deep Clean Modal Optimization */
+    .modal-card {
+        padding: 1.8rem 1.2rem 1.5rem;
+        max-height: 88vh;
+        width: 95%;
+    }
+
+    .image-modal-card {
+        padding: 1.6rem 1.2rem 1.4rem;
+    }
+
+    .modal-product-img {
+        max-height: 160px;
+    }
+
+    .modal-product-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .ipa-container-box, .location-disclaimer-box {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .ipa-bubble {
+        width: 220px;
+        font-size: 0.78rem;
+    }
+
+    .review-wheel-card {
+        padding: 1rem;
+    }
+
+    .review-quote {
+        font-size: 0.82rem;
+    }
+}
