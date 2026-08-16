@@ -43,7 +43,7 @@
                         <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(308.5 50 50)"/>
                     </g>
                     <circle cx="50" cy="50" r="12" fill="#181818" stroke="#ffffff" stroke-width="1.5"/>
-                    <circle cx="50" cy="50" r="4" fill="#ffffff"/>
+                    <circle cx="50" cy="4" fill="#ffffff"/>
                 </g>
             </svg>
 
@@ -381,12 +381,12 @@
             <div class="catalogue-grid">
                 <!-- Active Prebuilt PC Rig -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="ROG Strix 3070 Edition" class="card-img catalogue-img">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img">
                     <div class="card-content">
                         <div class="card-header">
                             <div>
                                 <span class="catalogue-badge">1440p High-FPS Rig</span>
-                                <h3>ROG Strix 3070 Edition</h3>
+                                <h3>THE ULTIMATE MIDRANGE 1440P GAMING PC.</h3>
                             </div>
                             <span class="expand-icon">&rarr;</span>
                         </div>
@@ -427,7 +427,7 @@
         </div>
     </div>
 
-    <!-- Sliding Build / Component Detail Side Panel -->
+    <!-- Sliding Build / Component Detail Side Panel with Interactive Gallery Slider -->
     <div id="buildDetailDrawer" class="drawer-overlay">
         <div class="drawer-content build-drawer-content">
             <button id="closeBuildDetailBtn" class="close-btn" aria-label="Close Drawer">&times;</button>
@@ -435,11 +435,48 @@
             <h2 id="detailTitle" class="section-title">Build Name<span class="dot">.</span></h2>
             <p id="detailPrice" class="detail-price-text">$0 SGD</p>
 
-            <img id="detailImg" src="" alt="Build Image" class="build-panel-img">
+            <!-- Gallery Carousel Container -->
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <button class="gallery-nav-btn gallery-prev" id="galleryPrevBtn" aria-label="Previous image">&#10094;</button>
+                <div class="gallery-slider-track" id="galleryTrack">
+                    <img id="detailImg" src="" alt="Build Image" class="build-panel-img">
+                </div>
+                <button class="gallery-nav-btn gallery-next" id="galleryNextBtn" aria-label="Next image">&#10095;</button>
+                <div class="gallery-counter" id="galleryCounter">1 / 1</div>
+            </div>
+            
+            <!-- Gallery Navigation Dots -->
+            <div class="gallery-dots" id="galleryDots"></div>
 
             <div id="detailSpecs" class="specs-box">
                 <h4>Full Specs & Details Breakdown</h4>
                 <ul id="specsList"></ul>
+            </div>
+
+            <!-- Build Video Showcase Container -->
+            <div id="videoBox" class="video-box">
+                <div class="video-header-row">
+                    <div>
+                        <h4>System Walkthrough & ARGB Lighting</h4>
+                        <p class="video-sub-label">Watch the build live in action</p>
+                    </div>
+                    <button class="fullscreen-trigger-btn" onclick="toggleVideoFullscreen()">
+                        <span>⛶</span> Fullscreen
+                    </button>
+                </div>
+                <div class="video-wrapper">
+                    <video id="detailVideo" class="build-video" controls playsinline preload="metadata">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Verified Benchmark Proof Container -->
+            <div id="benchmarkBox" class="benchmark-box">
+                <h4>Verified In-Game Benchmark Proof</h4>
+                <p class="benchmark-intro-text">Real hardware benchmark screenshots captured on native 1440p displays:</p>
+                <div id="benchmarkList" class="benchmark-list"></div>
             </div>
 
             <!-- Open Door Hands-On Testing Policy -->
@@ -538,9 +575,22 @@
         const prevBuildsLinkBtn = document.getElementById('prevBuildsLinkBtn');
         const closeArchiveModalBtn = document.getElementById('closeArchiveModalBtn');
         
-        // Build Detail Drawer
+        // Build Detail Drawer & Gallery Elements
         const buildDetailDrawer = document.getElementById('buildDetailDrawer');
         const closeBuildDetailBtn = document.getElementById('closeBuildDetailBtn');
+        const detailImg = document.getElementById('detailImg');
+        const galleryPrevBtn = document.getElementById('galleryPrevBtn');
+        const galleryNextBtn = document.getElementById('galleryNextBtn');
+        const galleryCounter = document.getElementById('galleryCounter');
+        const galleryDots = document.getElementById('galleryDots');
+        const galleryTrack = document.getElementById('galleryTrack');
+
+        // Video Player Element
+        const videoBox = document.getElementById('videoBox');
+        const detailVideo = document.getElementById('detailVideo');
+
+        let currentBuildImages = [];
+        let currentImageIndex = 0;
 
         // Why Trust Us Modal Elements
         const reviewsModal = document.getElementById('reviewsModal');
@@ -560,13 +610,20 @@
         const ipaBubble = document.getElementById('ipaBubble');
         const closeIpaBubbleBtn = document.getElementById('closeIpaBubbleBtn');
 
-        // Prebuilt Rig Database (Active Inventory & Previous Archive)
+        // Prebuilt Rig Database with Image Gallery, Video & Verified Benchmarks
         const buildData = {
             1: {
                 badge: "1440p High-FPS Rig",
-                title: "ROG Strix 3070 Edition",
+                title: "THE ULTIMATE MIDRANGE 1440P GAMING PC.",
                 price: "$900 SGD",
-                img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
+                video: "https://res.cloudinary.com/bqio04wg/video/upload/v1786905941/20260817_024215.mp4",
+                images: [
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3678.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3671.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3674.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3672.jpg"
+                ],
                 specs: [
                     "<strong>Processor:</strong> Intel Core i5-12400F (6 Cores / 12 Threads, Up to 4.4GHz)",
                     "<strong>Graphics Card:</strong> ASUS ROG STRIX GeForce RTX 3070 8GB",
@@ -577,13 +634,29 @@
                     "<strong>Power Supply:</strong> ASUS ROG STRIX 750W 80+ Gold Modular PSU",
                     "<strong>Chassis:</strong> DeepCool CG530 Panoramic Dual-Chamber Case",
                     "<strong>Features & I/O:</strong> Onboard Wi-Fi 6, Bluetooth, High-Speed USB Type-C & ARGB Sync"
+                ],
+                benchmarks: [
+                    {
+                        caption: "FORZA HORIZON 6 // 1440P ULTRA • 65 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-05.jpg"
+                    },
+                    {
+                        caption: "Expedition 33 // 1440P ULTRA • 60 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-07.jpg"
+                    },
+                    {
+                        caption: "VALORANT // 1440P HIGH • 350-400 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905386/photo_2026-08-17_02-36-11.jpg"
+                    }
                 ]
             },
             2: {
                 badge: "SOLD OUT // PREVIOUS BUILD",
                 title: "Phantom 3070 Edition",
                 price: "$800 SGD (Sold)",
-                img: "https://i.postimg.cc/VSHSZpsG/build.jpg",
+                images: [
+                    "https://i.postimg.cc/VSHSZpsG/build.jpg"
+                ],
                 specs: [
                     "<strong>Processor:</strong> AMD Ryzen 5 5600X (6 Cores / 12 Threads)",
                     "<strong>Graphics Card:</strong> INNO3D GeForce RTX 3070 Twin X2 8GB",
@@ -596,6 +669,84 @@
             }
         };
 
+        // Fullscreen Toggle for Video
+        function toggleVideoFullscreen() {
+            if (!detailVideo) return;
+            if (detailVideo.requestFullscreen) {
+                detailVideo.requestFullscreen();
+            } else if (detailVideo.webkitRequestFullscreen) {
+                detailVideo.webkitRequestFullscreen();
+            } else if (detailVideo.msRequestFullscreen) {
+                detailVideo.msRequestFullscreen();
+            }
+        }
+
+        function updateGalleryView() {
+            if (!currentBuildImages.length) return;
+            
+            detailImg.style.opacity = '0.3';
+            setTimeout(() => {
+                detailImg.src = currentBuildImages[currentImageIndex];
+                detailImg.style.opacity = '1';
+            }, 100);
+
+            galleryCounter.innerText = `${currentImageIndex + 1} / ${currentBuildImages.length}`;
+
+            // Update Dots
+            const dots = galleryDots.querySelectorAll('.gallery-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === currentImageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function setGalleryIndex(index) {
+            currentImageIndex = index;
+            updateGalleryView();
+        }
+
+        function nextGalleryImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentBuildImages.length;
+            updateGalleryView();
+        }
+
+        function prevGalleryImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentBuildImages.length) % currentBuildImages.length;
+            updateGalleryView();
+        }
+
+        if (galleryNextBtn) galleryNextBtn.addEventListener('click', nextGalleryImage);
+        if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', prevGalleryImage);
+
+        // Touch Swipe Navigation for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (galleryTrack) {
+            galleryTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            galleryTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleGallerySwipe();
+            }, { passive: true });
+        }
+
+        function handleGallerySwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) > 40) {
+                if (swipeDistance < 0) {
+                    nextGalleryImage();
+                } else {
+                    prevGalleryImage();
+                }
+            }
+        }
+
         function openBuildDetail(id) {
             const build = buildData[id];
             if (!build) return;
@@ -603,10 +754,63 @@
             document.getElementById('detailBadge').innerText = build.badge;
             document.getElementById('detailTitle').innerHTML = `${build.title}<span class="dot">.</span>`;
             document.getElementById('detailPrice').innerText = build.price;
-            document.getElementById('detailImg').src = build.img;
+
+            // Load Gallery Images
+            currentBuildImages = build.images || [build.img];
+            currentImageIndex = 0;
+
+            // Generate Gallery Dots
+            galleryDots.innerHTML = '';
+            if (currentBuildImages.length > 1) {
+                galleryPrevBtn.style.display = 'flex';
+                galleryNextBtn.style.display = 'flex';
+                galleryCounter.style.display = 'block';
+                galleryDots.style.display = 'flex';
+
+                currentBuildImages.forEach((_, idx) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('gallery-dot');
+                    if (idx === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => setGalleryIndex(idx));
+                    galleryDots.appendChild(dot);
+                });
+            } else {
+                galleryPrevBtn.style.display = 'none';
+                galleryNextBtn.style.display = 'none';
+                galleryCounter.style.display = 'none';
+                galleryDots.style.display = 'none';
+            }
+
+            updateGalleryView();
+
+            // Load Video Player
+            if (build.video) {
+                videoBox.style.display = 'block';
+                detailVideo.src = build.video;
+            } else {
+                videoBox.style.display = 'none';
+                detailVideo.src = '';
+            }
 
             const specsList = document.getElementById('specsList');
             specsList.innerHTML = build.specs.map(item => `<li>${item}</li>`).join('');
+
+            // Render Verified Benchmarks Section
+            const benchmarkBox = document.getElementById('benchmarkBox');
+            const benchmarkList = document.getElementById('benchmarkList');
+            if (build.benchmarks && build.benchmarks.length > 0) {
+                benchmarkBox.style.display = 'block';
+                benchmarkList.innerHTML = build.benchmarks.map(b => `
+                    <div class="benchmark-item">
+                        <div class="benchmark-header">
+                            <span class="benchmark-caption">${b.caption}</span>
+                        </div>
+                        <img src="${b.img}" alt="${b.caption}" class="benchmark-img" loading="lazy">
+                    </div>
+                `).join('');
+            } else {
+                benchmarkBox.style.display = 'none';
+            }
 
             if (catalogueModal) catalogueModal.classList.remove('active');
             if (archiveModal) archiveModal.classList.remove('active');
@@ -614,10 +818,15 @@
             buildDetailDrawer.classList.add('active');
         }
 
+        function closeBuildDetail() {
+            buildDetailDrawer.classList.remove('active');
+            if (detailVideo) {
+                detailVideo.pause();
+            }
+        }
+
         if (closeBuildDetailBtn) {
-            closeBuildDetailBtn.addEventListener('click', () => {
-                buildDetailDrawer.classList.remove('active');
-            });
+            closeBuildDetailBtn.addEventListener('click', closeBuildDetail);
         }
 
         if (heroCatalogueBtn) {
@@ -885,7 +1094,7 @@
             if (event.target === deepCleanModal) deepCleanModal.classList.remove('active');
             if (event.target === catalogueModal) catalogueModal.classList.remove('active');
             if (event.target === archiveModal) archiveModal.classList.remove('active');
-            if (event.target === buildDetailDrawer) buildDetailDrawer.classList.remove('active');
+            if (event.target === buildDetailDrawer) closeBuildDetail();
             if (event.target === reviewsModal) reviewsModal.classList.remove('active');
             if (event.target === webDevModal) webDevModal.classList.remove('active');
         });
