@@ -371,17 +371,28 @@
         </div>
     </div>
 
-    <!-- Catalogue Modal (Out of Stock State) -->
+    <!-- Catalogue Modal (Live In-Stock Build) -->
     <div id="catalogueModal" class="modal-overlay">
         <div class="modal-card catalogue-modal-card">
             <button id="closeCatalogueModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
             <h2>Current Catalogue<span class="dot">.</span></h2>
-            <p class="modal-sub">Click the prebuilt rig for more details.</p>
+            <p class="modal-sub">Click the prebuilt rig below for full specs & details.</p>
 
-            <div class="empty-state-card">
-                <div class="sold-badge">STATUS: OUT OF STOCK</div>
-                <p class="empty-state-msg">Sorry... seems that we do not have any units in stock right now, stay tuned for more!</p>
-                <p class="empty-state-sub">Every unit is hand-assembled, benchmarked, and tuned in limited batches.</p>
+            <div class="catalogue-grid">
+                <!-- Active Prebuilt PC Rig -->
+                <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="ROG Strix 3070 Edition" class="card-img catalogue-img">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <span class="catalogue-badge">1440p High-FPS Rig</span>
+                                <h3>ROG Strix 3070 Edition</h3>
+                            </div>
+                            <span class="expand-icon">&rarr;</span>
+                        </div>
+                        <p class="short-desc">$900 SGD • Intel i5-12400F • ROG Strix RTX 3070 • 32GB Ripjaws • 360mm Infinity AIO</p>
+                    </div>
+                </div>
             </div>
 
             <div class="catalogue-footer-note">
@@ -399,7 +410,7 @@
 
             <div class="catalogue-grid">
                 <!-- Sold Rig 1 -->
-                <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
+                <div class="service-card catalogue-card" onclick="openBuildDetail(2)">
                     <img src="https://i.postimg.cc/VSHSZpsG/build.jpg" alt="Phantom 3070 Edition" class="card-img catalogue-img">
                     <div class="card-content">
                         <div class="card-header">
@@ -453,7 +464,7 @@
 
                 <div class="faq-item">
                     <p class="faq-q">Q: Is Wi-Fi and Bluetooth included?</p>
-                    <p class="faq-a">Yes. Onboard Wi-Fi 6E and Bluetooth 5.3 modules are pre-installed and configured out of the box on all full systems.</p>
+                    <p class="faq-a">Yes. Onboard Wi-Fi 6 and Bluetooth modules are pre-installed and configured out of the box on all full systems.</p>
                 </div>
 
                 <div class="faq-item">
@@ -473,7 +484,7 @@
             </div>
 
             <div class="build-drawer-actions">
-                <button class="btn btn-primary" onclick="openContact()">Inquire / Custom Commission</button>
+                <button class="btn btn-primary" onclick="openContact()">Inquire / Reserve Item</button>
             </div>
         </div>
     </div>
@@ -549,9 +560,26 @@
         const ipaBubble = document.getElementById('ipaBubble');
         const closeIpaBubbleBtn = document.getElementById('closeIpaBubbleBtn');
 
-        // Single Prebuilt Rig Store (Marked as Sold / Archive)
+        // Prebuilt Rig Database (Active Inventory & Previous Archive)
         const buildData = {
             1: {
+                badge: "1440p High-FPS Rig",
+                title: "ROG Strix 3070 Edition",
+                price: "$900 SGD",
+                img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
+                specs: [
+                    "<strong>Processor:</strong> Intel Core i5-12400F (6 Cores / 12 Threads, Up to 4.4GHz)",
+                    "<strong>Graphics Card:</strong> ASUS ROG STRIX GeForce RTX 3070 8GB",
+                    "<strong>Motherboard:</strong> ASUS TUF GAMING B660-PLUS WIFI D4",
+                    "<strong>Memory:</strong> 32GB (2x16GB) G.SKILL Ripjaws V DDR4-3600MHz",
+                    "<strong>Storage:</strong> 1TB KIOXIA NVMe PCIe SSD",
+                    "<strong>Cooler:</strong> CubeSystems 360mm Infinity Mirror ARGB AIO Liquid Cooler",
+                    "<strong>Power Supply:</strong> ASUS ROG STRIX 750W 80+ Gold Modular PSU",
+                    "<strong>Chassis:</strong> DeepCool CG530 Panoramic Dual-Chamber Case",
+                    "<strong>Features & I/O:</strong> Onboard Wi-Fi 6, Bluetooth, High-Speed USB Type-C & ARGB Sync"
+                ]
+            },
+            2: {
                 badge: "SOLD OUT // PREVIOUS BUILD",
                 title: "Phantom 3070 Edition",
                 price: "$800 SGD (Sold)",
@@ -604,7 +632,7 @@
             });
         }
 
-        // Switch from Empty Catalogue -> Previous Builds Archive
+        // Switch from Catalogue -> Previous Builds Archive
         if (prevBuildsLinkBtn) {
             prevBuildsLinkBtn.addEventListener('click', () => {
                 catalogueModal.classList.remove('active');
