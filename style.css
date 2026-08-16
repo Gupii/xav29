@@ -20,8 +20,8 @@ body {
     position: relative;
 }
 
-/* Base Image Safety Reset */
-img {
+/* Base Image & Video Safety Reset */
+img, video {
     max-width: 100%;
     height: auto;
     display: block;
@@ -1070,16 +1070,235 @@ img {
     margin-bottom: 1.2rem;
 }
 
-.build-panel-img {
+/* --- Interactive Image Gallery Slider Styling --- */
+.gallery-slider-wrapper {
+    position: relative;
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 240px;
+    background-color: #121216;
     border-radius: 8px;
     border: 1px solid #26262c;
+    overflow: hidden;
+    margin-bottom: 0.6rem;
+    user-select: none;
+}
+
+.gallery-slider-track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.build-panel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15, 15, 18, 0.75);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    z-index: 10;
+}
+
+.gallery-nav-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.gallery-prev {
+    left: 10px;
+}
+
+.gallery-next {
+    right: 10px;
+}
+
+.gallery-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 1.5rem;
+}
+
+.gallery-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #2e2e38;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-dot.active {
+    background-color: #ffffff;
+    transform: scale(1.25);
+}
+
+/* --- Build Video Showcase Box Styling --- */
+.video-box {
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.video-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.video-box h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+}
+
+.video-sub-label {
+    font-size: 0.78rem;
+    color: #888888;
+}
+
+.fullscreen-trigger-btn {
+    background: #1a1a22;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-family: inherit;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.fullscreen-trigger-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #09090b;
+    border: 1px solid #26262c;
+}
+
+.build-video {
+    width: 100%;
+    max-height: 280px;
+    display: block;
+    outline: none;
+}
+
+/* --- Verified In-Game Benchmarks Styling --- */
+.benchmark-box {
+    background-color: #141418;
+    border: 1px solid #26262c;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.benchmark-box h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.benchmark-intro-text {
+    font-size: 0.82rem;
+    color: #888888;
+    margin-bottom: 1rem;
+}
+
+.benchmark-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.benchmark-item {
+    background-color: #0e0e12;
+    border: 1px solid #222228;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.benchmark-header {
+    padding: 0.6rem 0.8rem;
+    background-color: #181820;
+    border-bottom: 1px solid #26262c;
+}
+
+.benchmark-caption {
+    font-family: monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
     display: block;
 }
 
+.benchmark-img {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Testing, Warranty, Specs & FAQ Boxes --- */
 .specs-box, .testing-box, .warranty-box, .faq-panel {
     background-color: #141418;
     border: 1px solid #26262c;
@@ -1210,6 +1429,18 @@ img {
 
     .modal-product-img {
         height: 160px;
+    }
+
+    .gallery-slider-wrapper {
+        height: 200px;
+    }
+
+    .build-video {
+        max-height: 220px;
+    }
+
+    .benchmark-img {
+        max-height: 180px;
     }
 
     .ipa-container-box, .location-disclaimer-box {
