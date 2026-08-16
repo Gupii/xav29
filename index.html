@@ -1081,9 +1081,11 @@
         navServicesBtn.addEventListener('click', openDrawer);
         closeDrawerBtn.addEventListener('click', closeDrawer);
 
-        // Accordion Details Toggle without UI Jitter
+        // Robust Accordion Toggle preventing highlight jitter
         function toggleCardDetails(event, card) {
-            if (event.target.classList.contains('clickable-term')) return;
+            if (event.target.classList.contains('clickable-term') || event.target.closest('.clickable-term')) {
+                return;
+            }
             card.classList.toggle('expanded');
         }
 
