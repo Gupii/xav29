@@ -190,8 +190,29 @@
         .review-author { font-size: 0.75rem; color: #888; font-weight: 600; text-align: right; display: block; margin-bottom: 0.9rem; }
         .review-author:last-child { margin-bottom: 0; }
 
-        footer { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #666; }
-        footer a { color: #aaa; text-decoration: underline; }
+        /* Disclaimer & Footer */
+        .disclaimer-card {
+            background: #121216;
+            border: 1px solid #26262c;
+            border-radius: 8px;
+            padding: 1rem 1.1rem;
+            font-size: 0.8rem;
+            color: #999999;
+            line-height: 1.5;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .disclaimer-card strong {
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+        .disclaimer-card a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        footer { text-align: center; margin-top: 1.5rem; font-size: 0.75rem; color: #555555; }
     </style>
 </head>
 <body>
@@ -271,8 +292,13 @@
             <span class="review-author">— Aira (Carousell)</span>
         </div>
 
+        <!-- Browser Compatibility Disclaimer -->
+        <div class="disclaimer-card">
+            <p><strong>Browser Notice:</strong> The <a href="https://xav29.com/">full interactive website</a> only works as intended on normal desktop and mobile browsers such as <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, or <strong>Safari</strong> (in-app social media webviews may disable animations and 3D features).</p>
+        </div>
+
         <footer>
-            <p>Looking for the interactive desktop site? <br><a href="https://xav29.com/">Open full desktop version</a></p>
+            <p>© 2024–2026 Xav. Built for high performance.</p>
         </footer>
     </div>
 
