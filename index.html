@@ -14,15 +14,8 @@
 </head>
 <body>
 
-    <!-- 1.5-Second Motherboard POST Code Preloader Overlay -->
+    <!-- Non-Blocking CSS Auto-Dismiss Preloader -->
     <div id="preloader">
-        <div class="post-code-stream">
-            <span>0x15 // DRAM_INIT</span>
-            <span>0xC1 // SPD_CHECK</span>
-            <span>0xAb // POST_STAGE</span>
-            <span>0x0d // MEM_TRAIN</span>
-            <span>0xA2 // IDE_DETECT</span>
-        </div>
         <div class="loader-container">
             <svg class="pc-fan-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <rect x="5" y="5" width="90" height="90" rx="12" fill="#080808" stroke="#2a2a2a" stroke-width="2"/>
@@ -43,14 +36,13 @@
                         <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(308.5 50 50)"/>
                     </g>
                     <circle cx="50" cy="50" r="12" fill="#181818" stroke="#ffffff" stroke-width="1.5"/>
-                    <circle cx="50" cy="4" fill="#ffffff"/>
+                    <circle cx="50" cy="50" r="4" fill="#ffffff"/>
                 </g>
             </svg>
 
-            <!-- Motherboard Debug LED Style Display -->
             <div class="post-led-box">
-                <span class="post-led-label">POST_CODE</span>
-                <span id="postCodeText" class="post-led-value">15</span>
+                <span class="post-led-label">SYSTEM_READY</span>
+                <span class="post-led-value">00</span>
             </div>
         </div>
     </div>
@@ -69,7 +61,6 @@
 
     <!-- Main Hero -->
     <main class="hero">
-        <!-- Cyberpunk Geometric 'X' Logo -->
         <div class="hero-logo-wrapper snap-in-1">
             <div class="glitch-container">
                 <svg viewBox="0 0 400 380" class="hero-x-logo glitch-logo" xmlns="http://www.w3.org/2000/svg">
@@ -110,18 +101,16 @@
 
         <p class="snap-in-2">Since 2024, serving customers around Singapore.</p>
         
-        <!-- Why Trust Us Button -->
         <div class="hero-trust-wrapper snap-in-2">
             <button id="whyTrustBtn" class="trust-link-btn">Why trust us?</button>
         </div>
 
         <div class="hero-buttons snap-in-3">
-            <button id="whatIDoBtn" class="btn btn-secondary" data-tooltip="cmon... click it!">What Do I Do?</button>
-            <button id="heroCatalogueBtn" class="btn btn-secondary" data-tooltip="check builds!">Current Catalogue</button>
-            <button id="heroContactBtn" class="btn btn-primary" data-tooltip="don't be shy!">Contact Me</button>
+            <button id="whatIDoBtn" class="btn btn-secondary">What Do I Do?</button>
+            <button id="heroCatalogueBtn" class="btn btn-secondary">Current Catalogue</button>
+            <button id="heroContactBtn" class="btn btn-primary">Contact Me</button>
         </div>
 
-        <!-- Web Dev Teaser Link -->
         <div class="webdev-teaser-wrapper snap-in-3">
             <button id="webDevBtn" class="webdev-link-btn">
                 <span class="webdev-main-text">Like my website?</span>
@@ -139,14 +128,14 @@
                 <p class="modal-sub">well... i dont just do PC services only.</p>
                 
                 <p class="modal-desc-paragraph">
-                    Need a clean, interactive website, personal portfolio, or business landing page built from scratch? I can design and code custom websites directly tailored to your vision and ideas.
+                    Need a clean, interactive website, personal portfolio, or business landing page built from scratch? I design and code custom websites directly tailored to your vision.
                 </p>
 
                 <div class="ipa-container-box">
                     <h4 style="color: #ffffff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem;">Service Breakdown:</h4>
                     <p style="margin-bottom: 0.5rem;">• <strong>Base Price:</strong> $150 SGD flat rate for a simple, interactive business or personal site.</p>
                     <p style="margin-bottom: 0.5rem;">• <strong>Cross-Platform Optimization:</strong> Built and tested to run smoothly on both desktop and mobile layouts.</p>
-                    <p>• <strong>Custom Vision Integration:</strong> Incorporating custom themes, interactive modals, animations, and tailored features to fit exactly what you want.</p>
+                    <p>• <strong>Custom Vision Integration:</strong> Incorporating custom themes, interactive modals, animations, and tailored features.</p>
                 </div>
 
                 <div class="build-drawer-actions" style="margin-top: 1.5rem;">
@@ -163,45 +152,33 @@
             <h2>Why Trust Us<span class="dot">.</span></h2>
             <p class="modal-sub">Drag or swipe vertically to spin through real client feedback.</p>
 
-            <!-- 3D Interactive Wheel Container -->
             <div id="reviewWheelContainer" class="review-wheel-container">
                 <div id="reviewWheel" class="review-wheel">
-                    
-                    <!-- Review 1 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured that everything was working before leaving."</p>
                         <span class="review-author">— soreil</span>
                     </div>
-
-                    <!-- Review 2 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"was really nice when showing me the pc, even explaining how to check specs cos i noob. now i can play heavy games!!? if uw buy pc ask this guy he legit pro"</p>
                         <span class="review-author">— Aira</span>
                     </div>
-
-                    <!-- Review 3 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"great experience with xavier!! went extra mile to help me settle my build n solve issues. very recommended👍🏻👍🏻"</p>
                         <span class="review-author">— yrjdnr</span>
                     </div>
-
-                    <!-- Review 4 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Seller answered all my questions quickly and professionally, and even helped me to source out cpu coolers to swap out for my PC when requested. The after-sales tips was really appreciated from him as well. All in all, the service was extremely affordable, and this seller is truly genuine in his work. Would recommend strongly👍"</p>
                         <span class="review-author">— collectiblesandcards</span>
                     </div>
-
-                    <!-- Review 5 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Really amazing and awesome guy! professional in what he does and is accommodating too! tysm i rlly appreciate it ^^ 🫶✌️🤞"</p>
                         <span class="review-author">— cryphticz</span>
                     </div>
-
                 </div>
             </div>
 
             <p class="reviews-footer-text">
-                See all these reviews? Every single one of them is a client who trusted us with their beloved personal computer, and allowed us to work our magic on it.
+                See all these reviews? Every single one of them is a client who trusted us with their personal computer, and allowed us to work our magic on it.
             </p>
             <p class="reviews-trust-statement">
                 We work with high-end components and the latest hardware and are deeply accustomed to these services with the priority of keeping the customer's hardware safe no matter what.
@@ -209,7 +186,7 @@
         </div>
     </div>
 
-    <!-- Slide-in Panel from Left (Services Drawer) -->
+    <!-- Services Slide Drawer -->
     <div id="sideDrawer" class="drawer-overlay">
         <div class="drawer-content">
             <button id="closeDrawerBtn" class="close-btn" aria-label="Close Drawer">&times;</button>
@@ -217,15 +194,15 @@
             <p class="section-subtitle">Click below to reveal our specialized service breakdown.</p>
 
             <div class="services-grid-vertical">
-                <!-- Service 1: Maintenance & Deep Cleaning -->
+                <!-- Service 1 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Hardware Maintenance and Deep Cleaning" class="card-img">
+                    <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Hardware Maintenance and Deep Cleaning" class="card-img" loading="lazy">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Hardware maintenance and Deep cleaning</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Comprehensive system overhaul using high-pressure air dust blowers, 99% isopropyl alcohol (IPA), complete fan & case dust extraction, and thermal repasting for both CPU and GPU dies to permanently eliminate thermal throttling.</p>
+                        <p class="short-desc">Comprehensive system overhaul using high-pressure air dust blowers, 99% isopropyl alcohol (IPA), complete fan & case dust extraction, and thermal repasting for both CPU and GPU dies.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -244,15 +221,15 @@
                     </div>
                 </div>
 
-                <!-- Service 2: Hardware Upgrades & Part Swapping -->
+                <!-- Service 2 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://www.allinonecomputersolutions.co.uk/wp-content/uploads/2021/02/Computer-upgrade.jpg" alt="Hardware Upgrades & Part Swapping" class="card-img">
+                    <img src="https://www.allinonecomputersolutions.co.uk/wp-content/uploads/2021/02/Computer-upgrade.jpg" alt="Hardware Upgrades & Part Swapping" class="card-img" loading="lazy">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Hardware Upgrades & Part Swapping</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Looking to boost your FPS or swap out old components? I'll check compatibility, install them cleanly, and run real stress tests to make sure everything is rock solid. Got old parts lying around? Sell them directly to me for fast cash to subsidize your upgrade cost.</p>
+                        <p class="short-desc">Looking to boost your FPS or swap out old components? I'll check compatibility, install them cleanly, and run real stress tests to make sure everything is rock solid. Got old parts lying around? Sell them directly to me for fast cash.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -260,13 +237,13 @@
                                 <h4>Upgrade Process & Buyback Breakdown</h4>
                                 <ul>
                                     <li>
-                                        <strong>Compatibility & Installation</strong>: Making sure your new CPU, GPU, or RAM actually works with your board and power supply before installing it properly.
+                                        <strong>Compatibility & Installation</strong>: Ensuring hardware synergy before safe assembly.
                                     </li>
                                     <li>
-                                        <strong>Stress Testing</strong>: Running benchmark tests and games to guarantee zero crashes, blue screens, or thermal bottlenecks before handing your PC back.
+                                        <strong>Stress Testing</strong>: Comprehensive stability diagnostics before delivery.
                                     </li>
                                     <li>
-                                        <strong>Old Part Trade-In / Buyback</strong>: Sell your replaced components directly to me for quick cash on the spot to lower your total upgrade cost.
+                                        <strong>Old Part Trade-In / Buyback</strong>: Instant cash buyback to offset your upgrade total.
                                     </li>
                                 </ul>
                             </div>
@@ -274,15 +251,15 @@
                     </div>
                 </div>
 
-                <!-- Service 3: Case Swaps -->
+                <!-- Service 3 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://www.bhphotovideo.com/images/fb/lian_li_o11dexl_x_o11_dynamic_evo_xl_1787171.jpg" alt="Case Swaps" class="card-img">
+                    <img src="https://www.bhphotovideo.com/images/fb/lian_li_o11dexl_x_o11_dynamic_evo_xl_1787171.jpg" alt="Case Swaps" class="card-img" loading="lazy">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Case swaps</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Want to refresh your system? Getting tired of your old case? We will port over your entire build to a new, fresh case of your own choice, ensuring everything is handled with utmost care at XAVPC. Wiring everything, including basic cable management to clean up the back panel.</p>
+                        <p class="short-desc">Migrating your entire build into a fresh case of your choice, complete with front header wiring and clean cable management.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -290,10 +267,10 @@
                                 <h4>Case Swap Process</h4>
                                 <ul>
                                     <li>
-                                        <strong>Full Build Transfer</strong>: Safe dismantling and migrating of motherboard, GPU, power supply, coolers, and storage into your new chassis.
+                                        <strong>Full Build Transfer</strong>: Safe dismantling and migrating of all core components into your new chassis.
                                     </li>
                                     <li>
-                                        <strong>Wiring & Cable Routing</strong>: Connecting front panel headers, power cables, and routing wires neatly for a clean front view and organized back panel.
+                                        <strong>Wiring & Cable Routing</strong>: Organized cable paths for improved internal airflow and aesthetics.
                                     </li>
                                 </ul>
                             </div>
@@ -301,15 +278,15 @@
                     </div>
                 </div>
 
-                <!-- Service 4: Diagnostics and Troubleshooting -->
+                <!-- Service 4 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://miro.medium.com/v2/resize:fit:1024/1*V3ukVbugMUgEESWofAu4Vw.jpeg" alt="Diagnostics and troubleshooting" class="card-img">
+                    <img src="https://miro.medium.com/v2/resize:fit:1024/1*V3ukVbugMUgEESWofAu4Vw.jpeg" alt="Diagnostics and troubleshooting" class="card-img" loading="lazy">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Diagnostics and troubleshooting</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">PC won't boot, randomly shuts off, or throwing blue screens? I isolate hardware faults using my own spare parts and understanding of how components interact. I stick to a strict no-fix, no-fee policy: if I can't reach a definitive conclusion on what's wrong, you don't pay anything.</p>
+                        <p class="short-desc">Isolating hardware faults with spare part testing. Strictly adhering to a no-fix, no-fee policy: if I can't reach a definitive conclusion on the root cause, you don't pay anything.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -317,7 +294,32 @@
                                 <h4>Diagnostic Policy & Limitations</h4>
                                 <ul>
                                     <li>
-                                        <strong>Spare Part Swap Testing</strong>: Swapping out RAM, GPUs, PSUs, and CPUs with known-working spare parts to isolate the exact failing hardware.
+                                        <strong>Spare Part Swap Testing</strong>: Swapping components with known-good parts to pinpoint exact hardware failures.
                                     </li>
                                     <li>
-                                        <str
+                                        <strong>No Conclusion, No Pay Policy</strong>: Zero diagnostic fee if no definitive answer is found.
+                                    </li>
+                                    <li>
+                                        <strong>Note</strong>: We do not do micro-soldering / board-level repairs. Faulty hardware is flagged for replacement.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deep Cleaning Modal -->
+    <div id="deepCleanModal" class="modal-overlay">
+        <div class="modal-card image-modal-card">
+            <button id="closeDeepCleanModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Deep Cleaning Process" class="modal-product-img" loading="lazy">
+            <div class="modal-product-info">
+                <h3>Chassis & GPU Deep Cleaning<span class="dot">.</span></h3>
+                <p class="modal-sub">Restoring original thermal efficiency and airflow.</p>
+                
+                <p class="modal-desc-paragraph">
+                    Dust buildup directly chokes fan blades, clogs heatsink fins, and causes thermal throttling. We utilize high-pressure electric air blowers to blast away trapped debris from tight crevices, power supply shrouds, and intake filters.
+              
