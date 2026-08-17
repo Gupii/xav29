@@ -25,7 +25,16 @@
         }
         .container { max-width: 480px; width: 100%; }
         
-        header { text-align: center; margin-bottom: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; }
+        .brand-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 0.8rem;
+            background: #141418;
+        }
         .brand-logo { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
         .brand-logo span { color: #888; }
         .tagline { color: #888; font-size: 0.95rem; margin-top: 0.3rem; }
@@ -75,7 +84,6 @@
             margin-bottom: 1.2rem;
         }
         
-        /* Gallery Container */
         .gallery-container {
             position: relative;
             width: 100%;
@@ -190,6 +198,7 @@
 
     <div class="container">
         <header>
+            <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="Xav Logo" class="brand-avatar">
             <h1 class="brand-logo">Xav<span>.</span></h1>
             <p class="tagline">Personal Computer Services & Custom Builds</p>
             <span class="badge">Singapore • Since 2024</span>
@@ -205,7 +214,6 @@
         <!-- Featured Rig with Interactive Gallery -->
         <h3 class="section-heading">Featured In-Stock Build</h3>
         <div class="card">
-            
             <div class="gallery-container" id="galleryContainer">
                 <button class="gallery-btn gallery-prev" id="galleryPrevBtn" aria-label="Previous image">&#10094;</button>
                 <img id="galleryImg" src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="1440p Gaming PC" class="gallery-img">
@@ -232,7 +240,7 @@
                 <li><span>Chassis:</span> <strong>DeepCool CG530 Dual-Chamber</strong></li>
                 <li><span>Warranty:</span> <strong>1 Mo Hardware + 3 Mo Support</strong></li>
             </ul>
-            <a href="https://t.me/Leijiye" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.75rem;">Inquire / Reserve Rig</a>
+            <a href="/build.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.85rem;">Learn More & Benchmarks &rarr;</a>
         </div>
 
         <!-- Core Services -->
@@ -267,7 +275,7 @@
         </footer>
     </div>
 
-    <!-- Lightweight Gallery Script -->
+    <!-- Gallery Script -->
     <script>
         const buildImages = [
             "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
@@ -295,34 +303,17 @@
             });
         }
 
-        function setSlide(idx) {
-            currentIndex = idx;
-            updateSlide();
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % buildImages.length;
-            updateSlide();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + buildImages.length) % buildImages.length;
-            updateSlide();
-        }
+        function setSlide(idx) { currentIndex = idx; updateSlide(); }
+        function nextSlide() { currentIndex = (currentIndex + 1) % buildImages.length; updateSlide(); }
+        function prevSlide() { currentIndex = (currentIndex - 1 + buildImages.length) % buildImages.length; updateSlide(); }
 
         document.getElementById('galleryNextBtn').addEventListener('click', nextSlide);
         document.getElementById('galleryPrevBtn').addEventListener('click', prevSlide);
 
-        // Touch Swipe
         let startX = 0;
-        let endX = 0;
-
-        container.addEventListener('touchstart', (e) => {
-            startX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
+        container.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, { passive: true });
         container.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].screenX;
+            let endX = e.changedTouches[0].screenX;
             if (startX - endX > 40) nextSlide();
             if (endX - startX > 40) prevSlide();
         }, { passive: true });
