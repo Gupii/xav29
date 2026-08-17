@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xav | Personal Site</title>
     
     <!-- Discord & Social Media Embed Preview -->
@@ -13,6 +13,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- 1.5-Second Motherboard POST Code Preloader Overlay -->
+    <div id="preloader">
+        <div class="post-code-stream">
+            <span>0x15 // DRAM_INIT</span>
+            <span>0xC1 // SPD_CHECK</span>
+            <span>0xAb // POST_STAGE</span>
+            <span>0x0d // MEM_TRAIN</span>
+            <span>0xA2 // IDE_DETECT</span>
+        </div>
+        <div class="loader-container">
+            <svg class="pc-fan-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="90" height="90" rx="12" fill="#080808" stroke="#2a2a2a" stroke-width="2"/>
+                <circle cx="12" cy="12" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="88" cy="12" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="12" cy="88" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="88" cy="88" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
+                <circle cx="50" cy="50" r="38" fill="#121212" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+
+                <g class="spinning-blades">
+                    <g fill="#ffffff" opacity="0.85">
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z"/>
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(51.4 50 50)"/>
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(102.8 50 50)"/>
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(154.2 50 50)"/>
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(205.7 50 50)"/>
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(257.1 50 50)"/>
+                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(308.5 50 50)"/>
+                    </g>
+                    <circle cx="50" cy="50" r="12" fill="#181818" stroke="#ffffff" stroke-width="1.5"/>
+                    <circle cx="50" cy="4" fill="#ffffff"/>
+                </g>
+            </svg>
+
+            <!-- Motherboard Debug LED Style Display -->
+            <div class="post-led-box">
+                <span class="post-led-label">POST_CODE</span>
+                <span id="postCodeText" class="post-led-value">15</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -28,6 +69,7 @@
 
     <!-- Main Hero -->
     <main class="hero">
+        <!-- Cyberpunk Geometric 'X' Logo -->
         <div class="hero-logo-wrapper snap-in-1">
             <div class="glitch-container">
                 <svg viewBox="0 0 400 380" class="hero-x-logo glitch-logo" xmlns="http://www.w3.org/2000/svg">
@@ -68,16 +110,18 @@
 
         <p class="snap-in-2">Since 2024, serving customers around Singapore.</p>
         
+        <!-- Why Trust Us Button -->
         <div class="hero-trust-wrapper snap-in-2">
             <button id="whyTrustBtn" class="trust-link-btn">Why trust us?</button>
         </div>
 
         <div class="hero-buttons snap-in-3">
-            <button id="whatIDoBtn" class="btn btn-secondary">What Do I Do?</button>
-            <button id="heroCatalogueBtn" class="btn btn-secondary">Current Catalogue</button>
-            <button id="heroContactBtn" class="btn btn-primary">Contact Me</button>
+            <button id="whatIDoBtn" class="btn btn-secondary" data-tooltip="cmon... click it!">What Do I Do?</button>
+            <button id="heroCatalogueBtn" class="btn btn-secondary" data-tooltip="check builds!">Current Catalogue</button>
+            <button id="heroContactBtn" class="btn btn-primary" data-tooltip="don't be shy!">Contact Me</button>
         </div>
 
+        <!-- Web Dev Teaser Link -->
         <div class="webdev-teaser-wrapper snap-in-3">
             <button id="webDevBtn" class="webdev-link-btn">
                 <span class="webdev-main-text">Like my website?</span>
@@ -95,14 +139,14 @@
                 <p class="modal-sub">well... i dont just do PC services only.</p>
                 
                 <p class="modal-desc-paragraph">
-                    Need a clean, interactive website, personal portfolio, or business landing page built from scratch? I design and code custom websites directly tailored to your vision.
+                    Need a clean, interactive website, personal portfolio, or business landing page built from scratch? I can design and code custom websites directly tailored to your vision and ideas.
                 </p>
 
                 <div class="ipa-container-box">
                     <h4 style="color: #ffffff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem;">Service Breakdown:</h4>
                     <p style="margin-bottom: 0.5rem;">• <strong>Base Price:</strong> $150 SGD flat rate for a simple, interactive business or personal site.</p>
                     <p style="margin-bottom: 0.5rem;">• <strong>Cross-Platform Optimization:</strong> Built and tested to run smoothly on both desktop and mobile layouts.</p>
-                    <p>• <strong>Custom Vision Integration:</strong> Incorporating custom themes, interactive modals, animations, and tailored features.</p>
+                    <p>• <strong>Custom Vision Integration:</strong> Incorporating custom themes, interactive modals, animations, and tailored features to fit exactly what you want.</p>
                 </div>
 
                 <div class="build-drawer-actions" style="margin-top: 1.5rem;">
@@ -119,33 +163,45 @@
             <h2>Why Trust Us<span class="dot">.</span></h2>
             <p class="modal-sub">Drag or swipe vertically to spin through real client feedback.</p>
 
+            <!-- 3D Interactive Wheel Container -->
             <div id="reviewWheelContainer" class="review-wheel-container">
                 <div id="reviewWheel" class="review-wheel">
+                    
+                    <!-- Review 1 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured that everything was working before leaving."</p>
                         <span class="review-author">— soreil</span>
                     </div>
+
+                    <!-- Review 2 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"was really nice when showing me the pc, even explaining how to check specs cos i noob. now i can play heavy games!!? if uw buy pc ask this guy he legit pro"</p>
                         <span class="review-author">— Aira</span>
                     </div>
+
+                    <!-- Review 3 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"great experience with xavier!! went extra mile to help me settle my build n solve issues. very recommended👍🏻👍🏻"</p>
                         <span class="review-author">— yrjdnr</span>
                     </div>
+
+                    <!-- Review 4 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Seller answered all my questions quickly and professionally, and even helped me to source out cpu coolers to swap out for my PC when requested. The after-sales tips was really appreciated from him as well. All in all, the service was extremely affordable, and this seller is truly genuine in his work. Would recommend strongly👍"</p>
                         <span class="review-author">— collectiblesandcards</span>
                     </div>
+
+                    <!-- Review 5 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Really amazing and awesome guy! professional in what he does and is accommodating too! tysm i rlly appreciate it ^^ 🫶✌️🤞"</p>
                         <span class="review-author">— cryphticz</span>
                     </div>
+
                 </div>
             </div>
 
             <p class="reviews-footer-text">
-                See all these reviews? Every single one of them is a client who trusted us with their personal computer, and allowed us to work our magic on it.
+                See all these reviews? Every single one of them is a client who trusted us with their beloved personal computer, and allowed us to work our magic on it.
             </p>
             <p class="reviews-trust-statement">
                 We work with high-end components and the latest hardware and are deeply accustomed to these services with the priority of keeping the customer's hardware safe no matter what.
@@ -153,7 +209,7 @@
         </div>
     </div>
 
-    <!-- Services Slide Drawer -->
+    <!-- Slide-in Panel from Left (Services Drawer) -->
     <div id="sideDrawer" class="drawer-overlay">
         <div class="drawer-content">
             <button id="closeDrawerBtn" class="close-btn" aria-label="Close Drawer">&times;</button>
@@ -161,15 +217,15 @@
             <p class="section-subtitle">Click below to reveal our specialized service breakdown.</p>
 
             <div class="services-grid-vertical">
-                <!-- Service 1 -->
+                <!-- Service 1: Maintenance & Deep Cleaning -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Hardware Maintenance and Deep Cleaning" class="card-img" loading="lazy">
+                    <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Hardware Maintenance and Deep Cleaning" class="card-img">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Hardware maintenance and Deep cleaning</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Comprehensive system overhaul using high-pressure air dust blowers, 99% isopropyl alcohol (IPA), complete fan & case dust extraction, and thermal repasting for both CPU and GPU dies.</p>
+                        <p class="short-desc">Comprehensive system overhaul using high-pressure air dust blowers, 99% isopropyl alcohol (IPA), complete fan & case dust extraction, and thermal repasting for both CPU and GPU dies to permanently eliminate thermal throttling.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -188,15 +244,15 @@
                     </div>
                 </div>
 
-                <!-- Service 2 -->
+                <!-- Service 2: Hardware Upgrades & Part Swapping -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://www.allinonecomputersolutions.co.uk/wp-content/uploads/2021/02/Computer-upgrade.jpg" alt="Hardware Upgrades & Part Swapping" class="card-img" loading="lazy">
+                    <img src="https://www.allinonecomputersolutions.co.uk/wp-content/uploads/2021/02/Computer-upgrade.jpg" alt="Hardware Upgrades & Part Swapping" class="card-img">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Hardware Upgrades & Part Swapping</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Looking to boost your FPS or swap out old components? I'll check compatibility, install them cleanly, and run real stress tests to make sure everything is rock solid. Got old parts lying around? Sell them directly to me for fast cash.</p>
+                        <p class="short-desc">Looking to boost your FPS or swap out old components? I'll check compatibility, install them cleanly, and run real stress tests to make sure everything is rock solid. Got old parts lying around? Sell them directly to me for fast cash to subsidize your upgrade cost.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -204,13 +260,13 @@
                                 <h4>Upgrade Process & Buyback Breakdown</h4>
                                 <ul>
                                     <li>
-                                        <strong>Compatibility & Installation</strong>: Ensuring hardware synergy before safe assembly.
+                                        <strong>Compatibility & Installation</strong>: Making sure your new CPU, GPU, or RAM actually works with your board and power supply before installing it properly.
                                     </li>
                                     <li>
-                                        <strong>Stress Testing</strong>: Comprehensive stability diagnostics before delivery.
+                                        <strong>Stress Testing</strong>: Running benchmark tests and games to guarantee zero crashes, blue screens, or thermal bottlenecks before handing your PC back.
                                     </li>
                                     <li>
-                                        <strong>Old Part Trade-In / Buyback</strong>: Instant cash buyback to offset your upgrade total.
+                                        <strong>Old Part Trade-In / Buyback</strong>: Sell your replaced components directly to me for quick cash on the spot to lower your total upgrade cost.
                                     </li>
                                 </ul>
                             </div>
@@ -218,15 +274,15 @@
                     </div>
                 </div>
 
-                <!-- Service 3 -->
+                <!-- Service 3: Case Swaps -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://www.bhphotovideo.com/images/fb/lian_li_o11dexl_x_o11_dynamic_evo_xl_1787171.jpg" alt="Case Swaps" class="card-img" loading="lazy">
+                    <img src="https://www.bhphotovideo.com/images/fb/lian_li_o11dexl_x_o11_dynamic_evo_xl_1787171.jpg" alt="Case Swaps" class="card-img">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Case swaps</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Migrating your entire build into a fresh case of your choice, complete with front header wiring and clean cable management.</p>
+                        <p class="short-desc">Want to refresh your system? Getting tired of your old case? We will port over your entire build to a new, fresh case of your own choice, ensuring everything is handled with utmost care at XAVPC. Wiring everything, including basic cable management to clean up the back panel.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -234,10 +290,10 @@
                                 <h4>Case Swap Process</h4>
                                 <ul>
                                     <li>
-                                        <strong>Full Build Transfer</strong>: Safe dismantling and migrating of all core components into your new chassis.
+                                        <strong>Full Build Transfer</strong>: Safe dismantling and migrating of motherboard, GPU, power supply, coolers, and storage into your new chassis.
                                     </li>
                                     <li>
-                                        <strong>Wiring & Cable Routing</strong>: Organized cable paths for improved internal airflow and aesthetics.
+                                        <strong>Wiring & Cable Routing</strong>: Connecting front panel headers, power cables, and routing wires neatly for a clean front view and organized back panel.
                                     </li>
                                 </ul>
                             </div>
@@ -245,15 +301,15 @@
                     </div>
                 </div>
 
-                <!-- Service 4 -->
+                <!-- Service 4: Diagnostics and Troubleshooting -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
-                    <img src="https://miro.medium.com/v2/resize:fit:1024/1*V3ukVbugMUgEESWofAu4Vw.jpeg" alt="Diagnostics and troubleshooting" class="card-img" loading="lazy">
+                    <img src="https://miro.medium.com/v2/resize:fit:1024/1*V3ukVbugMUgEESWofAu4Vw.jpeg" alt="Diagnostics and troubleshooting" class="card-img">
                     <div class="card-content">
                         <div class="card-header">
                             <h3>Diagnostics and troubleshooting</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Isolating hardware faults with spare part testing. Strictly adhering to a no-fix, no-fee policy: if I can't reach a definitive conclusion on the root cause, you don't pay anything.</p>
+                        <p class="short-desc">PC won't boot, randomly shuts off, or throwing blue screens? I isolate hardware faults using my own spare parts and understanding of how components interact. I stick to a strict no-fix, no-fee policy: if I can't reach a definitive conclusion on what's wrong, you don't pay anything.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -261,13 +317,13 @@
                                 <h4>Diagnostic Policy & Limitations</h4>
                                 <ul>
                                     <li>
-                                        <strong>Spare Part Swap Testing</strong>: Swapping components with known-good parts to pinpoint exact hardware failures.
+                                        <strong>Spare Part Swap Testing</strong>: Swapping out RAM, GPUs, PSUs, and CPUs with known-working spare parts to isolate the exact failing hardware.
                                     </li>
                                     <li>
-                                        <strong>No Conclusion, No Pay Policy</strong>: Zero diagnostic fee if no definitive answer is found.
+                                        <strong>No Conclusion, No Pay Policy</strong>: You are only charged if I successfully diagnose and reach a definitive conclusion on the root cause of your issue.
                                     </li>
                                     <li>
-                                        <strong>Note</strong>: We do not do micro-soldering / board-level repairs. Faulty hardware is flagged for replacement.
+                                        <strong>What We Do NOT Do</strong>: We do not do board-level repair or micro-soldering (e.g. replacing individual chips/capacitors on a motherboard or GPU). Faulty parts are identified for direct replacement. Note: The rate for installing replacement parts is separate from the diagnostic fee.
                                     </li>
                                 </ul>
                             </div>
@@ -278,43 +334,44 @@
         </div>
     </div>
 
-    <!-- Deep Cleaning Modal -->
+    <!-- Deep Cleaning Breakdown Modal -->
     <div id="deepCleanModal" class="modal-overlay">
         <div class="modal-card image-modal-card">
             <button id="closeDeepCleanModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
-            <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Deep Cleaning Process" class="modal-product-img" loading="lazy">
+            <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Deep Cleaning Process with Air Blower" class="modal-product-img">
             <div class="modal-product-info">
                 <h3>Chassis & GPU Deep Cleaning<span class="dot">.</span></h3>
                 <p class="modal-sub">Restoring original thermal efficiency and airflow.</p>
                 
                 <p class="modal-desc-paragraph">
-                    Dust buildup directly chokes fan blades, clogs heatsink fins, and causes thermal throttling. We utilize high-pressure electric air blowers to blast away trapped debris from tight crevices, power supply shrouds, and intake filters.
+                    Dust buildup inside dirty PC cases directly chokes fan blades, clogs heatsink fins, and causes severe thermal throttling under heavy gaming loads. We utilize high-pressure electric air dust blowers to blast away trapped dust bunnies from tight GPU shroud crevices, power supply shrouds, and intake filters.
                 </p>
 
                 <div class="ipa-container-box">
                     <p>
-                        After blowing out loose debris, all fan blades and surfaces are thoroughly wiped down using 
+                        After blowing out loose debris, all fan blades, PCB surfaces, and case interior walls are thoroughly wiped clean down to a shine using 
                         <span class="ipa-wrapper">
                             <span id="ipaHighlightBtn" class="ipa-highlight">IPA 99% alcohol</span>
                             <span id="ipaBubble" class="ipa-bubble">
                                 <button id="closeIpaBubbleBtn" class="bubble-x-btn" aria-label="Close Bubble">&times;</button>
                                 <strong>Why 99% Isopropyl Alcohol?</strong><br>
-                                99% anhydrous IPA evaporates rapidly with zero conductive water residue, safely dissolving caked-on oils and dried thermal paste without risking oxidation.
+                                99% anhydrous IPA evaporates rapidly with zero conductive water residue, safely dissolving caked-on dust film, oils, and dried thermal paste without risking oxidation on delicate circuit boards.
                             </span>
                         </span> 
-                        for a clean, sterile finish.
+                        for a sterile, spotless finish.
                     </p>
                 </div>
 
+                <!-- Location & Equipment Disclaimer -->
                 <div class="location-disclaimer-box">
                     <h4>In-House Service Location Disclaimer</h4>
-                    <p>For all computers requiring a deep clean, service is performed strictly in-house at my workshop setup where high-pressure blowers and extraction equipment are configured safely.</p>
+                    <p>For all computers requiring a deep clean, we perform the service strictly in-house at my place. The high-pressure dust blowers and specialized cleaning tools I use are non-portable, and handling heavy dust/dirt extraction is significantly safer and cleaner in a familiar workshop environment.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Catalogue Modal -->
+    <!-- Catalogue Modal (Live In-Stock Build) -->
     <div id="catalogueModal" class="modal-overlay">
         <div class="modal-card catalogue-modal-card">
             <button id="closeCatalogueModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
@@ -322,7 +379,728 @@
             <p class="modal-sub">Click the prebuilt rig below for full specs & details.</p>
 
             <div class="catalogue-grid">
+                <!-- Active Prebuilt PC Rig -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img">
                     <div class="card-content">
-                        <div class="card-
+                        <div class="card-header">
+                            <div>
+                                <span class="catalogue-badge">1440p High-FPS Rig</span>
+                                <h3>THE ULTIMATE MIDRANGE 1440P GAMING PC.</h3>
+                            </div>
+                            <span class="expand-icon">&rarr;</span>
+                        </div>
+                        <p class="short-desc">$900 SGD • Intel i5-12400F • ROG Strix RTX 3070 • 32GB Ripjaws • 360mm Infinity AIO</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="catalogue-footer-note">
+                <button id="prevBuildsLinkBtn" class="previous-builds-link">or check out our previous builds.</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Previous Builds Archive Modal -->
+    <div id="archiveModal" class="modal-overlay">
+        <div class="modal-card catalogue-modal-card">
+            <button id="closeArchiveModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <h2>Previous Builds<span class="dot">.</span></h2>
+            <p class="modal-sub">Click any past rig below to view full specifications & thermal benchmarks.</p>
+
+            <div class="catalogue-grid">
+                <!-- Sold Rig 1 -->
+                <div class="service-card catalogue-card" onclick="openBuildDetail(2)">
+                    <img src="https://i.postimg.cc/VSHSZpsG/build.jpg" alt="Phantom 3070 Edition" class="card-img catalogue-img">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <span class="catalogue-badge">1440p High-FPS Rig</span>
+                                <h3>Phantom 3070 Edition</h3>
+                            </div>
+                            <span class="sold-pill">SOLD</span>
+                        </div>
+                        <p class="short-desc">$800 SGD • Ryzen 5 5600X • RTX 3070 Twin X2 • 1TB Gen4 NVMe • Corsair Vengeance PRO RGB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sliding Build / Component Detail Side Panel with Interactive Gallery Slider -->
+    <div id="buildDetailDrawer" class="drawer-overlay">
+        <div class="drawer-content build-drawer-content">
+            <button id="closeBuildDetailBtn" class="close-btn" aria-label="Close Drawer">&times;</button>
+            <span id="detailBadge" class="catalogue-badge">Category</span>
+            <h2 id="detailTitle" class="section-title">Build Name<span class="dot">.</span></h2>
+            <p id="detailPrice" class="detail-price-text">$0 SGD</p>
+
+            <!-- Gallery Carousel Container -->
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <button class="gallery-nav-btn gallery-prev" id="galleryPrevBtn" aria-label="Previous image">&#10094;</button>
+                <div class="gallery-slider-track" id="galleryTrack">
+                    <img id="detailImg" src="" alt="Build Image" class="build-panel-img">
+                </div>
+                <button class="gallery-nav-btn gallery-next" id="galleryNextBtn" aria-label="Next image">&#10095;</button>
+                <div class="gallery-counter" id="galleryCounter">1 / 1</div>
+            </div>
+            
+            <!-- Gallery Navigation Dots -->
+            <div class="gallery-dots" id="galleryDots"></div>
+
+            <div id="detailSpecs" class="specs-box">
+                <h4>Full Specs & Details Breakdown</h4>
+                <ul id="specsList"></ul>
+            </div>
+
+            <!-- Build Video Showcase Container -->
+            <div id="videoBox" class="video-box">
+                <div class="video-header-row">
+                    <div>
+                        <h4>System Walkthrough & ARGB Lighting</h4>
+                        <p class="video-sub-label">Watch the build live in action</p>
+                    </div>
+                    <button class="fullscreen-trigger-btn" onclick="toggleVideoFullscreen()">
+                        <span>⛶</span> Fullscreen
+                    </button>
+                </div>
+                <div class="video-wrapper">
+                    <video id="detailVideo" class="build-video" controls playsinline preload="metadata">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Verified Benchmark Proof Container -->
+            <div id="benchmarkBox" class="benchmark-box">
+                <h4>Verified In-Game Benchmark Proof</h4>
+                <p class="benchmark-intro-text">Real hardware benchmark screenshots captured on native 1440p displays:</p>
+                <div id="benchmarkList" class="benchmark-list"></div>
+            </div>
+
+            <!-- Open Door Hands-On Testing Policy -->
+            <div class="testing-box">
+                <h4>Open-Door Hands-On Testing Policy</h4>
+                <p>We maintain an open-door testing policy for all interested buyers! Feel free to visit and test drive systems or hardware in person on preloaded competitive and AAA games including <strong>Call of Duty</strong>, <strong>Forza Horizon 6</strong>, <strong>VALORANT</strong>, <strong>CS2</strong>, and more upon request before deciding to purchase.</p>
+            </div>
+
+            <!-- Warranty & Support Guarantee Panel -->
+            <div class="warranty-box">
+                <h4>Warranty & Support Guarantee</h4>
+                <div class="warranty-badge-row">
+                    <span class="warranty-pill">1 Month Hardware Warranty</span>
+                    <span class="warranty-pill">3 Months Post-Sales Support</span>
+                </div>
+                <p>All prebuilts and components are backed by a 1-month hardware warranty covering component replacements, alongside 3 months of complimentary post-sales technical support for software and performance optimizations.</p>
+            </div>
+
+            <!-- Mini FAQ Panel -->
+            <div class="faq-panel">
+                <h4>Frequently Asked Questions</h4>
+
+                <div class="faq-item">
+                    <p class="faq-q">Q: Is Wi-Fi and Bluetooth included?</p>
+                    <p class="faq-a">Yes. Onboard Wi-Fi 6 and Bluetooth modules are pre-installed and configured out of the box on all full systems.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-q">Q: Is it fully working and tested?</p>
+                    <p class="faq-a">Yes. Every unit and standalone component undergoes multi-hour stress tests with professional benchmarking tools (3DMark, Cinebench) and heavy video games to guarantee zero thermal throttling or crashes.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-q">Q: Power cord included?</p>
+                    <p class="faq-a">Yes. A heavy-duty local power cable is provided with every system build.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-q">Q: Windows 11 status?</p>
+                    <p class="faq-a">Yes, Windows 11 Pro is clean-installed on all complete builds with all latest drivers. It arrives unactivated; this has zero effect on user experience, gaming performance, or system speed (it simply leaves a small cosmetic desktop watermark).</p>
+                </div>
+            </div>
+
+            <div class="build-drawer-actions">
+                <button class="btn btn-primary" onclick="openContact()">Inquire / Reserve Item</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repasting Detail Modal -->
+    <div id="repasteModal" class="modal-overlay">
+        <div class="modal-card image-modal-card">
+            <button id="closeRepasteModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <img src="https://down-th.img.susercontent.com/file/cn-11134208-820l4-mo6m9cfb22h1b0" alt="Thermalright Thermal Solution" class="modal-product-img">
+            <div class="modal-product-info">
+                <h3>Introducing... Thermalright PX7<span class="dot">.</span></h3>
+                <p class="modal-sub">Our go-to thermal solution.</p>
+                <p>Engineered for high-wattage CPUs and GPUs, the Thermalright PX7 delivers rapid heat dissipation across die surfaces. Its ultra-low thermal resistance fills microscopic imperfections between the IHS and cooler base, preventing pump-out and thermal degradation under continuous heavy workloads without any electrical conductivity risk.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-card">
+            <button id="closeModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <h2>Get in Touch<span class="dot">.</span></h2>
+            <p class="modal-sub">Reach out directly via phone, Telegram, or Carousell.</p>
+
+            <div class="contact-details">
+                <div class="contact-item">
+                    <span class="contact-label">Phone Number</span>
+                    <a href="tel:86865419" class="contact-value">86865419</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Telegram</span>
+                    <a href="https://t.me/Leijiye" target="_blank" class="contact-value">@Leijiye</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Carousell</span>
+                    <a href="https://www.carousell.sg/u/xavpc/" target="_blank" class="contact-value">Visit Carousell Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Section -->
+    <script>
+        // Catalogue & Archive Modals
+        const catalogueModal = document.getElementById('catalogueModal');
+        const heroCatalogueBtn = document.getElementById('heroCatalogueBtn');
+        const closeCatalogueModalBtn = document.getElementById('closeCatalogueModalBtn');
+        const archiveModal = document.getElementById('archiveModal');
+        const prevBuildsLinkBtn = document.getElementById('prevBuildsLinkBtn');
+        const closeArchiveModalBtn = document.getElementById('closeArchiveModalBtn');
+        
+        // Build Detail Drawer & Gallery Elements
+        const buildDetailDrawer = document.getElementById('buildDetailDrawer');
+        const closeBuildDetailBtn = document.getElementById('closeBuildDetailBtn');
+        const detailImg = document.getElementById('detailImg');
+        const galleryPrevBtn = document.getElementById('galleryPrevBtn');
+        const galleryNextBtn = document.getElementById('galleryNextBtn');
+        const galleryCounter = document.getElementById('galleryCounter');
+        const galleryDots = document.getElementById('galleryDots');
+        const galleryTrack = document.getElementById('galleryTrack');
+
+        // Video Player Element
+        const videoBox = document.getElementById('videoBox');
+        const detailVideo = document.getElementById('detailVideo');
+
+        let currentBuildImages = [];
+        let currentImageIndex = 0;
+
+        // Why Trust Us Modal Elements
+        const reviewsModal = document.getElementById('reviewsModal');
+        const whyTrustBtn = document.getElementById('whyTrustBtn');
+        const closeReviewsModalBtn = document.getElementById('closeReviewsModalBtn');
+
+        // Web Dev Modal Elements
+        const webDevModal = document.getElementById('webDevModal');
+        const webDevBtn = document.getElementById('webDevBtn');
+        const closeWebDevModalBtn = document.getElementById('closeWebDevModalBtn');
+
+        // Deep Cleaning Modal Elements
+        const deepCleanModal = document.getElementById('deepCleanModal');
+        const deepCleanBtn = document.getElementById('deepCleanBtn');
+        const closeDeepCleanModalBtn = document.getElementById('closeDeepCleanModalBtn');
+        const ipaHighlightBtn = document.getElementById('ipaHighlightBtn');
+        const ipaBubble = document.getElementById('ipaBubble');
+        const closeIpaBubbleBtn = document.getElementById('closeIpaBubbleBtn');
+
+        // Prebuilt Rig Database with Image Gallery, Video & Verified Benchmarks
+        const buildData = {
+            1: {
+                badge: "1440p High-FPS Rig",
+                title: "THE ULTIMATE MIDRANGE 1440P GAMING PC.",
+                price: "$900 SGD",
+                video: "https://res.cloudinary.com/bqio04wg/video/upload/v1786905941/20260817_024215.mp4",
+                images: [
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3678.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3671.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3674.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3672.jpg"
+                ],
+                specs: [
+                    "<strong>Processor:</strong> Intel Core i5-12400F (6 Cores / 12 Threads, Up to 4.4GHz)",
+                    "<strong>Graphics Card:</strong> ASUS ROG STRIX GeForce RTX 3070 8GB",
+                    "<strong>Motherboard:</strong> ASUS TUF GAMING B660-PLUS WIFI D4",
+                    "<strong>Memory:</strong> 32GB (2x16GB) G.SKILL Ripjaws V DDR4-3600MHz",
+                    "<strong>Storage:</strong> 1TB KIOXIA NVMe PCIe SSD",
+                    "<strong>Cooler:</strong> CubeSystems 360mm Infinity Mirror ARGB AIO Liquid Cooler",
+                    "<strong>Power Supply:</strong> ASUS ROG STRIX 750W 80+ Gold Modular PSU",
+                    "<strong>Chassis:</strong> DeepCool CG530 Panoramic Dual-Chamber Case",
+                    "<strong>Features & I/O:</strong> Onboard Wi-Fi 6, Bluetooth, High-Speed USB Type-C & ARGB Sync"
+                ],
+                benchmarks: [
+                    {
+                        caption: "FORZA HORIZON 6 // 1440P ULTRA • 65 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-05.jpg"
+                    },
+                    {
+                        caption: "Expedition 33 // 1440P ULTRA • 60 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-07.jpg"
+                    },
+                    {
+                        caption: "VALORANT // 1440P HIGH • 350-400 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905386/photo_2026-08-17_02-36-11.jpg"
+                    }
+                ]
+            },
+            2: {
+                badge: "SOLD OUT // PREVIOUS BUILD",
+                title: "Phantom 3070 Edition",
+                price: "$800 SGD (Sold)",
+                images: [
+                    "https://i.postimg.cc/VSHSZpsG/build.jpg"
+                ],
+                specs: [
+                    "<strong>Processor:</strong> AMD Ryzen 5 5600X (6 Cores / 12 Threads)",
+                    "<strong>Graphics Card:</strong> INNO3D GeForce RTX 3070 Twin X2 8GB",
+                    "<strong>Motherboard:</strong> ASUS TUF Gaming B550M-E",
+                    "<strong>Memory:</strong> Corsair Vengeance PRO RGB DDR4",
+                    "<strong>Storage:</strong> 1TB AMC61 Memory Union Gen4 NVMe SSD",
+                    "<strong>Cooler:</strong> Cooler Master T20 CPU Cooler",
+                    "<strong>Power Supply:</strong> Novacore 800W 80+ Bronze PSU"
+                ]
+            }
+        };
+
+        // Fullscreen Toggle for Video
+        function toggleVideoFullscreen() {
+            if (!detailVideo) return;
+            if (detailVideo.requestFullscreen) {
+                detailVideo.requestFullscreen();
+            } else if (detailVideo.webkitRequestFullscreen) {
+                detailVideo.webkitRequestFullscreen();
+            } else if (detailVideo.msRequestFullscreen) {
+                detailVideo.msRequestFullscreen();
+            }
+        }
+
+        function updateGalleryView() {
+            if (!currentBuildImages.length) return;
+            
+            detailImg.style.opacity = '0.3';
+            setTimeout(() => {
+                detailImg.src = currentBuildImages[currentImageIndex];
+                detailImg.style.opacity = '1';
+            }, 100);
+
+            galleryCounter.innerText = `${currentImageIndex + 1} / ${currentBuildImages.length}`;
+
+            // Update Dots
+            const dots = galleryDots.querySelectorAll('.gallery-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === currentImageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function setGalleryIndex(index) {
+            currentImageIndex = index;
+            updateGalleryView();
+        }
+
+        function nextGalleryImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentBuildImages.length;
+            updateGalleryView();
+        }
+
+        function prevGalleryImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentBuildImages.length) % currentBuildImages.length;
+            updateGalleryView();
+        }
+
+        if (galleryNextBtn) galleryNextBtn.addEventListener('click', nextGalleryImage);
+        if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', prevGalleryImage);
+
+        // Touch Swipe Navigation for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (galleryTrack) {
+            galleryTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            galleryTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleGallerySwipe();
+            }, { passive: true });
+        }
+
+        function handleGallerySwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) > 40) {
+                if (swipeDistance < 0) {
+                    nextGalleryImage();
+                } else {
+                    prevGalleryImage();
+                }
+            }
+        }
+
+        function openBuildDetail(id) {
+            const build = buildData[id];
+            if (!build) return;
+
+            document.getElementById('detailBadge').innerText = build.badge;
+            document.getElementById('detailTitle').innerHTML = `${build.title}<span class="dot">.</span>`;
+            document.getElementById('detailPrice').innerText = build.price;
+
+            // Load Gallery Images
+            currentBuildImages = build.images || [build.img];
+            currentImageIndex = 0;
+
+            // Generate Gallery Dots
+            galleryDots.innerHTML = '';
+            if (currentBuildImages.length > 1) {
+                galleryPrevBtn.style.display = 'flex';
+                galleryNextBtn.style.display = 'flex';
+                galleryCounter.style.display = 'block';
+                galleryDots.style.display = 'flex';
+
+                currentBuildImages.forEach((_, idx) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('gallery-dot');
+                    if (idx === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => setGalleryIndex(idx));
+                    galleryDots.appendChild(dot);
+                });
+            } else {
+                galleryPrevBtn.style.display = 'none';
+                galleryNextBtn.style.display = 'none';
+                galleryCounter.style.display = 'none';
+                galleryDots.style.display = 'none';
+            }
+
+            updateGalleryView();
+
+            // Load Video Player
+            if (build.video) {
+                videoBox.style.display = 'block';
+                detailVideo.src = build.video;
+            } else {
+                videoBox.style.display = 'none';
+                detailVideo.src = '';
+            }
+
+            const specsList = document.getElementById('specsList');
+            specsList.innerHTML = build.specs.map(item => `<li>${item}</li>`).join('');
+
+            // Render Verified Benchmarks Section
+            const benchmarkBox = document.getElementById('benchmarkBox');
+            const benchmarkList = document.getElementById('benchmarkList');
+            if (build.benchmarks && build.benchmarks.length > 0) {
+                benchmarkBox.style.display = 'block';
+                benchmarkList.innerHTML = build.benchmarks.map(b => `
+                    <div class="benchmark-item">
+                        <div class="benchmark-header">
+                            <span class="benchmark-caption">${b.caption}</span>
+                        </div>
+                        <img src="${b.img}" alt="${b.caption}" class="benchmark-img" loading="lazy">
+                    </div>
+                `).join('');
+            } else {
+                benchmarkBox.style.display = 'none';
+            }
+
+            if (catalogueModal) catalogueModal.classList.remove('active');
+            if (archiveModal) archiveModal.classList.remove('active');
+
+            buildDetailDrawer.classList.add('active');
+        }
+
+        function closeBuildDetail() {
+            buildDetailDrawer.classList.remove('active');
+            if (detailVideo) {
+                detailVideo.pause();
+            }
+        }
+
+        if (closeBuildDetailBtn) {
+            closeBuildDetailBtn.addEventListener('click', closeBuildDetail);
+        }
+
+        if (heroCatalogueBtn) {
+            heroCatalogueBtn.addEventListener('click', () => {
+                catalogueModal.classList.add('active');
+            });
+        }
+
+        if (closeCatalogueModalBtn) {
+            closeCatalogueModalBtn.addEventListener('click', () => {
+                catalogueModal.classList.remove('active');
+            });
+        }
+
+        // Switch from Catalogue -> Previous Builds Archive
+        if (prevBuildsLinkBtn) {
+            prevBuildsLinkBtn.addEventListener('click', () => {
+                catalogueModal.classList.remove('active');
+                archiveModal.classList.add('active');
+            });
+        }
+
+        if (closeArchiveModalBtn) {
+            closeArchiveModalBtn.addEventListener('click', () => {
+                archiveModal.classList.remove('active');
+            });
+        }
+
+        // --- Web Dev Modal Logic ---
+        if (webDevBtn && webDevModal) {
+            webDevBtn.addEventListener('click', () => {
+                webDevModal.classList.add('active');
+            });
+        }
+
+        if (closeWebDevModalBtn && webDevModal) {
+            closeWebDevModalBtn.addEventListener('click', () => {
+                webDevModal.classList.remove('active');
+            });
+        }
+
+        // --- Why Trust Us Modal & 3D Interactive Wheel JS ---
+        if (whyTrustBtn && reviewsModal) {
+            whyTrustBtn.addEventListener('click', () => {
+                reviewsModal.classList.add('active');
+                setTimeout(updateWheel, 50);
+            });
+        }
+
+        if (closeReviewsModalBtn && reviewsModal) {
+            closeReviewsModalBtn.addEventListener('click', () => {
+                reviewsModal.classList.remove('active');
+            });
+        }
+
+        // 3D Cylinder Physics Wheel Logic
+        const wheelContainer = document.getElementById('reviewWheelContainer');
+        const reviewCards = document.querySelectorAll('.review-wheel-card');
+        let currentAngle = 0;
+        let isDragging = false;
+        let startY = 0;
+        let lastY = 0;
+        let velocity = 0;
+        let animFrame = null;
+
+        const angleStep = 360 / Math.max(1, reviewCards.length);
+
+        function updateWheel() {
+            reviewCards.forEach((card, index) => {
+                let itemAngle = (index * angleStep + currentAngle) % 360;
+                if (itemAngle < -180) itemAngle += 360;
+                if (itemAngle > 180) itemAngle -= 360;
+
+                const distance = Math.abs(itemAngle);
+
+                let opacity = Math.max(0, 1 - (distance / 70));
+                let scale = Math.max(0.7, 1 - (distance / 180));
+                let rotateX = -itemAngle;
+                let translateZ = 140;
+
+                card.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) translateZ(${translateZ}px) scale(${scale})`;
+                card.style.opacity = opacity;
+                
+                if (distance < 30) {
+                    card.style.pointerEvents = 'auto';
+                } else {
+                    card.style.pointerEvents = 'none';
+                }
+            });
+        }
+
+        function applyMomentum() {
+            if (Math.abs(velocity) > 0.05) {
+                currentAngle += velocity;
+                velocity *= 0.92;
+                updateWheel();
+                animFrame = requestAnimationFrame(applyMomentum);
+            } else {
+                cancelAnimationFrame(animFrame);
+            }
+        }
+
+        function onPointerDown(e) {
+            isDragging = true;
+            cancelAnimationFrame(animFrame);
+            startY = e.touches ? e.touches[0].clientY : e.clientY;
+            lastY = startY;
+            velocity = 0;
+            if (wheelContainer) wheelContainer.style.cursor = 'grabbing';
+        }
+
+        function onPointerMove(e) {
+            if (!isDragging) return;
+            const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+            const deltaY = currentY - lastY;
+            
+            velocity = deltaY * 0.4;
+            currentAngle += deltaY * 0.35;
+            
+            lastY = currentY;
+            updateWheel();
+        }
+
+        function onPointerUp() {
+            if (!isDragging) return;
+            isDragging = false;
+            if (wheelContainer) wheelContainer.style.cursor = 'grab';
+            animFrame = requestAnimationFrame(applyMomentum);
+        }
+
+        if (wheelContainer) {
+            wheelContainer.addEventListener('mousedown', onPointerDown);
+            window.addEventListener('mousemove', onPointerMove);
+            window.addEventListener('mouseup', onPointerUp);
+
+            wheelContainer.addEventListener('touchstart', onPointerDown, { passive: true });
+            window.addEventListener('touchmove', onPointerMove, { passive: true });
+            window.addEventListener('touchend', onPointerUp);
+        }
+
+        // --- Deep Cleaning Modal Logic ---
+        if (deepCleanBtn) {
+            deepCleanBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                deepCleanModal.classList.add('active');
+            });
+        }
+
+        if (closeDeepCleanModalBtn) {
+            closeDeepCleanModalBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                deepCleanModal.classList.remove('active');
+                if (ipaBubble) ipaBubble.classList.remove('active');
+            });
+        }
+
+        // IPA Highlight Dialogue Bubble Toggle
+        if (ipaHighlightBtn && ipaBubble) {
+            ipaHighlightBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                ipaBubble.classList.toggle('active');
+            });
+        }
+
+        if (closeIpaBubbleBtn && ipaBubble) {
+            closeIpaBubbleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                ipaBubble.classList.remove('active');
+            });
+        }
+
+        // --- Repasting Modal Logic ---
+        const repasteModal = document.getElementById('repasteModal');
+        const repasteBtn = document.getElementById('repasteBtn');
+        const closeRepasteModalBtn = document.getElementById('closeRepasteModalBtn');
+
+        if (repasteBtn) {
+            repasteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                repasteModal.classList.add('active');
+            });
+        }
+
+        if (closeRepasteModalBtn) {
+            closeRepasteModalBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                repasteModal.classList.remove('active');
+            });
+        }
+
+        // --- Logo Dialogue Bubble Logic ---
+        const logoBtn = document.getElementById('logoBtn');
+        const logoBubble = document.getElementById('logoBubble');
+        let bubbleTimeout;
+
+        logoBtn.addEventListener('click', () => {
+            logoBubble.classList.add('active');
+            
+            clearTimeout(bubbleTimeout);
+            bubbleTimeout = setTimeout(() => {
+                logoBubble.classList.remove('active');
+            }, 2500);
+        });
+
+        // --- 1.5 Second Preloader Timer with Motherboard POST Codes ---
+        const postCodeText = document.getElementById('postCodeText');
+        const postCodes = ['15', 'C1', '28', '55', 'Ab', '0d', '99', 'A2', 'AA', '00'];
+        let postIndex = 0;
+        
+        const postInterval = setInterval(() => {
+            if (postCodeText) {
+                postIndex = (postIndex + 1) % postCodes.length;
+                postCodeText.innerText = postCodes[postIndex];
+            }
+        }, 110);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                clearInterval(postInterval);
+                if (postCodeText) postCodeText.innerText = 'FF';
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('dark-stutter-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 400);
+            }, 1500);
+        });
+
+        // --- Contact Modal ---
+        const contactModal = document.getElementById('contactModal');
+        const heroContactBtn = document.getElementById('heroContactBtn');
+        const navContactBtn = document.getElementById('navContactBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        function openContact() { contactModal.classList.add('active'); }
+        function closeContact() { contactModal.classList.remove('active'); }
+
+        heroContactBtn.addEventListener('click', openContact);
+        navContactBtn.addEventListener('click', openContact);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeContact);
+
+        // --- Slide Drawer ---
+        const sideDrawer = document.getElementById('sideDrawer');
+        const whatIDoBtn = document.getElementById('whatIDoBtn');
+        const navServicesBtn = document.getElementById('navServicesBtn');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+        function openDrawer() { sideDrawer.classList.add('active'); }
+        function closeDrawer() { sideDrawer.classList.remove('active'); }
+
+        whatIDoBtn.addEventListener('click', openDrawer);
+        navServicesBtn.addEventListener('click', openDrawer);
+        closeDrawerBtn.addEventListener('click', closeDrawer);
+
+        // Robust Accordion Toggle preventing highlight jitter
+        function toggleCardDetails(event, card) {
+            if (event.target.classList.contains('clickable-term') || event.target.closest('.clickable-term')) {
+                return;
+            }
+            card.classList.toggle('expanded');
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target === contactModal) closeContact();
+            if (event.target === sideDrawer) closeDrawer();
+            if (event.target === repasteModal) repasteModal.classList.remove('active');
+            if (event.target === deepCleanModal) deepCleanModal.classList.remove('active');
+            if (event.target === catalogueModal) catalogueModal.classList.remove('active');
+            if (event.target === archiveModal) archiveModal.classList.remove('active');
+            if (event.target === buildDetailDrawer) closeBuildDetail();
+            if (event.target === reviewsModal) reviewsModal.classList.remove('active');
+            if (event.target === webDevModal) webDevModal.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>
