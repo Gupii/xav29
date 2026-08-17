@@ -34,78 +34,6 @@ img, video {
     -webkit-user-drag: none;
 }
 
-/* --- Pure CSS Auto-Fadeout Preloader (Cannot lock screen) --- */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background-color: #080808;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    pointer-events: none;
-    animation: preloaderDissolve 0.4s ease-out 0.6s forwards;
-    will-change: opacity, visibility;
-}
-
-@keyframes preloaderDissolve {
-    0% { opacity: 1; visibility: visible; }
-    100% { opacity: 0; visibility: hidden; }
-}
-
-.pc-fan-svg {
-    width: 90px;
-    height: 90px;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
-}
-
-.spinning-blades {
-    transform-origin: 50px 50px;
-    animation: fanRPM 0.6s linear infinite;
-}
-
-@keyframes fanRPM {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.loader-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.post-led-box {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #121216;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 0.35rem 0.75rem;
-    border-radius: 6px;
-    font-family: monospace;
-}
-
-.post-led-label {
-    font-size: 0.7rem;
-    color: #888888;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.post-led-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 2px;
-}
-
 /* --- Navigation --- */
 .navbar {
     position: fixed;
@@ -399,12 +327,12 @@ img, video {
 
 .snap-in-1, .snap-in-2, .snap-in-3 {
     opacity: 0;
-    animation: snapIn 0.3s ease-out forwards;
+    animation: snapIn 0.2s ease-out forwards;
 }
 
-.snap-in-1 { animation-delay: 0.1s; }
-.snap-in-2 { animation-delay: 0.2s; }
-.snap-in-3 { animation-delay: 0.3s; }
+.snap-in-1 { animation-delay: 0.05s; }
+.snap-in-2 { animation-delay: 0.1s; }
+.snap-in-3 { animation-delay: 0.15s; }
 
 /* --- Reviews Modal & 3D Wheel --- */
 .reviews-modal-card {
@@ -942,4 +870,81 @@ img, video {
     position: sticky;
     top: 0;
     float: right;
-    margin-top: -0.5
+    margin-top: -0.5rem;
+    margin-right: -0.5rem;
+    background: rgba(15, 15, 18, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: all 0.2s ease;
+    z-index: 30;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.modal-card h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.modal-sub {
+    font-size: 0.95rem;
+    color: #888888;
+    margin-bottom: 1.5rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #141418;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #26262c;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888888;
+    margin-bottom: 0.3rem;
+}
+
+.contact-value {
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.contact-value:hover {
+    text-decoration: underline;
+}
+
+/* --- Build Drawer Specifics --- */
+.build-drawer-content {
+    backgrou
