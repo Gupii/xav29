@@ -133,7 +133,7 @@
     <!-- Web Development Services Modal -->
     <div id="webDevModal" class="modal-overlay">
         <div class="modal-card image-modal-card">
-            <button id="closeWebDevModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeWebDevModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <div class="modal-product-info" style="text-align: left;">
                 <h3>Custom Website Creation<span class="dot">.</span></h3>
                 <p class="modal-sub">well... i dont just do PC services only.</p>
@@ -159,44 +159,33 @@
     <!-- Why Trust Us Reviews Modal -->
     <div id="reviewsModal" class="modal-overlay">
         <div class="modal-card reviews-modal-card">
-            <button id="closeReviewsModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeReviewsModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <h2>Why Trust Us<span class="dot">.</span></h2>
             <p class="modal-sub">Drag or swipe vertically to spin through real client feedback.</p>
 
             <!-- 3D Interactive Wheel Container -->
             <div id="reviewWheelContainer" class="review-wheel-container">
                 <div id="reviewWheel" class="review-wheel">
-                    
-                    <!-- Review 1 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured that everything was working before leaving."</p>
                         <span class="review-author">— soreil</span>
                     </div>
-
-                    <!-- Review 2 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"was really nice when showing me the pc, even explaining how to check specs cos i noob. now i can play heavy games!!? if uw buy pc ask this guy he legit pro"</p>
                         <span class="review-author">— Aira</span>
                     </div>
-
-                    <!-- Review 3 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"great experience with xavier!! went extra mile to help me settle my build n solve issues. very recommended👍🏻👍🏻"</p>
                         <span class="review-author">— yrjdnr</span>
                     </div>
-
-                    <!-- Review 4 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Seller answered all my questions quickly and professionally, and even helped me to source out cpu coolers to swap out for my PC when requested. The after-sales tips was really appreciated from him as well. All in all, the service was extremely affordable, and this seller is truly genuine in his work. Would recommend strongly👍"</p>
                         <span class="review-author">— collectiblesandcards</span>
                     </div>
-
-                    <!-- Review 5 -->
                     <div class="review-wheel-card">
                         <p class="review-quote">"Really amazing and awesome guy! professional in what he does and is accommodating too! tysm i rlly appreciate it ^^ 🫶✌️🤞"</p>
                         <span class="review-author">— cryphticz</span>
                     </div>
-
                 </div>
             </div>
 
@@ -212,12 +201,12 @@
     <!-- Slide-in Panel from Left (Services Drawer) -->
     <div id="sideDrawer" class="drawer-overlay">
         <div class="drawer-content">
-            <button id="closeDrawerBtn" class="close-btn" aria-label="Close Drawer">&times;</button>
+            <button id="closeDrawerBtn" class="drawer-close-btn" aria-label="Close Drawer">&times;</button>
             <h2 class="section-title">Personal Computer Services<span class="dot">.</span></h2>
             <p class="section-subtitle">Click below to reveal our specialized service breakdown.</p>
 
             <div class="services-grid-vertical">
-                <!-- Service 1: Maintenance & Deep Cleaning -->
+                <!-- Service 1 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
                     <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Hardware Maintenance and Deep Cleaning" class="card-img" loading="lazy">
                     <div class="card-content">
@@ -244,7 +233,7 @@
                     </div>
                 </div>
 
-                <!-- Service 2: Hardware Upgrades & Part Swapping -->
+                <!-- Service 2 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
                     <img src="https://www.allinonecomputersolutions.co.uk/wp-content/uploads/2021/02/Computer-upgrade.jpg" alt="Hardware Upgrades & Part Swapping" class="card-img" loading="lazy">
                     <div class="card-content">
@@ -274,7 +263,7 @@
                     </div>
                 </div>
 
-                <!-- Service 3: Case Swaps -->
+                <!-- Service 3 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
                     <img src="https://www.bhphotovideo.com/images/fb/lian_li_o11dexl_x_o11_dynamic_evo_xl_1787171.jpg" alt="Case Swaps" class="card-img" loading="lazy">
                     <div class="card-content">
@@ -301,7 +290,7 @@
                     </div>
                 </div>
 
-                <!-- Service 4: Diagnostics and Troubleshooting -->
+                <!-- Service 4 -->
                 <div class="service-card" onclick="toggleCardDetails(event, this)">
                     <img src="https://miro.medium.com/v2/resize:fit:1024/1*V3ukVbugMUgEESWofAu4Vw.jpeg" alt="Diagnostics and troubleshooting" class="card-img" loading="lazy">
                     <div class="card-content">
@@ -323,7 +312,7 @@
                                         <strong>No Conclusion, No Pay Policy</strong>: You are only charged if I successfully diagnose and reach a definitive conclusion on the root cause of your issue.
                                     </li>
                                     <li>
-                                        <strong>What We Do NOT Do</strong>: We do not do board-level repair or micro-soldering (e.g. replacing individual chips/capacitors on a motherboard or GPU). Faulty parts are identified for direct replacement. Note: The rate for installing replacement parts is separate from the diagnostic fee.
+                                        <strong>What We Do NOT Do</strong>: We do not do board-level repair or micro-soldering. Faulty parts are identified for direct replacement.
                                     </li>
                                 </ul>
                             </div>
@@ -337,7 +326,7 @@
     <!-- Deep Cleaning Breakdown Modal -->
     <div id="deepCleanModal" class="modal-overlay">
         <div class="modal-card image-modal-card">
-            <button id="closeDeepCleanModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeDeepCleanModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <img src="https://static.vecteezy.com/system/resources/previews/014/321/935/large_2x/cleaning-a-dusty-computer-with-a-blower-photo.jpg" alt="Deep Cleaning Process with Air Blower" class="modal-product-img" loading="lazy">
             <div class="modal-product-info">
                 <h3>Chassis & GPU Deep Cleaning<span class="dot">.</span></h3>
@@ -362,7 +351,6 @@
                     </p>
                 </div>
 
-                <!-- Location & Equipment Disclaimer -->
                 <div class="location-disclaimer-box">
                     <h4>In-House Service Location Disclaimer</h4>
                     <p>For all computers requiring a deep clean, we perform the service strictly in-house at my place. The high-pressure dust blowers and specialized cleaning tools I use are non-portable, and handling heavy dust/dirt extraction is significantly safer and cleaner in a familiar workshop environment.</p>
@@ -371,15 +359,14 @@
         </div>
     </div>
 
-    <!-- Catalogue Modal (Live In-Stock Build) -->
+    <!-- Catalogue Modal -->
     <div id="catalogueModal" class="modal-overlay">
         <div class="modal-card catalogue-modal-card">
-            <button id="closeCatalogueModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeCatalogueModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <h2>Current Catalogue<span class="dot">.</span></h2>
             <p class="modal-sub">Click the prebuilt rig below for full specs & details.</p>
 
             <div class="catalogue-grid">
-                <!-- Active Prebuilt PC Rig -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
                     <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img" loading="lazy">
                     <div class="card-content">
@@ -404,12 +391,11 @@
     <!-- Previous Builds Archive Modal -->
     <div id="archiveModal" class="modal-overlay">
         <div class="modal-card catalogue-modal-card">
-            <button id="closeArchiveModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeArchiveModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <h2>Previous Builds<span class="dot">.</span></h2>
             <p class="modal-sub">Click any past rig below to view full specifications & thermal benchmarks.</p>
 
             <div class="catalogue-grid">
-                <!-- Sold Rig 1 -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(2)">
                     <img src="https://i.postimg.cc/VSHSZpsG/build.jpg" alt="Phantom 3070 Edition" class="card-img catalogue-img" loading="lazy">
                     <div class="card-content">
@@ -427,10 +413,10 @@
         </div>
     </div>
 
-    <!-- Sliding Build / Component Detail Side Panel with Interactive Gallery Slider -->
-    <div id="buildDetailDrawer" class="drawer-overlay">
+    <!-- Build Detail Modal (Converted to Full Solid View to prevent black WebView crash) -->
+    <div id="buildDetailDrawer" class="drawer-overlay build-detail-layer">
         <div class="drawer-content build-drawer-content">
-            <button id="closeBuildDetailBtn" class="close-btn" aria-label="Close Drawer">&times;</button>
+            <button id="closeBuildDetailBtn" class="drawer-close-btn" aria-label="Close Details">&times;</button>
             <span id="detailBadge" class="catalogue-badge">Category</span>
             <h2 id="detailTitle" class="section-title">Build Name<span class="dot">.</span></h2>
             <p id="detailPrice" class="detail-price-text">$0 SGD</p>
@@ -445,7 +431,6 @@
                 <div class="gallery-counter" id="galleryCounter">1 / 1</div>
             </div>
             
-            <!-- Gallery Navigation Dots -->
             <div class="gallery-dots" id="galleryDots"></div>
 
             <div id="detailSpecs" class="specs-box">
@@ -453,7 +438,7 @@
                 <ul id="specsList"></ul>
             </div>
 
-            <!-- Build Video Showcase Container -->
+            <!-- Video Showcase Container -->
             <div id="videoBox" class="video-box">
                 <div class="video-header-row">
                     <div>
@@ -472,51 +457,44 @@
                 </div>
             </div>
 
-            <!-- Verified Benchmark Proof Container -->
+            <!-- Benchmarks Container -->
             <div id="benchmarkBox" class="benchmark-box">
                 <h4>Verified In-Game Benchmark Proof</h4>
                 <p class="benchmark-intro-text">Real hardware benchmark screenshots captured on native 1440p displays:</p>
                 <div id="benchmarkList" class="benchmark-list"></div>
             </div>
 
-            <!-- Open Door Hands-On Testing Policy -->
             <div class="testing-box">
                 <h4>Open-Door Hands-On Testing Policy</h4>
-                <p>We maintain an open-door testing policy for all interested buyers! Feel free to visit and test drive systems or hardware in person on preloaded competitive and AAA games including <strong>Call of Duty</strong>, <strong>Forza Horizon 6</strong>, <strong>VALORANT</strong>, <strong>CS2</strong>, and more upon request before deciding to purchase.</p>
+                <p>We maintain an open-door testing policy for all interested buyers! Feel free to visit and test drive systems or hardware in person on preloaded games including <strong>Call of Duty</strong>, <strong>Forza Horizon 6</strong>, <strong>VALORANT</strong>, and <strong>CS2</strong> upon request.</p>
             </div>
 
-            <!-- Warranty & Support Guarantee Panel -->
             <div class="warranty-box">
                 <h4>Warranty & Support Guarantee</h4>
                 <div class="warranty-badge-row">
                     <span class="warranty-pill">1 Month Hardware Warranty</span>
                     <span class="warranty-pill">3 Months Post-Sales Support</span>
                 </div>
-                <p>All prebuilts and components are backed by a 1-month hardware warranty covering component replacements, alongside 3 months of complimentary post-sales technical support for software and performance optimizations.</p>
+                <p>All prebuilts and components are backed by a 1-month hardware warranty covering component replacements, alongside 3 months of complimentary post-sales technical support.</p>
             </div>
 
-            <!-- Mini FAQ Panel -->
             <div class="faq-panel">
                 <h4>Frequently Asked Questions</h4>
-
                 <div class="faq-item">
                     <p class="faq-q">Q: Is Wi-Fi and Bluetooth included?</p>
-                    <p class="faq-a">Yes. Onboard Wi-Fi 6 and Bluetooth modules are pre-installed and configured out of the box on all full systems.</p>
+                    <p class="faq-a">Yes. Onboard Wi-Fi 6 and Bluetooth modules are pre-installed and configured out of the box.</p>
                 </div>
-
                 <div class="faq-item">
                     <p class="faq-q">Q: Is it fully working and tested?</p>
-                    <p class="faq-a">Yes. Every unit and standalone component undergoes multi-hour stress tests with professional benchmarking tools (3DMark, Cinebench) and heavy video games to guarantee zero thermal throttling or crashes.</p>
+                    <p class="faq-a">Yes. Every unit undergoes multi-hour stress tests with 3DMark, Cinebench, and live gaming loads.</p>
                 </div>
-
                 <div class="faq-item">
                     <p class="faq-q">Q: Power cord included?</p>
-                    <p class="faq-a">Yes. A heavy-duty local power cable is provided with every system build.</p>
+                    <p class="faq-a">Yes. A heavy-duty local power cable is provided.</p>
                 </div>
-
                 <div class="faq-item">
                     <p class="faq-q">Q: Windows 11 status?</p>
-                    <p class="faq-a">Yes, Windows 11 Pro is clean-installed on all complete builds with all latest drivers. It arrives unactivated; this has zero effect on user experience, gaming performance, or system speed (it simply leaves a small cosmetic desktop watermark).</p>
+                    <p class="faq-a">Windows 11 Pro is clean-installed with all latest drivers.</p>
                 </div>
             </div>
 
@@ -529,12 +507,12 @@
     <!-- Repasting Detail Modal -->
     <div id="repasteModal" class="modal-overlay">
         <div class="modal-card image-modal-card">
-            <button id="closeRepasteModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeRepasteModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <img src="https://down-th.img.susercontent.com/file/cn-11134208-820l4-mo6m9cfb22h1b0" alt="Thermalright Thermal Solution" class="modal-product-img" loading="lazy">
             <div class="modal-product-info">
-                <h3>Introducing... Thermalright PX7<span class="dot">.</span></h3>
+                <h3>Thermalright PX7<span class="dot">.</span></h3>
                 <p class="modal-sub">Our go-to thermal solution.</p>
-                <p>Engineered for high-wattage CPUs and GPUs, the Thermalright PX7 delivers rapid heat dissipation across die surfaces. Its ultra-low thermal resistance fills microscopic imperfections between the IHS and cooler base, preventing pump-out and thermal degradation under continuous heavy workloads without any electrical conductivity risk.</p>
+                <p>Engineered for high-wattage CPUs and GPUs, the Thermalright PX7 delivers rapid heat dissipation across die surfaces, eliminating pump-out and thermal degradation under continuous heavy workloads.</p>
             </div>
         </div>
     </div>
@@ -542,7 +520,7 @@
     <!-- Pop-up Contact Modal -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-card">
-            <button id="closeModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <button id="closeModalBtn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
             <h2>Get in Touch<span class="dot">.</span></h2>
             <p class="modal-sub">Reach out directly via phone, Telegram, or Carousell.</p>
 
@@ -551,12 +529,10 @@
                     <span class="contact-label">Phone Number</span>
                     <a href="tel:86865419" class="contact-value">86865419</a>
                 </div>
-
                 <div class="contact-item">
                     <span class="contact-label">Telegram</span>
                     <a href="https://t.me/Leijiye" target="_blank" class="contact-value">@Leijiye</a>
                 </div>
-
                 <div class="contact-item">
                     <span class="contact-label">Carousell</span>
                     <a href="https://www.carousell.sg/u/xavpc/" target="_blank" class="contact-value">Visit Carousell Store</a>
@@ -567,7 +543,6 @@
 
     <!-- Script Section -->
     <script>
-        // Catalogue & Archive Modals
         const catalogueModal = document.getElementById('catalogueModal');
         const heroCatalogueBtn = document.getElementById('heroCatalogueBtn');
         const closeCatalogueModalBtn = document.getElementById('closeCatalogueModalBtn');
@@ -575,7 +550,6 @@
         const prevBuildsLinkBtn = document.getElementById('prevBuildsLinkBtn');
         const closeArchiveModalBtn = document.getElementById('closeArchiveModalBtn');
         
-        // Build Detail Drawer & Gallery Elements
         const buildDetailDrawer = document.getElementById('buildDetailDrawer');
         const closeBuildDetailBtn = document.getElementById('closeBuildDetailBtn');
         const detailImg = document.getElementById('detailImg');
@@ -585,24 +559,20 @@
         const galleryDots = document.getElementById('galleryDots');
         const galleryTrack = document.getElementById('galleryTrack');
 
-        // Video Player Element
         const videoBox = document.getElementById('videoBox');
         const detailVideo = document.getElementById('detailVideo');
 
         let currentBuildImages = [];
         let currentImageIndex = 0;
 
-        // Why Trust Us Modal Elements
         const reviewsModal = document.getElementById('reviewsModal');
         const whyTrustBtn = document.getElementById('whyTrustBtn');
         const closeReviewsModalBtn = document.getElementById('closeReviewsModalBtn');
 
-        // Web Dev Modal Elements
         const webDevModal = document.getElementById('webDevModal');
         const webDevBtn = document.getElementById('webDevBtn');
         const closeWebDevModalBtn = document.getElementById('closeWebDevModalBtn');
 
-        // Deep Cleaning Modal Elements
         const deepCleanModal = document.getElementById('deepCleanModal');
         const deepCleanBtn = document.getElementById('deepCleanBtn');
         const closeDeepCleanModalBtn = document.getElementById('closeDeepCleanModalBtn');
@@ -610,7 +580,6 @@
         const ipaBubble = document.getElementById('ipaBubble');
         const closeIpaBubbleBtn = document.getElementById('closeIpaBubbleBtn');
 
-        // Prebuilt Rig Database
         const buildData = {
             1: {
                 badge: "1440p High-FPS Rig",
@@ -654,9 +623,7 @@
                 badge: "SOLD OUT // PREVIOUS BUILD",
                 title: "Phantom 3070 Edition",
                 price: "$800 SGD (Sold)",
-                images: [
-                    "https://i.postimg.cc/VSHSZpsG/build.jpg"
-                ],
+                images: ["https://i.postimg.cc/VSHSZpsG/build.jpg"],
                 specs: [
                     "<strong>Processor:</strong> AMD Ryzen 5 5600X (6 Cores / 12 Threads)",
                     "<strong>Graphics Card:</strong> INNO3D GeForce RTX 3070 Twin X2 8GB",
@@ -669,34 +636,24 @@
             }
         };
 
-        // Fullscreen Toggle for Video
         function toggleVideoFullscreen() {
             if (!detailVideo) return;
-            if (detailVideo.requestFullscreen) {
-                detailVideo.requestFullscreen();
-            } else if (detailVideo.webkitRequestFullscreen) {
-                detailVideo.webkitRequestFullscreen();
-            } else if (detailVideo.msRequestFullscreen) {
-                detailVideo.msRequestFullscreen();
-            }
+            if (detailVideo.requestFullscreen) detailVideo.requestFullscreen();
+            else if (detailVideo.webkitRequestFullscreen) detailVideo.webkitRequestFullscreen();
+            else if (detailVideo.msRequestFullscreen) detailVideo.msRequestFullscreen();
         }
 
         function updateGalleryView() {
-            if (!currentBuildImages.length) return;
-            
-            detailImg.style.opacity = '0.3';
-            setTimeout(() => {
-                detailImg.src = currentBuildImages[currentImageIndex];
-                detailImg.style.opacity = '1';
-            }, 80);
+            if (!currentBuildImages.length || !detailImg) return;
+            detailImg.src = currentBuildImages[currentImageIndex];
+            if (galleryCounter) galleryCounter.innerText = `${currentImageIndex + 1} / ${currentBuildImages.length}`;
 
-            galleryCounter.innerText = `${currentImageIndex + 1} / ${currentBuildImages.length}`;
-
-            // Update Dots
-            const dots = galleryDots.querySelectorAll('.gallery-dot');
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentImageIndex);
-            });
+            if (galleryDots) {
+                const dots = galleryDots.querySelectorAll('.gallery-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentImageIndex);
+                });
+            }
         }
 
         function setGalleryIndex(index) {
@@ -705,11 +662,13 @@
         }
 
         function nextGalleryImage() {
+            if (!currentBuildImages.length) return;
             currentImageIndex = (currentImageIndex + 1) % currentBuildImages.length;
             updateGalleryView();
         }
 
         function prevGalleryImage() {
+            if (!currentBuildImages.length) return;
             currentImageIndex = (currentImageIndex - 1 + currentBuildImages.length) % currentBuildImages.length;
             updateGalleryView();
         }
@@ -717,7 +676,6 @@
         if (galleryNextBtn) galleryNextBtn.addEventListener('click', nextGalleryImage);
         if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', prevGalleryImage);
 
-        // Touch Swipe Navigation for Mobile
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -728,24 +686,21 @@
 
             galleryTrack.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
-                handleGallerySwipe();
-            }, { passive: true });
-        }
-
-        function handleGallerySwipe() {
-            const swipeDistance = touchEndX - touchStartX;
-            if (Math.abs(swipeDistance) > 40) {
-                if (swipeDistance < 0) {
-                    nextGalleryImage();
-                } else {
-                    prevGalleryImage();
+                const swipeDistance = touchEndX - touchStartX;
+                if (Math.abs(swipeDistance) > 40) {
+                    if (swipeDistance < 0) nextGalleryImage();
+                    else prevGalleryImage();
                 }
-            }
+            }, { passive: true });
         }
 
         function openBuildDetail(id) {
             const build = buildData[id];
             if (!build) return;
+
+            // Instant modal cleanup to prevent MetaBrowser compositing ghosting
+            if (catalogueModal) catalogueModal.classList.remove('active');
+            if (archiveModal) archiveModal.classList.remove('active');
 
             document.getElementById('detailBadge').innerText = build.badge;
             document.getElementById('detailTitle').innerHTML = `${build.title}<span class="dot">.</span>`;
@@ -754,115 +709,94 @@
             currentBuildImages = build.images || [build.img];
             currentImageIndex = 0;
 
-            galleryDots.innerHTML = '';
-            if (currentBuildImages.length > 1) {
-                galleryPrevBtn.style.display = 'flex';
-                galleryNextBtn.style.display = 'flex';
-                galleryCounter.style.display = 'block';
-                galleryDots.style.display = 'flex';
+            if (galleryDots) {
+                galleryDots.innerHTML = '';
+                if (currentBuildImages.length > 1) {
+                    if (galleryPrevBtn) galleryPrevBtn.style.display = 'flex';
+                    if (galleryNextBtn) galleryNextBtn.style.display = 'flex';
+                    if (galleryCounter) galleryCounter.style.display = 'block';
+                    galleryDots.style.display = 'flex';
 
-                currentBuildImages.forEach((_, idx) => {
-                    const dot = document.createElement('span');
-                    dot.classList.add('gallery-dot');
-                    if (idx === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => setGalleryIndex(idx));
-                    galleryDots.appendChild(dot);
-                });
-            } else {
-                galleryPrevBtn.style.display = 'none';
-                galleryNextBtn.style.display = 'none';
-                galleryCounter.style.display = 'none';
-                galleryDots.style.display = 'none';
+                    currentBuildImages.forEach((_, idx) => {
+                        const dot = document.createElement('span');
+                        dot.classList.add('gallery-dot');
+                        if (idx === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => setGalleryIndex(idx));
+                        galleryDots.appendChild(dot);
+                    });
+                } else {
+                    if (galleryPrevBtn) galleryPrevBtn.style.display = 'none';
+                    if (galleryNextBtn) galleryNextBtn.style.display = 'none';
+                    if (galleryCounter) galleryCounter.style.display = 'none';
+                    galleryDots.style.display = 'none';
+                }
             }
 
             updateGalleryView();
 
-            if (build.video) {
-                videoBox.style.display = 'block';
-                detailVideo.src = build.video;
-            } else {
-                videoBox.style.display = 'none';
-                detailVideo.src = '';
+            if (videoBox && detailVideo) {
+                if (build.video) {
+                    videoBox.style.display = 'block';
+                    detailVideo.src = build.video;
+                } else {
+                    videoBox.style.display = 'none';
+                    detailVideo.src = '';
+                }
             }
 
             const specsList = document.getElementById('specsList');
-            specsList.innerHTML = build.specs.map(item => `<li>${item}</li>`).join('');
+            if (specsList) {
+                specsList.innerHTML = build.specs.map(item => `<li>${item}</li>`).join('');
+            }
 
             const benchmarkBox = document.getElementById('benchmarkBox');
             const benchmarkList = document.getElementById('benchmarkList');
-            if (build.benchmarks && build.benchmarks.length > 0) {
-                benchmarkBox.style.display = 'block';
-                benchmarkList.innerHTML = build.benchmarks.map(b => `
-                    <div class="benchmark-item">
-                        <div class="benchmark-header">
-                            <span class="benchmark-caption">${b.caption}</span>
+            if (benchmarkBox && benchmarkList) {
+                if (build.benchmarks && build.benchmarks.length > 0) {
+                    benchmarkBox.style.display = 'block';
+                    benchmarkList.innerHTML = build.benchmarks.map(b => `
+                        <div class="benchmark-item">
+                            <div class="benchmark-header">
+                                <span class="benchmark-caption">${b.caption}</span>
+                            </div>
+                            <img src="${b.img}" alt="${b.caption}" class="benchmark-img" loading="lazy">
                         </div>
-                        <img src="${b.img}" alt="${b.caption}" class="benchmark-img" loading="lazy">
-                    </div>
-                `).join('');
-            } else {
-                benchmarkBox.style.display = 'none';
+                    `).join('');
+                } else {
+                    benchmarkBox.style.display = 'none';
+                }
             }
 
-            if (catalogueModal) catalogueModal.classList.remove('active');
-            if (archiveModal) archiveModal.classList.remove('active');
-
-            buildDetailDrawer.classList.add('active');
+            if (buildDetailDrawer) buildDetailDrawer.classList.add('active');
         }
 
         function closeBuildDetail() {
-            buildDetailDrawer.classList.remove('active');
-            if (detailVideo) {
-                detailVideo.pause();
-            }
+            if (buildDetailDrawer) buildDetailDrawer.classList.remove('active');
+            if (detailVideo) detailVideo.pause();
         }
 
         if (closeBuildDetailBtn) closeBuildDetailBtn.addEventListener('click', closeBuildDetail);
-        if (heroCatalogueBtn) heroCatalogueBtn.addEventListener('click', () => catalogueModal.classList.add('active'));
-        if (closeCatalogueModalBtn) closeCatalogueModalBtn.addEventListener('click', () => catalogueModal.classList.remove('active'));
+        if (heroCatalogueBtn) heroCatalogueBtn.addEventListener('click', () => { if (catalogueModal) catalogueModal.classList.add('active'); });
+        if (closeCatalogueModalBtn) closeCatalogueModalBtn.addEventListener('click', () => { if (catalogueModal) catalogueModal.classList.remove('active'); });
 
         if (prevBuildsLinkBtn) {
             prevBuildsLinkBtn.addEventListener('click', () => {
-                catalogueModal.classList.remove('active');
-                archiveModal.classList.add('active');
+                if (catalogueModal) catalogueModal.classList.remove('active');
+                if (archiveModal) archiveModal.classList.add('active');
             });
         }
 
-        if (closeArchiveModalBtn) {
-            closeArchiveModalBtn.addEventListener('click', () => archiveModal.classList.remove('active'));
-        }
+        if (closeArchiveModalBtn) closeArchiveModalBtn.addEventListener('click', () => { if (archiveModal) archiveModal.classList.remove('active'); });
 
-        // Web Dev Modal Logic
-        if (webDevBtn && webDevModal) {
-            webDevBtn.addEventListener('click', () => webDevModal.classList.add('active'));
-        }
+        if (webDevBtn && webDevModal) webDevBtn.addEventListener('click', () => webDevModal.classList.add('active'));
+        if (closeWebDevModalBtn && webDevModal) closeWebDevModalBtn.addEventListener('click', () => webDevModal.classList.remove('active'));
 
-        if (closeWebDevModalBtn && webDevModal) {
-            closeWebDevModalBtn.addEventListener('click', () => webDevModal.classList.remove('active'));
-        }
-
-        // Why Trust Us Modal & 3D Interactive Wheel JS
-        if (whyTrustBtn && reviewsModal) {
-            whyTrustBtn.addEventListener('click', () => {
-                reviewsModal.classList.add('active');
-                setTimeout(updateWheel, 50);
-            });
-        }
-
-        if (closeReviewsModalBtn && reviewsModal) {
-            closeReviewsModalBtn.addEventListener('click', () => reviewsModal.classList.remove('active'));
-        }
-
-        // 3D Wheel Physics
+        // 3D Wheel Logic
         const wheelContainer = document.getElementById('reviewWheelContainer');
         const reviewCards = document.querySelectorAll('.review-wheel-card');
         let currentAngle = 0;
         let isDragging = false;
-        let startY = 0;
-        let lastY = 0;
-        let velocity = 0;
-        let animFrame = null;
-
+        let startY = 0, lastY = 0, velocity = 0, animFrame = null;
         const angleStep = 360 / Math.max(1, reviewCards.length);
 
         function updateWheel() {
@@ -893,107 +827,89 @@
             }
         }
 
-        function onPointerDown(e) {
-            isDragging = true;
-            cancelAnimationFrame(animFrame);
-            startY = e.touches ? e.touches[0].clientY : e.clientY;
-            lastY = startY;
-            velocity = 0;
-            if (wheelContainer) wheelContainer.style.cursor = 'grabbing';
-        }
-
-        function onPointerMove(e) {
-            if (!isDragging) return;
-            const currentY = e.touches ? e.touches[0].clientY : e.clientY;
-            const deltaY = currentY - lastY;
-            
-            velocity = deltaY * 0.4;
-            currentAngle += deltaY * 0.35;
-            
-            lastY = currentY;
-            updateWheel();
-        }
-
-        function onPointerUp() {
-            if (!isDragging) return;
-            isDragging = false;
-            if (wheelContainer) wheelContainer.style.cursor = 'grab';
-            animFrame = requestAnimationFrame(applyMomentum);
-        }
-
         if (wheelContainer) {
-            wheelContainer.addEventListener('mousedown', onPointerDown);
-            window.addEventListener('mousemove', onPointerMove);
-            window.addEventListener('mouseup', onPointerUp);
+            const onDown = (e) => {
+                isDragging = true;
+                cancelAnimationFrame(animFrame);
+                startY = e.touches ? e.touches[0].clientY : e.clientY;
+                lastY = startY;
+                velocity = 0;
+            };
+            const onMove = (e) => {
+                if (!isDragging) return;
+                const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+                const deltaY = currentY - lastY;
+                velocity = deltaY * 0.4;
+                currentAngle += deltaY * 0.35;
+                lastY = currentY;
+                updateWheel();
+            };
+            const onUp = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                animFrame = requestAnimationFrame(applyMomentum);
+            };
 
-            wheelContainer.addEventListener('touchstart', onPointerDown, { passive: true });
-            window.addEventListener('touchmove', onPointerMove, { passive: true });
-            window.addEventListener('touchend', onPointerUp);
+            wheelContainer.addEventListener('mousedown', onDown);
+            window.addEventListener('mousemove', onMove);
+            window.addEventListener('mouseup', onUp);
+            wheelContainer.addEventListener('touchstart', onDown, { passive: true });
+            window.addEventListener('touchmove', onMove, { passive: true });
+            window.addEventListener('touchend', onUp);
         }
 
-        // Deep Cleaning Modal Logic
-        if (deepCleanBtn) {
+        if (whyTrustBtn && reviewsModal) {
+            whyTrustBtn.addEventListener('click', () => {
+                reviewsModal.classList.add('active');
+                setTimeout(updateWheel, 50);
+            });
+        }
+        if (closeReviewsModalBtn && reviewsModal) closeReviewsModalBtn.addEventListener('click', () => reviewsModal.classList.remove('active'));
+
+        if (deepCleanBtn && deepCleanModal) {
             deepCleanBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 deepCleanModal.classList.add('active');
             });
         }
-
-        if (closeDeepCleanModalBtn) {
-            closeDeepCleanModalBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
+        if (closeDeepCleanModalBtn && deepCleanModal) {
+            closeDeepCleanModalBtn.addEventListener('click', () => {
                 deepCleanModal.classList.remove('active');
                 if (ipaBubble) ipaBubble.classList.remove('active');
             });
         }
-
         if (ipaHighlightBtn && ipaBubble) {
             ipaHighlightBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 ipaBubble.classList.toggle('active');
             });
         }
-
         if (closeIpaBubbleBtn && ipaBubble) {
             closeIpaBubbleBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 ipaBubble.classList.remove('active');
             });
         }
-
-        // Repasting Modal Logic
-        const repasteModal = document.getElementById('repasteModal');
-        const repasteBtn = document.getElementById('repasteBtn');
-        const closeRepasteModalBtn = document.getElementById('closeRepasteModalBtn');
-
-        if (repasteBtn) {
+        if (repasteBtn && repasteModal) {
             repasteBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 repasteModal.classList.add('active');
             });
         }
+        if (closeRepasteModalBtn && repasteModal) closeRepasteModalBtn.addEventListener('click', () => repasteModal.classList.remove('active'));
 
-        if (closeRepasteModalBtn) {
-            closeRepasteModalBtn.addEventListener('click', () => {
-                e.stopPropagation();
-                repasteModal.classList.remove('active');
-            });
-        }
-
-        // Logo Dialogue Bubble Logic
         const logoBtn = document.getElementById('logoBtn');
         const logoBubble = document.getElementById('logoBubble');
         let bubbleTimeout;
+        if (logoBtn && logoBubble) {
+            logoBtn.addEventListener('click', () => {
+                logoBubble.classList.add('active');
+                clearTimeout(bubbleTimeout);
+                bubbleTimeout = setTimeout(() => logoBubble.classList.remove('active'), 2500);
+            });
+        }
 
-        logoBtn.addEventListener('click', () => {
-            logoBubble.classList.add('active');
-            clearTimeout(bubbleTimeout);
-            bubbleTimeout = setTimeout(() => {
-                logoBubble.classList.remove('active');
-            }, 2500);
-        });
-
-        // Fail-Safe Preloader System (MetaBrowser Safe)
+        // Fail-Safe Preloader System
         const postCodeText = document.getElementById('postCodeText');
         const postCodes = ['15', 'C1', '28', '55', 'Ab', '0d', '99', 'A2', 'AA', '00'];
         let postIndex = 0;
@@ -1021,44 +937,37 @@
             }
         }
 
-        // Triggers smoothly on DOMContentLoaded (does not get stalled by media downloads)
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(dismissPreloader, 1400);
         });
-
-        // Emergency fallback timeout in case of WebView script throttle
         setTimeout(dismissPreloader, 2200);
 
-        // Contact Modal
         const contactModal = document.getElementById('contactModal');
         const heroContactBtn = document.getElementById('heroContactBtn');
         const navContactBtn = document.getElementById('navContactBtn');
         const closeModalBtn = document.getElementById('closeModalBtn');
 
-        function openContact() { contactModal.classList.add('active'); }
-        function closeContact() { contactModal.classList.remove('active'); }
+        function openContact() { if (contactModal) contactModal.classList.add('active'); }
+        function closeContact() { if (contactModal) contactModal.classList.remove('active'); }
 
-        heroContactBtn.addEventListener('click', openContact);
-        navContactBtn.addEventListener('click', openContact);
+        if (heroContactBtn) heroContactBtn.addEventListener('click', openContact);
+        if (navContactBtn) navContactBtn.addEventListener('click', openContact);
         if (closeModalBtn) closeModalBtn.addEventListener('click', closeContact);
 
-        // Slide Drawer
         const sideDrawer = document.getElementById('sideDrawer');
         const whatIDoBtn = document.getElementById('whatIDoBtn');
         const navServicesBtn = document.getElementById('navServicesBtn');
         const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 
-        function openDrawer() { sideDrawer.classList.add('active'); }
-        function closeDrawer() { sideDrawer.classList.remove('active'); }
+        function openDrawer() { if (sideDrawer) sideDrawer.classList.add('active'); }
+        function closeDrawer() { if (sideDrawer) sideDrawer.classList.remove('active'); }
 
-        whatIDoBtn.addEventListener('click', openDrawer);
-        navServicesBtn.addEventListener('click', openDrawer);
-        closeDrawerBtn.addEventListener('click', closeDrawer);
+        if (whatIDoBtn) whatIDoBtn.addEventListener('click', openDrawer);
+        if (navServicesBtn) navServicesBtn.addEventListener('click', openDrawer);
+        if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
 
         function toggleCardDetails(event, card) {
-            if (event.target.classList.contains('clickable-term') || event.target.closest('.clickable-term')) {
-                return;
-            }
+            if (event.target.classList.contains('clickable-term') || event.target.closest('.clickable-term')) return;
             card.classList.toggle('expanded');
         }
 
@@ -1074,6 +983,5 @@
             if (event.target === webDevModal) webDevModal.classList.remove('active');
         });
     </script>
-
 </body>
 </html>
