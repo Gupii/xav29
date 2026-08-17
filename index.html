@@ -14,39 +14,6 @@
 </head>
 <body>
 
-    <!-- Non-Blocking CSS Auto-Dismiss Preloader -->
-    <div id="preloader">
-        <div class="loader-container">
-            <svg class="pc-fan-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="5" width="90" height="90" rx="12" fill="#080808" stroke="#2a2a2a" stroke-width="2"/>
-                <circle cx="12" cy="12" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
-                <circle cx="88" cy="12" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
-                <circle cx="12" cy="88" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
-                <circle cx="88" cy="88" r="3" fill="#121212" stroke="#ffffff" stroke-width="1"/>
-                <circle cx="50" cy="50" r="38" fill="#121212" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
-
-                <g class="spinning-blades">
-                    <g fill="#ffffff" opacity="0.85">
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z"/>
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(51.4 50 50)"/>
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(102.8 50 50)"/>
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(154.2 50 50)"/>
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(205.7 50 50)"/>
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(257.1 50 50)"/>
-                        <path d="M 50 50 C 44 36, 50 20, 65 16 C 61 31, 56 42, 50 50 Z" transform="rotate(308.5 50 50)"/>
-                    </g>
-                    <circle cx="50" cy="50" r="12" fill="#181818" stroke="#ffffff" stroke-width="1.5"/>
-                    <circle cx="50" cy="50" r="4" fill="#ffffff"/>
-                </g>
-            </svg>
-
-            <div class="post-led-box">
-                <span class="post-led-label">SYSTEM_READY</span>
-                <span class="post-led-value">00</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo-wrapper">
@@ -322,4 +289,40 @@
                 
                 <p class="modal-desc-paragraph">
                     Dust buildup directly chokes fan blades, clogs heatsink fins, and causes thermal throttling. We utilize high-pressure electric air blowers to blast away trapped debris from tight crevices, power supply shrouds, and intake filters.
-              
+                </p>
+
+                <div class="ipa-container-box">
+                    <p>
+                        After blowing out loose debris, all fan blades and surfaces are thoroughly wiped down using 
+                        <span class="ipa-wrapper">
+                            <span id="ipaHighlightBtn" class="ipa-highlight">IPA 99% alcohol</span>
+                            <span id="ipaBubble" class="ipa-bubble">
+                                <button id="closeIpaBubbleBtn" class="bubble-x-btn" aria-label="Close Bubble">&times;</button>
+                                <strong>Why 99% Isopropyl Alcohol?</strong><br>
+                                99% anhydrous IPA evaporates rapidly with zero conductive water residue, safely dissolving caked-on oils and dried thermal paste without risking oxidation.
+                            </span>
+                        </span> 
+                        for a clean, sterile finish.
+                    </p>
+                </div>
+
+                <div class="location-disclaimer-box">
+                    <h4>In-House Service Location Disclaimer</h4>
+                    <p>For all computers requiring a deep clean, service is performed strictly in-house at my workshop setup where high-pressure blowers and extraction equipment are configured safely.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catalogue Modal -->
+    <div id="catalogueModal" class="modal-overlay">
+        <div class="modal-card catalogue-modal-card">
+            <button id="closeCatalogueModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
+            <h2>Current Catalogue<span class="dot">.</span></h2>
+            <p class="modal-sub">Click the prebuilt rig below for full specs & details.</p>
+
+            <div class="catalogue-grid">
+                <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-
