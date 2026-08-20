@@ -140,6 +140,29 @@
         </div>
     </main>
 
+    <!-- 3-Second Centered Promo Modal with 2s Slow Fade In -->
+    <div id="centerPromoModal" class="modal-overlay center-promo-overlay">
+        <div class="modal-card center-promo-card">
+            <button id="closeCenterPromoBtn" class="close-btn" onclick="closeCenterPromo(event)" aria-label="Close Modal">&times;</button>
+            
+            <!-- Contained, Uncropped Rig Image -->
+            <div class="promo-img-box" onclick="openBuildDetail(1)">
+                <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903752/IMG_3669.jpg" alt="Featured PC Rig" class="center-promo-img">
+            </div>
+            
+            <!-- Build Info & Distinct Standout Typography -->
+            <div onclick="openBuildDetail(1)">
+                <span class="catalogue-badge">Featured Rig In-Stock</span>
+                <h3 class="center-promo-title">THE ULTIMATE 1440P PC<span class="dot">.</span></h3>
+                <div class="center-promo-price">$900 <span class="currency">SGD</span></div>
+                <p class="center-promo-specs">
+                    <span>RTX 3070</span> • <span>32GB RAM</span> • <span>i5-12400F</span> • <span>1TB SSD</span>
+                </p>
+                <button class="btn btn-primary center-promo-cta">View Benchmarks & Specs &rarr;</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Web Development Services Modal -->
     <div id="webDevModal" class="modal-overlay">
         <div class="modal-card image-modal-card">
@@ -173,7 +196,6 @@
             <h2>Why Trust Us<span class="dot">.</span></h2>
             <p class="modal-sub">Drag or swipe vertically to spin through real client feedback.</p>
 
-            <!-- 3D Interactive Wheel Container -->
             <div id="reviewWheelContainer" class="review-wheel-container">
                 <div id="reviewWheel" class="review-wheel">
                     
@@ -438,7 +460,6 @@
             <h2 id="detailTitle" class="section-title">Build Name<span class="dot">.</span></h2>
             <p id="detailPrice" class="detail-price-text">$0 SGD</p>
 
-            <!-- Gallery Carousel Container -->
             <div class="gallery-slider-wrapper" id="galleryWrapper">
                 <button class="gallery-nav-btn gallery-prev" id="galleryPrevBtn" aria-label="Previous image">&#10094;</button>
                 <div class="gallery-slider-track" id="galleryTrack">
@@ -481,13 +502,11 @@
                 <div id="benchmarkList" class="benchmark-list"></div>
             </div>
 
-            <!-- Open Door Hands-On Testing Policy -->
             <div class="testing-box">
                 <h4>Open-Door Hands-On Testing Policy</h4>
                 <p>We maintain an open-door testing policy for all interested buyers! Feel free to visit and test drive systems or hardware in person on preloaded competitive and AAA games including <strong>Call of Duty</strong>, <strong>Forza Horizon 6</strong>, <strong>VALORANT</strong>, <strong>CS2</strong>, and more upon request before deciding to purchase.</p>
             </div>
 
-            <!-- Warranty & Support Guarantee Panel -->
             <div class="warranty-box">
                 <h4>Warranty & Support Guarantee</h4>
                 <div class="warranty-badge-row">
@@ -497,7 +516,6 @@
                 <p>All prebuilts and components are backed by a 1-month hardware warranty covering component replacements, alongside 3 months of complimentary post-sales technical support for software and performance optimizations.</p>
             </div>
 
-            <!-- Mini FAQ Panel -->
             <div class="faq-panel">
                 <h4>Frequently Asked Questions</h4>
 
@@ -606,6 +624,24 @@
 
         setTimeout(dismissPreloader, 2200);
 
+        // 3-Second Buffer Centered Promo Modal with 2s Slow Fade-In
+        const centerPromoModal = document.getElementById('centerPromoModal');
+        let centerPromoClosed = false;
+
+        setTimeout(() => {
+            if (centerPromoModal && !centerPromoClosed) {
+                centerPromoModal.classList.add('active');
+            }
+        }, 3000);
+
+        function closeCenterPromo(e) {
+            if (e) e.stopPropagation();
+            centerPromoClosed = true;
+            if (centerPromoModal) {
+                centerPromoModal.classList.remove('active');
+            }
+        }
+
         // Catalogue & Archive Modals
         const catalogueModal = document.getElementById('catalogueModal');
         const heroCatalogueBtn = document.getElementById('heroCatalogueBtn');
@@ -708,7 +744,6 @@
             }
         };
 
-        // Fullscreen Toggle for Video
         function toggleVideoFullscreen() {
             if (!detailVideo) return;
             if (detailVideo.requestFullscreen) {
@@ -755,7 +790,6 @@
         if (galleryNextBtn) galleryNextBtn.addEventListener('click', nextGalleryImage);
         if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', prevGalleryImage);
 
-        // Touch Swipe
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -844,6 +878,7 @@
 
             if (catalogueModal) catalogueModal.classList.remove('active');
             if (archiveModal) archiveModal.classList.remove('active');
+            if (centerPromoModal) centerPromoModal.classList.remove('active');
 
             buildDetailDrawer.classList.add('active');
         }
@@ -1074,6 +1109,7 @@
             if (event.target === buildDetailDrawer) closeBuildDetail();
             if (event.target === reviewsModal) reviewsModal.classList.remove('active');
             if (event.target === webDevModal) webDevModal.classList.remove('active');
+            if (event.target === centerPromoModal) closeCenterPromo();
         });
     </script>
 
