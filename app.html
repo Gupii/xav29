@@ -3,347 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Xav | PC Services Singapore</title>
+    <title>XAVPC | Custom PCs & Hardware Services Singapore</title>
     
-    <meta property="og:title" content="Xav | Custom PCs & Hardware Services">
-    <meta property="og:description" content="Custom PC building, thermal overhauls, deep cleaning, upgrades, and diagnostics in Singapore.">
+    <meta property="og:title" content="XAVPC | Custom Builds & Hardware Services">
+    <meta property="og:description" content="Custom PC building, thermal repasting, deep cleaning, upgrades, and diagnostics in Singapore. 5.0 Star Rated Carousell Seller.">
     <meta property="og:type" content="website">
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            -webkit-tap-highlight-color: transparent !important; 
+        }
         body {
-            background-color: #09090b;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
-            color: #e0e0e0;
+            background-color: #08080c;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.05) 0%, transparent 60%),
+                radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 100% 100%, 24px 24px;
+            color: #e2e2e8;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-            padding: 2rem 1rem 4rem;
+            padding: 1.8rem 1.1rem 4rem;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .container { max-width: 480px; width: 100%; }
         
-        header { text-align: center; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; }
-        .brand-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 0.8rem;
-            background: #141418;
-        }
-        .brand-logo { font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-        .brand-logo span { color: #888; }
-        .tagline { color: #888; font-size: 0.95rem; margin-top: 0.3rem; }
-        .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            color: #fff;
-            margin-top: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cta-stack { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-        .btn {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            padding: 0.95rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: transform 0.15s ease, opacity 0.15s ease;
-        }
-        .btn:active { transform: scale(0.98); }
-        .btn-primary { background: #ffffff; color: #000000; box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15); }
-        .btn-secondary { background: #141418; color: #ffffff; border: 1px solid #26262c; }
-
-        .section-heading {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #888;
-            margin-bottom: 0.8rem;
-            padding-left: 0.2rem;
-        }
-
-        .card {
-            background: #141418;
-            border: 1px solid #26262c;
-            border-radius: 10px;
-            padding: 1.25rem;
-            margin-bottom: 1.2rem;
+        /* Brand Header */
+        header { 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
         }
         
-        .gallery-container {
-            position: relative;
-            width: 100%;
-            height: 240px;
-            background: #09090b;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #26262c;
-            margin-bottom: 0.6rem;
-            user-select: none;
-            touch-action: pan-y;
-        }
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: opacity 0.15s ease;
-        }
-        .gallery-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(15, 15, 18, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+        .logo-icon-wrapper {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            cursor: pointer;
-            z-index: 10;
+            background: linear-gradient(145deg, #14141d, #0b0b10);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 243, 255, 0.1);
         }
-        .gallery-btn:active { background: #ffffff; color: #000; }
-        .gallery-prev { left: 10px; }
-        .gallery-next { right: 10px; }
-        
-        .gallery-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            font-family: monospace;
-            font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            z-index: 10;
+        .logo-svg {
+            width: 48px;
+            height: 48px;
         }
-        .gallery-dots {
+
+        .brand-title { 
+            font-size: 1.85rem; 
+            font-weight: 800; 
+            color: #ffffff; 
+            letter-spacing: 2px;
             display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 1.2rem;
+            align-items: center;
+            gap: 4px;
         }
-        .gallery-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #2e2e38;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .gallery-dot.active {
-            background: #ffffff;
-            transform: scale(1.25);
-        }
-
-        .card-title { font-size: 1.1rem; color: #fff; font-weight: 600; margin-bottom: 0.3rem; }
-        .card-price { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; display: block; }
+        .brand-title .dot { color: #00f3ff; }
         
-        .specs-list { list-style: none; margin-bottom: 1.2rem; }
-        .specs-list li {
-            font-size: 0.84rem;
-            color: #b0b0b0;
-            padding: 0.35rem 0;
-            border-bottom: 1px solid #1f1f26;
-            display: flex;
-            justify-content: space-between;
+        .tagline { 
+            color: #9292a0; 
+            font-size: 0.88rem; 
+            margin-top: 0.2rem; 
         }
-        .specs-list li:last-child { border-bottom: none; }
-        .specs-list strong { color: #fff; text-align: right; }
 
-        .service-item {
-            padding: 0.9rem 0;
-            border-bottom: 1px solid #202026;
-        }
-        .service-item:last-child { border-bottom: none; }
-        .service-item h4 { font-size: 0.95rem; color: #fff; margin-bottom: 0.3rem; }
-        .service-item p { font-size: 0.82rem; color: #888; line-height: 1.45; }
-
-        .reviews-box {
-            background: #101014;
-            border: 1px solid #222228;
+        /* Verified Seller Credibility Badge */
+        .trust-banner {
+            background: linear-gradient(90deg, rgba(17, 17, 24, 0.95), rgba(22, 22, 32, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 10px;
-            padding: 1.25rem;
+            padding: 0.8rem 1rem;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
-        .review-quote { font-size: 0.84rem; color: #ccc; font-style: italic; margin-bottom: 0.4rem; line-height: 1.4; }
-        .review-author { font-size: 0.75rem; color: #888; font-weight: 600; text-align: right; display: block; margin-bottom: 0.9rem; }
-        .review-author:last-child { margin-bottom: 0; }
-
-        /* Disclaimer & Footer */
-        .disclaimer-card {
-            background: #121216;
-            border: 1px solid #26262c;
-            border-radius: 8px;
-            padding: 1rem 1.1rem;
-            font-size: 0.8rem;
-            color: #999999;
-            line-height: 1.5;
-            text-align: center;
-            margin-top: 1rem;
+        .trust-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .disclaimer-card strong {
-            color: #e0e0e0;
-            font-weight: 600;
-        }
-        .disclaimer-card a {
+        .trust-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #09090b;
+            border: 1.5px solid #00f3ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
             color: #ffffff;
-            text-decoration: underline;
+        }
+        .trust-info h4 {
+            font-size: 0.92rem;
+            color: #ffffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .trust-info p {
+            font-size: 0.72rem;
+            color: #00f3ff;
             font-weight: 500;
         }
+        .trust-stats {
+            text-align: right;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 0.9rem;
+        }
+        .trust-stars {
+            font-size: 0.88rem;
+            color: #22c55e;
+            font-weight: 700;
+        }
+        .trust-reviews-count {
+            font-size: 0.7rem;
+            color: #888894;
+        }
 
-        footer { text-align: center; margin-top: 1.5rem; font-size: 0.75rem; color: #555555; }
+        /* Solid White Contact Bars */
+        .cta-stack { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.75rem; 
+            margin-bottom: 1.8rem; 
+        }
+        .btn-white-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+            text-decoration: none;
+            background: #ffffff;
+            color: #000000;
+            padding: 0.95rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 18px rgba(255, 255, 255, 0.12);
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+        .btn-white-bar:active { 
+            transform: scale(0.98); 
+            background: #e4e4e7;
+        }
+
+        /* Integrated Catalogue Banner Button */
+        .catalogue-banner-card {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.35);
+            background: #101017;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 243, 255, 0.12);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .catalogue-banner-card:active {
+            transform: scale(0.98);
+            border-color: #00f3ff;
+        }
+        .catalogue-banner-img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.85);
+        }
+        .catalogue-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(8, 8, 12, 0.95) 15%, rgba(8, 8, 12, 0.4) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.1rem;
+        }
+        .catalogue-tag-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+        .catalogue-pill {
+            background: rgba(0, 243, 255, 0.15);
+            border: 1px solid rgba(0, 243, 255, 0.4);
+            color: #00f3ff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .catalogue-price {
+            font-family: monospace;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #22c55e;
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+        }
+        .catalogue-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.3px;
+        }
+        .catalogue-action-prompt {
+            font-size: 0.8rem;
+            color: #a0a0b2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .catalogue-action-prompt strong {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #00f3ff;
+            margin-bottom: 0.85rem;
+            padding-left: 0.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Workshop Services Container */
+        .services-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+        }
+        .service-card {
+            background: #111117;
+            border: 1px solid #20202c;
+            border-radius: 10px;
+            padding: 1.15rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.2s ease;
+        }
+        .service-card:hover {
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+        .service-icon-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #00f3ff;
+        }
+        .service-card h4 {
+            font-size: 0.96rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .service-card p {
+            font-size: 0.83rem;
+            color: #9898a8;
+            line-height: 1.5;
+            margin-bottom: 0.6rem;
+        }
+        .service-details-list {
+            list-style: none;
+            background: #0b0b10;
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #1a1a24;
+        }
+        .service-details-list li {
+            font-size: 0.78rem;
+            color: #b4b4c4;
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        .service-details-list li::before {
+            content: "▹";
+            color: #00f3ff;
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+
+        /* Reviews Stack */
+        .reviews-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 1.6rem;
+        }
+        .review-item {
+            background: #111117;
+            border: 1px solid #20202c;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .review-quote {
+            font-size: 0.83rem;
+            color: #d1d1db;
+            font-style: italic;
+            line-height: 1.45;
+            margin-bottom: 0.45rem;
+        }
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .review-author {
+            font-size: 0.74rem;
+            color: #00f3ff;
+            font-weight: 700;
+        }
+        .review-stars {
+            font-size: 0.72rem;
+            color: #22c55e;
+            letter-spacing: 1px;
+        }
+
+        /* Browser Notice */
+        .disclaimer-card {
+            background: #0d0d12;
+            border: 1px solid #1c1c26;
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            font-size: 0.78rem;
+            color: #808090;
+            line-height: 1.45;
+            text-align: center;
+        }
+        .disclaimer-card a { color: #ffffff; text-decoration: underline; font-weight: 600; }
+
+        footer { text-align: center; margin-top: 1.5rem; font-size: 0.72rem; color: #505060; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- Brand Header with Geometric Logo -->
         <header>
-            <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="Xav Logo" class="brand-avatar">
-            <h1 class="brand-logo">Xav<span>.</span></h1>
-            <p class="tagline">Personal Computer Services & Custom Builds</p>
-            <span class="badge">Singapore • Since 2024</span>
+            <div class="logo-icon-wrapper">
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 22 20 L 40 20 L 78 80 L 60 80 Z" fill="#00f3ff" />
+                    <path d="M 60 20 L 78 20 L 22 80 L 40 80 Z" fill="#ffffff" opacity="0.4" />
+                    <path d="M 44 44 L 56 44 L 56 56 L 44 56 Z" fill="#08080c" />
+                    <circle cx="50" cy="50" r="3.5" fill="#00f3ff" />
+                </svg>
+            </div>
+            <h1 class="brand-title">XAVPC<span class="dot">.</span></h1>
+            <p class="tagline">Personal Computer Services & Custom Rigs</p>
         </header>
 
-        <!-- Direct Social CTAs -->
+        <!-- Verified Carousell Testament & Rating Card -->
+        <div class="trust-banner">
+            <div class="trust-profile">
+                <div class="trust-avatar">X</div>
+                <div class="trust-info">
+                    <h4>zhha <span style="color:#00f3ff; font-size:0.8rem;">✔</span></h4>
+                    <p>Professional Seller</p>
+                </div>
+            </div>
+            <div class="trust-stats">
+                <div class="trust-stars">5.0 ★★★★★</div>
+                <div class="trust-reviews-count">101 Reviews • 6y+ Member</div>
+            </div>
+        </div>
+
+        <!-- Two White Contact Bars -->
         <div class="cta-stack">
-            <a href="https://t.me/Leijiye" target="_blank" class="btn btn-primary">Message on Telegram (@Leijiye)</a>
-            <a href="https://www.carousell.sg/u/xavpc/" target="_blank" class="btn btn-secondary">View Carousell Listings & Reviews</a>
-            <a href="tel:86865419" class="btn btn-secondary">Call / WhatsApp: 86865419</a>
+            <a href="https://wa.me/6586865419" target="_blank" class="btn-white-bar">
+                WhatsApp: 86865419
+            </a>
+            <a href="https://www.carousell.sg/u/xavpc/" target="_blank" class="btn-white-bar">
+                Carousell Listings & Store
+            </a>
         </div>
 
-        <!-- Featured Rig with Interactive Gallery -->
-        <h3 class="section-heading">Featured In-Stock Build</h3>
-        <div class="card">
-            <div class="gallery-container" id="galleryContainer">
-                <button class="gallery-btn gallery-prev" id="galleryPrevBtn" aria-label="Previous image">&#10094;</button>
-                <img id="galleryImg" src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="1440p Gaming PC" class="gallery-img">
-                <button class="gallery-btn gallery-next" id="galleryNextBtn" aria-label="Next image">&#10095;</button>
-                <div class="gallery-badge" id="galleryBadge">1 / 5</div>
+        <!-- Integrated Catalogue Banner Button -->
+        <a href="/catalogue.html" class="catalogue-banner-card">
+            <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="Featured Rig" class="catalogue-banner-img">
+            <div class="catalogue-banner-overlay">
+                <div class="catalogue-tag-row">
+                    <span class="catalogue-pill">Featured In-Stock</span>
+                    <span class="catalogue-price">$900 SGD</span>
+                </div>
+                <div class="catalogue-title">THE ULTIMATE MIDRANGE 1440P PC</div>
+                <div class="catalogue-action-prompt">
+                    <span>i5-12400F • RTX 3070 • 32GB RAM</span>
+                    <strong>Browse Builds &rarr;</strong>
+                </div>
             </div>
+        </a>
+
+        <!-- Workshop PC Services Detailed Breakdown -->
+        <h3 class="section-heading"><span>⚙</span> Specialized Services</h3>
+        <div class="services-stack">
             
-            <div class="gallery-dots" id="galleryDots">
-                <span class="gallery-dot active" onclick="setSlide(0)"></span>
-                <span class="gallery-dot" onclick="setSlide(1)"></span>
-                <span class="gallery-dot" onclick="setSlide(2)"></span>
-                <span class="gallery-dot" onclick="setSlide(3)"></span>
-                <span class="gallery-dot" onclick="setSlide(4)"></span>
+            <!-- Service 1: Deep Clean -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon-badge">🧹</div>
+                    <h4>Chassis & GPU Deep Cleaning</h4>
+                </div>
+                <p>Cleans out trapped dust buildup that causes loud fans and high temps.</p>
+                <ul class="service-details-list">
+                    <li>Full wipe down of the chassis inside and out</li>
+                    <li>Dusting fans with high-power air blower (including AIO radiator fans)</li>
+                    <li>Cleaning GPU, GPU fans, and power supply basement/filters</li>
+                </ul>
             </div>
 
-            <h2 class="card-title">THE ULTIMATE MIDRANGE 1440P PC</h2>
-            <span class="card-price">$900 SGD</span>
-            <ul class="specs-list">
-                <li><span>CPU:</span> <strong>Intel Core i5-12400F</strong></li>
-                <li><span>GPU:</span> <strong>ASUS ROG STRIX RTX 3070 8GB</strong></li>
-                <li><span>RAM:</span> <strong>32GB G.SKILL Ripjaws DDR4-3600</strong></li>
-                <li><span>Storage:</span> <strong>1TB KIOXIA NVMe</strong></li>
-                <li><span>Cooling:</span> <strong>CubeSystems 360mm Infinity Mirror AIO</strong></li>
-                <li><span>PSU:</span> <strong>ROG Strix 750W</strong></li>
-                <li><span>Chassis:</span> <strong>DeepCool CG530 Dual-Chamber</strong></li>
-                <li><span>Warranty:</span> <strong>1 Mo Hardware + 3 Mo Support</strong></li>
-            </ul>
-            <a href="/build.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.85rem;">Learn More & Benchmarks &rarr;</a>
+            <!-- Service 2: Thermal Repasting -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon-badge">❄️</div>
+                    <h4>CPU & GPU Thermal Repasting</h4>
+                </div>
+                <p>Replaces old, dried-up factory paste to immediately drop temps and prevent thermal throttling.</p>
+                <ul class="service-details-list">
+                    <li>Clean off old paste from CPU and GPU dies</li>
+                    <li>Apply fresh Thermalright PX7 thermal paste</li>
+                    <li>Full thermal stress test before returning to ensure temps are rock solid</li>
+                </ul>
+            </div>
+
+            <!-- Service 3: Upgrades & Buybacks -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon-badge">⚡</div>
+                    <h4>Hardware Upgrades & Trade-Ins</h4>
+                </div>
+                <p>Need more FPS? Upgrade your GPU, CPU, RAM, or storage with compatibility checked beforehand.</p>
+                <ul class="service-details-list">
+                    <li>Clean installation of new parts and proper cable routing</li>
+                    <li>BIOS updates, RAM XMP/EXPO setup, and gaming stability tests</li>
+                    <li>Instant cash trade-in for your old parts to offset your upgrade cost</li>
+                </ul>
+            </div>
+
+            <!-- Service 4: Case Swaps -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon-badge">📦</div>
+                    <h4>Case Swaps & Cable Management</h4>
+                </div>
+                <p>Moving all your parts into a brand new case of your choice.</p>
+                <ul class="service-details-list">
+                    <li>Full teardown and rebuilding everything into your new chassis</li>
+                    <li>ARGB fan wiring and clean front-panel connections</li>
+                    <li>Tying down and organizing the cable clutter behind the back panel</li>
+                </ul>
+            </div>
+
+            <!-- Service 5: Diagnostics -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon-badge">🔍</div>
+                    <h4>Diagnostics & Troubleshooting</h4>
+                </div>
+                <p>PC not turning on, randomly restarting, or throwing blue screens? We isolate faulty hardware using spare parts.</p>
+                <ul class="service-details-list">
+                    <li>Part-swapping test with working spares (GPU, RAM, PSU, Motherboard)</li>
+                    <li>Strict <strong>No-Fix, No-Fee Guarantee</strong> (if we can't find the issue, you pay $0)</li>
+                </ul>
+            </div>
+
         </div>
 
-        <!-- Core Services -->
-        <h3 class="section-heading">Services Offered</h3>
-        <div class="card">
-            <div class="service-item">
-                <h4>Chassis & GPU Deep Cleaning</h4>
-                <p>Full disassembly, high-CFM dust blower extraction, 99% anhydrous IPA cleanup, and thermal repasting for CPU & GPU dies.</p>
-            </div>
-            <div class="service-item">
-                <h4>Hardware Upgrades & Part Swapping</h4>
-                <p>Component compatibility checks, clean installations, stress benchmarking, and instant cash trade-in buybacks for your old hardware.</p>
-            </div>
-            <div class="service-item">
-                <h4>Diagnostics & Troubleshooting</h4>
-                <p>Component isolation and hardware fault finding. Strictly backed by a no-fix, no-fee guarantee.</p>
-            </div>
-        </div>
-
-        <!-- Reviews -->
-        <h3 class="section-heading">Client Reviews</h3>
+        <!-- Client Reviews -->
+        <h3 class="section-heading"><span>★</span> Verified Client Reviews</h3>
         <div class="reviews-box">
-            <p class="review-quote">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured everything was working before leaving."</p>
-            <span class="review-author">— soreil (Carousell)</span>
+            
+            <div class="review-item">
+                <p class="review-quote">"great experience with xavier!! went extra mile to help me settle my build n solve issues. very recommended👍🏻👍🏻"</p>
+                <div class="review-meta">
+                    <span class="review-author">— yrjdnr (Carousell)</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+            </div>
 
-            <p class="review-quote">"was really nice when showing me the pc, even explaining how to check specs cos i noob. now i can play heavy games!!? if uw buy pc ask this guy he legit pro"</p>
-            <span class="review-author">— Aira (Carousell)</span>
+            <div class="review-item">
+                <p class="review-quote">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured everything was working before leaving."</p>
+                <div class="review-meta">
+                    <span class="review-author">— soreil (Carousell)</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+            </div>
+
+            <div class="review-item">
+                <p class="review-quote">"was really nice when showing me the pc, even explaining how to check specs cos i noob. now i can play heavy games!!? if uw buy pc ask this guy he legit pro"</p>
+                <div class="review-meta">
+                    <span class="review-author">— Aira (Carousell)</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Browser Compatibility Disclaimer -->
+        <!-- Browser Notice -->
         <div class="disclaimer-card">
-            <p><strong>Browser Notice:</strong> The <a href="https://xav29.com/">full interactive website</a> only works as intended on normal desktop and mobile browsers such as <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, or <strong>Safari</strong> (in-app social media webviews may disable animations and 3D features).</p>
+            <p>Looking for the full interactive desktop version? <br>Open <a href="https://xav29.com/">xav29.com</a> in your desktop or mobile browser.</p>
         </div>
 
         <footer>
-            <p>© 2024–2026 Xav. Built for high performance.</p>
+            <p>© 2024–2026 XAVPC. Singapore • High Performance Hardware.</p>
         </footer>
     </div>
 
-    <!-- Gallery Script -->
-    <script>
-        const buildImages = [
-            "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
-            "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3678.jpg",
-            "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3671.jpg",
-            "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3674.jpg",
-            "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3672.jpg"
-        ];
-
-        let currentIndex = 0;
-        const galleryImg = document.getElementById('galleryImg');
-        const galleryBadge = document.getElementById('galleryBadge');
-        const dots = document.querySelectorAll('.gallery-dot');
-        const container = document.getElementById('galleryContainer');
-
-        function updateSlide() {
-            galleryImg.style.opacity = '0.3';
-            setTimeout(() => {
-                galleryImg.src = buildImages[currentIndex];
-                galleryImg.style.opacity = '1';
-            }, 80);
-            galleryBadge.innerText = `${currentIndex + 1} / ${buildImages.length}`;
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentIndex);
-            });
-        }
-
-        function setSlide(idx) { currentIndex = idx; updateSlide(); }
-        function nextSlide() { currentIndex = (currentIndex + 1) % buildImages.length; updateSlide(); }
-        function prevSlide() { currentIndex = (currentIndex - 1 + buildImages.length) % buildImages.length; updateSlide(); }
-
-        document.getElementById('galleryNextBtn').addEventListener('click', nextSlide);
-        document.getElementById('galleryPrevBtn').addEventListener('click', prevSlide);
-
-        let startX = 0;
-        container.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, { passive: true });
-        container.addEventListener('touchend', (e) => {
-            let endX = e.changedTouches[0].screenX;
-            if (startX - endX > 40) nextSlide();
-            if (endX - startX > 40) prevSlide();
-        }, { passive: true });
-    </script>
 </body>
 </html>
