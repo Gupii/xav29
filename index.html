@@ -197,7 +197,7 @@
             <p class="modal-sub">Drag or swipe vertically to spin through real client feedback.</p>
 
             <div id="reviewWheelContainer" class="review-wheel-container">
-                <div id="reviewWheel" class="review-wheel">
+                <div id="reviewWheel">
                     
                     <div class="review-wheel-card">
                         <p class="review-quote">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured that everything was working before leaving."</p>
@@ -252,7 +252,7 @@
                             <h3>Hardware maintenance and Deep cleaning</h3>
                             <span class="expand-icon">+</span>
                         </div>
-                        <p class="short-desc">Comprehensive system overhaul using high-pressure air dust blowers, 99% isopropyl alcohol (IPA), complete fan & case dust extraction, and thermal repasting for both CPU and GPU dies to permanently eliminate thermal throttling.</p>
+                        <p class="short-desc">Full chassis wipe down, electric blower dust extraction across all fans, GPU shrouds, heatsinks, and power supply compartments, followed by fresh thermal repasting for both CPU and GPU.</p>
                         
                         <div class="card-details-wrapper">
                             <div class="card-details">
@@ -260,7 +260,7 @@
                                 <h4>Interactive Service Breakdown</h4>
                                 <ul>
                                     <li>
-                                        <strong id="deepCleanBtn" class="clickable-term">Deep cleaning</strong>: Full chassis disassembly, high-CFM dust blower extraction, and wiping GPU/case components clean using 99% IPA.
+                                        <strong id="deepCleanBtn" class="clickable-term">Deep cleaning</strong>: Full chassis wipe down, blowing dust out of fan blades, GPU heatsinks, and wiping parts clean with 99% IPA.
                                     </li>
                                     <li>
                                         <strong id="repasteBtn" class="clickable-term">Repasting</strong>: Complete removal of dried factory paste on CPU and GPU silicon dies, replacing it with high-grade thermal compound.
@@ -371,12 +371,12 @@
                 <p class="modal-sub">Restoring original thermal efficiency and airflow.</p>
                 
                 <p class="modal-desc-paragraph">
-                    Dust buildup inside dirty PC cases directly chokes fan blades, clogs heatsink fins, and causes severe thermal throttling under heavy gaming loads. We utilize high-pressure electric air dust blowers to blast away trapped dust bunnies from tight GPU shroud crevices, power supply shrouds, and intake filters.
+                    Dust buildup inside dirty PC cases directly chokes fan blades, clogs heatsink fins, and causes thermal throttling under heavy gaming loads. We utilize high-pressure electric air dust blowers to blast away trapped dust from tight GPU shroud crevices, power supply shrouds, and intake filters.
                 </p>
 
                 <div class="ipa-container-box">
                     <p>
-                        After blowing out loose debris, all fan blades, PCB surfaces, and case interior walls are thoroughly wiped clean down to a shine using 
+                        After blowing out loose debris, all fan blades, PCB surfaces, and case interior walls are wiped clean using 
                         <span class="ipa-wrapper">
                             <span id="ipaHighlightBtn" class="ipa-highlight">IPA 99% alcohol</span>
                             <span id="ipaBubble" class="ipa-bubble">
@@ -397,15 +397,15 @@
         </div>
     </div>
 
-    <!-- Catalogue Modal (Live In-Stock Build) -->
+    <!-- Catalogue Modal (Live In-Stock Builds) -->
     <div id="catalogueModal" class="modal-overlay">
         <div class="modal-card catalogue-modal-card">
             <button id="closeCatalogueModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
             <h2>Current Catalogue<span class="dot">.</span></h2>
-            <p class="modal-sub">Click the prebuilt rig below for full specs & details.</p>
+            <p class="modal-sub">Click any prebuilt rig below for full specifications & benchmark proofs.</p>
 
             <div class="catalogue-grid">
-                <!-- Active Prebuilt PC Rig -->
+                <!-- Build 1: 1440p Midrange PC -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
                     <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img" loading="lazy">
                     <div class="card-content">
@@ -417,6 +417,21 @@
                             <span class="expand-icon">&rarr;</span>
                         </div>
                         <p class="short-desc">$900 SGD • Intel i5-12400F • ROG Strix RTX 3070 • 32GB Ripjaws • 360mm Infinity AIO</p>
+                    </div>
+                </div>
+
+                <!-- Build 3: Vector 1080p High-Refresh Rig -->
+                <div class="service-card catalogue-card" onclick="openBuildDetail(3)">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3683.jpg" alt="VECTOR 1080P COMPETITIVE EDITION" class="card-img catalogue-img" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <span class="catalogue-badge">1080p High-Refresh Rig</span>
+                                <h3>VECTOR 1080P COMPETITIVE EDITION</h3>
+                            </div>
+                            <span class="expand-icon">&rarr;</span>
+                        </div>
+                        <p class="short-desc">$750 SGD (or OBO) • EVGA RTX 3060 Ti XC3 • i5-11400 • 16GB Dominator Platinum RGB • MSI B560 Tomahawk • 360mm AIO</p>
                     </div>
                 </div>
             </div>
@@ -498,13 +513,13 @@
             <!-- Verified Benchmark Proof Container -->
             <div id="benchmarkBox" class="benchmark-box">
                 <h4>Verified In-Game Benchmark Proof</h4>
-                <p class="benchmark-intro-text">Real hardware benchmark screenshots captured on native 1440p displays:</p>
+                <p class="benchmark-intro-text">Real hardware benchmark screenshots captured during in-game stress tests:</p>
                 <div id="benchmarkList" class="benchmark-list"></div>
             </div>
 
             <div class="testing-box">
                 <h4>Open-Door Hands-On Testing Policy</h4>
-                <p>We maintain an open-door testing policy for all interested buyers! Feel free to visit and test drive systems or hardware in person on preloaded competitive and AAA games including <strong>Call of Duty</strong>, <strong>Forza Horizon 6</strong>, <strong>VALORANT</strong>, <strong>CS2</strong>, and more upon request before deciding to purchase.</p>
+                <p>We maintain an open-door testing policy for all interested buyers! Feel free to visit and test drive systems or hardware in person on preloaded competitive and AAA games including <strong>Call of Duty</strong>, <strong>Forza Horizon</strong>, <strong>VALORANT</strong>, <strong>CS2</strong>, and more upon request before deciding to purchase.</p>
             </div>
 
             <div class="warranty-box">
@@ -564,12 +579,12 @@
         <div class="modal-card">
             <button id="closeModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
             <h2>Get in Touch<span class="dot">.</span></h2>
-            <p class="modal-sub">Reach out directly via phone, Telegram, or Carousell.</p>
+            <p class="modal-sub">Reach out directly via WhatsApp, Telegram, or Carousell.</p>
 
             <div class="contact-details">
                 <div class="contact-item">
-                    <span class="contact-label">Phone Number</span>
-                    <a href="tel:86865419" class="contact-value">86865419</a>
+                    <span class="contact-label">WhatsApp / Phone</span>
+                    <a href="https://wa.me/6586865419" target="_blank" class="contact-value">86865419</a>
                 </div>
 
                 <div class="contact-item">
@@ -578,7 +593,7 @@
                 </div>
 
                 <div class="contact-item">
-                    <span class="contact-label">Carousell</span>
+                    <span class="contact-label">Carousell Store</span>
                     <a href="https://www.carousell.sg/u/xavpc/" target="_blank" class="contact-value">Visit Carousell Store</a>
                 </div>
             </div>
@@ -712,11 +727,11 @@
                 ],
                 benchmarks: [
                     {
-                        caption: "FORZA HORIZON 6 // 1440P ULTRA • 65 FPS",
+                        caption: "FORZA HORIZON // 1440P ULTRA • 65 FPS",
                         img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-05.jpg"
                     },
                     {
-                        caption: "Expedition 33 // 1440P ULTRA • 60 FPS",
+                        caption: "AAA TITLES // 1440P ULTRA • 60 FPS",
                         img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-07.jpg"
                     },
                     {
@@ -740,6 +755,39 @@
                     "<strong>Storage:</strong> 1TB AMC61 Memory Union Gen4 NVMe SSD",
                     "<strong>Cooler:</strong> Cooler Master T20 CPU Cooler",
                     "<strong>Power Supply:</strong> Novacore 800W 80+ Bronze PSU"
+                ]
+            },
+            3: {
+                badge: "1080p High-Refresh Rig",
+                title: "VECTOR 1080P COMPETITIVE EDITION",
+                price: "$750 SGD (or OBO)",
+                images: [
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3683.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3688.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787659180/IMG_3682.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3691.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787659180/IMG_3687.jpg"
+                ],
+                specs: [
+                    "<strong>Graphics Card:</strong> EVGA GeForce RTX 3060 Ti XC3 LHR 8GB",
+                    "<strong>Processor:</strong> Intel Core i5-11400 (6 Cores / 12 Threads, UHD Graphics 730)",
+                    "<strong>Memory:</strong> 16GB (2x8GB) Corsair Dominator Platinum RGB DDR4-3600MHz",
+                    "<strong>Motherboard:</strong> MSI MAG B560 TOMAHAWK WIFI",
+                    "<strong>Storage:</strong> 1TB KIOXIA M.2 NVMe SSD",
+                    "<strong>Cooler:</strong> ID-COOLING 360mm Infinity Mirror ARGB AIO Liquid Cooler",
+                    "<strong>Power Supply:</strong> Seasonic SS-620GM 620W Modular PSU",
+                    "<strong>Chassis:</strong> Corsair Carbide Series 275R (Tempered Glass)",
+                    "<strong>Features & I/O:</strong> Onboard Wi-Fi 6E, Bluetooth, High-Speed USB & Full ARGB Sync"
+                ],
+                benchmarks: [
+                    {
+                        caption: "VALORANT / COMPETITIVE FPS // 1080P HIGH • 220-300+ FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1787659448/photo_2026-08-25_20-03-51.jpg"
+                    },
+                    {
+                        caption: "ESPORTS & MULTIPLAYER // 1080P HIGH • 200-280+ FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1787659448/photo_2026-08-25_20-03-55.jpg"
+                    }
                 ]
             }
         };
