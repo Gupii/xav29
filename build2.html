@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Vector 1080p Competitive Edition | Specs & Benchmarks</title>
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: #09090b;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            padding: 1.5rem 1rem 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container { max-width: 520px; width: 100%; }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            background: #141418;
+            border: 1px solid #26262c;
+            border-radius: 6px;
+        }
+        .back-nav:active { background: #222; }
+
+        header { margin-bottom: 1.5rem; }
+        .rig-title { font-size: 1.6rem; color: #fff; font-weight: 700; line-height: 1.2; margin-bottom: 0.4rem; }
+        .rig-price { font-size: 1.4rem; font-weight: 700; color: #22c55e; }
+        .status-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: #141418;
+            border: 1px solid #26262c;
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+            margin-bottom: 0.8rem;
+            padding-left: 0.2rem;
+        }
+
+        /* Gallery */
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: #09090b;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #26262c;
+            margin-bottom: 0.6rem;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.15s; }
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 15, 18, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .gallery-prev { left: 10px; }
+        .gallery-next { right: 10px; }
+        .gallery-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-family: monospace;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .gallery-dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.2rem; }
+        .gallery-dot { width: 8px; height: 8px; border-radius: 50%; background: #2e2e38; cursor: pointer; }
+        .gallery-dot.active { background: #fff; transform: scale(1.25); }
+
+        /* Benchmark Cards */
+        .bench-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+        .bench-card {
+            background: #0d0d10;
+            border: 1px solid #202026;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .bench-img {
+            width: 100%;
+            height: auto;
+            max-height: 280px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid #202026;
+            background: #09090b;
+        }
+        .bench-body { padding: 0.9rem; }
+        .bench-title { font-size: 0.95rem; color: #fff; font-weight: 600; margin-bottom: 0.2rem; }
+        .bench-stats { font-size: 0.82rem; color: #22c55e; font-weight: 600; }
+        .bench-detail { font-size: 0.78rem; color: #888; margin-top: 0.3rem; line-height: 1.4; }
+
+        /* Specs Table */
+        .specs-list { list-style: none; }
+        .specs-list li {
+            font-size: 0.84rem;
+            color: #b0b0b0;
+            padding: 0.45rem 0;
+            border-bottom: 1px solid #1f1f26;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .specs-list li:last-child { border-bottom: none; }
+        .specs-list strong { color: #fff; text-align: right; }
+
+        /* Action Stack */
+        .action-stack { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+        .btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background: #ffffff; color: #000000; }
+        .btn-secondary { background: #141418; color: #ffffff; border: 1px solid #26262c; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/app.html" class="back-nav">&larr; Back to All Services</a>
+
+        <header>
+            <h1 class="rig-title">Vector 1080p Competitive Edition</h1>
+            <div>
+                <span class="rig-price">$750 SGD <span style="font-size:0.9rem; color:#888; font-weight:400;">(or OBO)</span></span>
+                <span class="status-badge">In Stock / Plug & Play</span>
+            </div>
+        </header>
+
+        <!-- Hardware Showcase Gallery -->
+        <h3 class="section-heading">Hardware Showcase</h3>
+        <div class="card">
+            <div class="gallery-container" id="galleryContainer">
+                <button class="gallery-btn gallery-prev" id="prevBtn" aria-label="Previous">&#10094;</button>
+                <img id="activeImg" src="https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3683.jpg" alt="Vector 1080p Rig" class="gallery-img">
+                <button class="gallery-btn gallery-next" id="nextBtn" aria-label="Next">&#10095;</button>
+                <div class="gallery-badge" id="imgBadge">1 / 5</div>
+            </div>
+            <div class="gallery-dots" id="dotsContainer">
+                <span class="gallery-dot active" onclick="setSlide(0)"></span>
+                <span class="gallery-dot" onclick="setSlide(1)"></span>
+                <span class="gallery-dot" onclick="setSlide(2)"></span>
+                <span class="gallery-dot" onclick="setSlide(3)"></span>
+                <span class="gallery-dot" onclick="setSlide(4)"></span>
+            </div>
+        </div>
+
+        <!-- In-Game Benchmarks & Stress Tests -->
+        <h3 class="section-heading">In-Game FPS & Stress Testing</h3>
+        <div class="card">
+            <div class="bench-grid">
+                
+                <!-- Game Test 1 -->
+                <div class="bench-card">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1787659448/photo_2026-08-25_20-03-51.jpg" alt="VALORANT Competitive Benchmark" class="bench-img">
+                    <div class="bench-body">
+                        <div class="bench-title">VALORANT / Competitive FPS Test</div>
+                        <div class="bench-stats">220 - 300+ FPS @ 1080p High</div>
+                        <div class="bench-detail">Verified frametime consistency with ultra-low input latency.</div>
+                    </div>
+                </div>
+
+                <!-- Game Test 2 -->
+                <div class="bench-card">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1787659448/photo_2026-08-25_20-03-55.jpg" alt="Esports High Refresh Rate Benchmark" class="bench-img">
+                    <div class="bench-body">
+                        <div class="bench-title">High-Refresh Multiplayer Stress Test</div>
+                        <div class="bench-stats">200 - 280+ FPS Sustained</div>
+                        <div class="bench-detail">GPU boost clocks held stable with low thermals across continuous testing.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Full Hardware Specifications -->
+        <h3 class="section-heading">Detailed Specifications</h3>
+        <div class="card">
+            <ul class="specs-list">
+                <li><span>Processor (CPU)</span> <strong>Intel Core i5-11400 (6C / 12T)</strong></li>
+                <li><span>Graphics Card (GPU)</span> <strong>EVGA RTX 3060 Ti XC3 LHR 8GB</strong></li>
+                <li><span>Memory (RAM)</span> <strong>16GB (2x8GB) Corsair Dominator 3600 RGB</strong></li>
+                <li><span>Motherboard</span> <strong>MSI MAG B560 TOMAHAWK WIFI</strong></li>
+                <li><span>Storage (NVMe SSD)</span> <strong>1TB KIOXIA M.2 NVMe SSD</strong></li>
+                <li><span>Cooling Solution</span> <strong>360mm ID-COOLING Infinity ARGB AIO</strong></li>
+                <li><span>Case / Chassis</span> <strong>Corsair Carbide 275R (Tempered Glass)</strong></li>
+                <li><span>Power Supply (PSU)</span> <strong>Seasonic SS-620GM 620W Modular</strong></li>
+                <li><span>Operating System</span> <strong>Windows 11 Pro Activated & Optimized</strong></li>
+                <li><span>Included Warranty</span> <strong>1 Mo Hardware + 3 Mo Free Support</strong></li>
+            </ul>
+        </div>
+
+        <!-- Contact / Reserve CTAs -->
+        <div class="action-stack">
+            <a href="https://wa.me/6586865419?text=Hi%20Xavier,%20inquiring%20about%20the%20$750%20Vector%203060Ti%20build" target="_blank" class="btn btn-primary">WhatsApp to Reserve: 86865419</a>
+            <a href="https://www.carousell.sg/u/xavpc/" target="_blank" class="btn btn-secondary">View / Buy via Carousell</a>
+            <a href="https://t.me/Leijiye" target="_blank" class="btn btn-secondary">Message on Telegram (@Leijiye)</a>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3683.jpg",
+            "https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3688.jpg",
+            "https://res.cloudinary.com/bqio04wg/image/upload/v1787659180/IMG_3682.jpg",
+            "https://res.cloudinary.com/bqio04wg/image/upload/v1787659181/IMG_3691.jpg",
+            "https://res.cloudinary.com/bqio04wg/image/upload/v1787659180/IMG_3687.jpg"
+        ];
+
+        let index = 0;
+        const activeImg = document.getElementById('activeImg');
+        const imgBadge = document.getElementById('imgBadge');
+        const dots = document.querySelectorAll('.gallery-dot');
+        const container = document.getElementById('galleryContainer');
+
+        function updateSlide() {
+            activeImg.style.opacity = '0.3';
+            setTimeout(() => {
+                activeImg.src = images[index];
+                activeImg.style.opacity = '1';
+            }, 80);
+            imgBadge.innerText = `${index + 1} / ${images.length}`;
+            dots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
+        }
+
+        function setSlide(i) { index = i; updateSlide(); }
+        function next() { index = (index + 1) % images.length; updateSlide(); }
+        function prev() { index = (index - 1 + images.length) % images.length; updateSlide(); }
+
+        document.getElementById('nextBtn').addEventListener('click', next);
+        document.getElementById('prevBtn').addEventListener('click', prev);
+
+        let startX = 0;
+        container.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; }, { passive: true });
+        container.addEventListener('touchend', e => {
+            let diff = startX - e.changedTouches[0].screenX;
+            if (diff > 40) next();
+            if (diff < -40) prev();
+        }, { passive: true });
+    </script>
+</body>
+</html>
