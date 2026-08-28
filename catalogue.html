@@ -332,30 +332,30 @@
             <p>Slide left or right to explore in-stock systems</p>
         </div>
 
-        <!-- 3D Carousel Stage (2 In-Stock Builds) -->
+        <!-- 3D Carousel Stage (2 Active In-Stock Builds) -->
         <div class="carousel-viewport" id="carouselViewport">
             <div class="carousel-track" id="carouselTrack">
 
-                <!-- Build 1: The Ultimate 1440p Midrange Rig -->
+                <!-- Build 1: Vision SFF Digital Compact Rig -->
                 <div class="build-card-3d active" data-index="0">
                     <div>
                         <div class="card-img-box">
                             <span class="card-status-badge">In Stock / Ready</span>
-                            <img src="https://res.cloudinary.com/bqio04wg/image/upload/f_auto,q_auto,w_600/v1786903755/IMG_3670.jpg" alt="1440p Midrange PC" decoding="async" loading="eager">
+                            <img src="https://res.cloudinary.com/bqio04wg/image/upload/f_auto,q_auto,w_600/v1787933996/IMG_3697.jpg" alt="Vision SFF Digital Rig" decoding="async" loading="eager">
                         </div>
                         <div class="card-top-row">
-                            <h3 class="card-title">The Ultimate 1440p Midrange Rig</h3>
-                            <div class="card-price">$900 <span>SGD</span></div>
+                            <h3 class="card-title">Vision SFF Digital Compact Rig</h3>
+                            <div class="card-price">$800 <span>SGD</span></div>
                         </div>
                         <ul class="specs-compact">
-                            <li><span>GPU</span> <strong>ASUS ROG STRIX RTX 3070 8GB</strong></li>
-                            <li><span>CPU</span> <strong>Intel Core i5-12400F</strong></li>
-                            <li><span>RAM</span> <strong>32GB G.SKILL Ripjaws 3600</strong></li>
-                            <li><span>Cooler</span> <strong>360mm Infinity Mirror AIO</strong></li>
-                            <li><span>Storage</span> <strong>1TB KIOXIA NVMe SSD</strong></li>
+                            <li><span>GPU</span> <strong>RTX 3060 Ti VISION OC 8GB</strong></li>
+                            <li><span>CPU</span> <strong>AMD Ryzen 5 5600</strong></li>
+                            <li><span>RAM</span> <strong>16GB Corsair LPX 3600MHz</strong></li>
+                            <li><span>Cooler</span> <strong>Digital Temp Display Cooler</strong></li>
+                            <li><span>Storage</span> <strong>1TB KIOXIA EXCERIA NVMe</strong></li>
                         </ul>
                     </div>
-                    <a href="/build.html" class="card-btn-primary">View Benchmarks & Video &rarr;</a>
+                    <a href="/sff.html" class="card-btn-primary">View Benchmarks & Specs &rarr;</a>
                 </div>
 
                 <!-- Build 2: Vector 1080p Competitive Edition -->
@@ -401,9 +401,8 @@
     </div>
 
     <script>
-        // High-Speed GPU Texture Preloader
         const preloadUrls = [
-            "https://res.cloudinary.com/bqio04wg/image/upload/f_auto,q_auto,w_600/v1786903755/IMG_3670.jpg",
+            "https://res.cloudinary.com/bqio04wg/image/upload/f_auto,q_auto,w_600/v1787933996/IMG_3697.jpg",
             "https://res.cloudinary.com/bqio04wg/image/upload/f_auto,q_auto,w_600/v1787659181/IMG_3683.jpg"
         ];
         preloadUrls.forEach(url => {
@@ -467,7 +466,6 @@
             if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') toggleSlide();
         });
 
-        // Initialize Layout
         update3D();
     </script>
 </body>
