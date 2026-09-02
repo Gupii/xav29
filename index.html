@@ -147,18 +147,18 @@
             
             <!-- Contained, Uncropped Rig Image -->
             <div class="promo-img-box" onclick="openBuildDetail(1)">
-                <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903752/IMG_3669.jpg" alt="Featured PC Rig" class="center-promo-img">
+                <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1787933996/IMG_3697.jpg" alt="Vision SFF Rig" class="center-promo-img">
             </div>
             
             <!-- Build Info & Distinct Standout Typography -->
             <div onclick="openBuildDetail(1)">
-                <span class="catalogue-badge">Featured Rig In-Stock</span>
-                <h3 class="center-promo-title">THE ULTIMATE 1440P PC<span class="dot">.</span></h3>
-                <div class="center-promo-price">$900 <span class="currency">SGD</span></div>
+                <span class="catalogue-badge">Featured SFF Rig In-Stock</span>
+                <h3 class="center-promo-title">VISION SFF DIGITAL COMPACT RIG<span class="dot">.</span></h3>
+                <div class="center-promo-price">$800 <span class="currency">SGD</span></div>
                 <p class="center-promo-specs">
-                    <span>RTX 3070</span> • <span>32GB RAM</span> • <span>i5-12400F</span> • <span>1TB SSD</span>
+                    <span>RTX 3060 Ti Vision</span> • <span>Ryzen 5 5600</span> • <span>16GB 3600MHz</span> • <span>1TB NVMe</span> • <span>Digital Temp Cooler</span>
                 </p>
-                <button class="btn btn-primary center-promo-cta">View Benchmarks & Specs &rarr;</button>
+                <button class="btn btn-primary center-promo-cta">View Specs & Benchmarks &rarr;</button>
             </div>
         </div>
     </div>
@@ -402,21 +402,21 @@
         <div class="modal-card catalogue-modal-card">
             <button id="closeCatalogueModalBtn" class="close-btn" aria-label="Close Modal">&times;</button>
             <h2>Current Catalogue<span class="dot">.</span></h2>
-            <p class="modal-sub">Click any prebuilt rig below for full specifications & benchmark proofs.</p>
+            <p class="modal-sub">Click any prebuilt rig below for full specifications & details.</p>
 
             <div class="catalogue-grid">
-                <!-- Build 1: 1440p Midrange PC -->
+                <!-- Build 1: Vision SFF Digital Compact Rig (Featured) -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(1)">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1787933996/IMG_3697.jpg" alt="VISION SFF DIGITAL COMPACT RIG" class="card-img catalogue-img" loading="lazy">
                     <div class="card-content">
                         <div class="card-header">
                             <div>
-                                <span class="catalogue-badge">1440p High-FPS Rig</span>
-                                <h3>THE ULTIMATE MIDRANGE 1440P GAMING PC.</h3>
+                                <span class="catalogue-badge">Featured SFF Rig</span>
+                                <h3>VISION SFF DIGITAL COMPACT RIG</h3>
                             </div>
                             <span class="expand-icon">&rarr;</span>
                         </div>
-                        <p class="short-desc">$900 SGD • Intel i5-12400F • ROG Strix RTX 3070 • 32GB Ripjaws • 360mm Infinity AIO</p>
+                        <p class="short-desc">$800 SGD • RTX 3060 Ti Vision OC • Ryzen 5 5600 • 16GB 3600MHz • Digital Temp Cooler • Metalfish S5 MAX</p>
                     </div>
                 </div>
 
@@ -450,6 +450,22 @@
             <p class="modal-sub">Click any past rig below to view full specifications & thermal benchmarks.</p>
 
             <div class="catalogue-grid">
+                <!-- Build 4: Ultimate Midrange 1440p PC (Archived / Sold) -->
+                <div class="service-card catalogue-card" onclick="openBuildDetail(4)">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="THE ULTIMATE MIDRANGE 1440P GAMING PC." class="card-img catalogue-img" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <span class="catalogue-badge">1440p High-FPS Rig</span>
+                                <h3>THE ULTIMATE MIDRANGE 1440P GAMING PC.</h3>
+                            </div>
+                            <span class="sold-pill">SOLD</span>
+                        </div>
+                        <p class="short-desc">$900 SGD • Intel i5-12400F • ROG Strix RTX 3070 • 32GB Ripjaws • 360mm Infinity AIO</p>
+                    </div>
+                </div>
+
+                <!-- Build 2: Phantom 3070 Edition (Archived / Sold) -->
                 <div class="service-card catalogue-card" onclick="openBuildDetail(2)">
                     <img src="https://i.postimg.cc/VSHSZpsG/build.jpg" alt="Phantom 3070 Edition" class="card-img catalogue-img" loading="lazy">
                     <div class="card-content">
@@ -536,7 +552,7 @@
 
                 <div class="faq-item">
                     <p class="faq-q">Q: Is Wi-Fi and Bluetooth included?</p>
-                    <p class="faq-a">Yes. Onboard Wi-Fi 6 and Bluetooth modules are pre-installed and configured out of the box on all full systems.</p>
+                    <p class="faq-a">Yes. Onboard Wi-Fi and Bluetooth modules are pre-installed and configured out of the box on all full systems.</p>
                 </div>
 
                 <div class="faq-item">
@@ -703,40 +719,34 @@
         // Prebuilt Rig Database
         const buildData = {
             1: {
-                badge: "1440p High-FPS Rig",
-                title: "THE ULTIMATE MIDRANGE 1440P GAMING PC.",
-                price: "$900 SGD",
-                video: "https://res.cloudinary.com/bqio04wg/video/upload/v1786905941/20260817_024215.mp4",
+                badge: "Featured SFF Compact Rig",
+                title: "VISION SFF DIGITAL COMPACT RIG",
+                price: "$800 SGD",
                 images: [
-                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
-                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3678.jpg",
-                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3671.jpg",
-                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3674.jpg",
-                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3672.jpg"
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787933996/IMG_3697.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787933996/IMG_3695.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787933996/IMG_3696.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1787933997/IMG_3699.jpg"
                 ],
                 specs: [
-                    "<strong>Processor:</strong> Intel Core i5-12400F (6 Cores / 12 Threads, Up to 4.4GHz)",
-                    "<strong>Graphics Card:</strong> ASUS ROG STRIX GeForce RTX 3070 8GB",
-                    "<strong>Motherboard:</strong> ASUS TUF GAMING B660-PLUS WIFI D4",
-                    "<strong>Memory:</strong> 32GB (2x16GB) G.SKILL Ripjaws V DDR4-3600MHz",
-                    "<strong>Storage:</strong> 1TB KIOXIA NVMe PCIe SSD",
-                    "<strong>Cooler:</strong> CubeSystems 360mm Infinity Mirror ARGB AIO Liquid Cooler",
-                    "<strong>Power Supply:</strong> ASUS ROG STRIX 750W 80+ Gold Modular PSU",
-                    "<strong>Chassis:</strong> DeepCool CG530 Panoramic Dual-Chamber Case",
-                    "<strong>Features & I/O:</strong> Onboard Wi-Fi 6, Bluetooth, High-Speed USB Type-C & ARGB Sync"
+                    "<strong>Graphics Card:</strong> Gigabyte GeForce RTX 3060 Ti VISION OC 8GB LHR",
+                    "<strong>Processor:</strong> AMD Ryzen 5 5600 (6 Cores / 12 Threads, Up to 4.4GHz)",
+                    "<strong>CPU Cooler:</strong> COOLLEO B40S Digital V2 (Integrated Real-Time Temp Display)",
+                    "<strong>Motherboard:</strong> ASRock B550M-ITX/ac (Mini-ITX)",
+                    "<strong>Memory:</strong> 16GB (2x8GB) Corsair Vengeance LPX DDR4-3600MHz",
+                    "<strong>Storage:</strong> 1TB KIOXIA EXCERIA M.2 NVMe SSD",
+                    "<strong>Power Supply:</strong> Seasonic FOCUS GX-850 850W 80+ Gold Fully Modular PSU",
+                    "<strong>Chassis:</strong> Metalfish S5 MAX Compact Aluminum SFF Case",
+                    "<strong>Features & I/O:</strong> Onboard Wi-Fi & Bluetooth, Real-Time CPU Temp Readout Display, Ultra-Compact Small Form Factor"
                 ],
                 benchmarks: [
                     {
-                        caption: "FORZA HORIZON // 1440P ULTRA • 65 FPS",
-                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-05.jpg"
+                        caption: "VALORANT // 1080P HIGH • 500 FPS IDLE / 250-300 FPS IN COMBAT",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1787934569/photo_2026-08-29_00-29-18.jpg"
                     },
                     {
-                        caption: "AAA TITLES // 1440P ULTRA • 60 FPS",
-                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-07.jpg"
-                    },
-                    {
-                        caption: "VALORANT // 1440P HIGH • 350-400 FPS",
-                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905386/photo_2026-08-17_02-36-11.jpg"
+                        caption: "COUNTER-STRIKE 2 // 1080P HIGH • 400 FPS IDLE / 250+ FPS IN SMOKE & ACTION",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1787934569/photo_2026-08-29_00-29-22.jpg"
                     }
                 ]
             },
@@ -787,6 +797,44 @@
                     {
                         caption: "ESPORTS & MULTIPLAYER // 1080P HIGH • 200-280+ FPS",
                         img: "https://res.cloudinary.com/bqio04wg/image/upload/v1787659448/photo_2026-08-25_20-03-55.jpg"
+                    }
+                ]
+            },
+            4: {
+                badge: "SOLD OUT // PREVIOUS BUILD",
+                title: "THE ULTIMATE MIDRANGE 1440P GAMING PC.",
+                price: "$900 SGD (Sold)",
+                video: "https://res.cloudinary.com/bqio04wg/video/upload/v1786905941/20260817_024215.mp4",
+                images: [
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3678.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3671.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3674.jpg",
+                    "https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3672.jpg"
+                ],
+                specs: [
+                    "<strong>Processor:</strong> Intel Core i5-12400F (6 Cores / 12 Threads, Up to 4.4GHz)",
+                    "<strong>Graphics Card:</strong> ASUS ROG STRIX GeForce RTX 3070 8GB",
+                    "<strong>Motherboard:</strong> ASUS TUF GAMING B660-PLUS WIFI D4",
+                    "<strong>Memory:</strong> 32GB (2x16GB) G.SKILL Ripjaws V DDR4-3600MHz",
+                    "<strong>Storage:</strong> 1TB KIOXIA NVMe PCIe SSD",
+                    "<strong>Cooler:</strong> CubeSystems 360mm Infinity Mirror ARGB AIO Liquid Cooler",
+                    "<strong>Power Supply:</strong> ASUS ROG STRIX 750W 80+ Gold Modular PSU",
+                    "<strong>Chassis:</strong> DeepCool CG530 Panoramic Dual-Chamber Case",
+                    "<strong>Features & I/O:</strong> Onboard Wi-Fi 6, Bluetooth, High-Speed USB Type-C & ARGB Sync"
+                ],
+                benchmarks: [
+                    {
+                        caption: "FORZA HORIZON // 1440P ULTRA • 65 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-05.jpg"
+                    },
+                    {
+                        caption: "AAA TITLES // 1440P ULTRA • 60 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905385/photo_2026-08-17_02-36-07.jpg"
+                    },
+                    {
+                        caption: "VALORANT // 1440P HIGH • 350-400 FPS",
+                        img: "https://res.cloudinary.com/bqio04wg/image/upload/v1786905386/photo_2026-08-17_02-36-11.jpg"
                     }
                 ]
             }
