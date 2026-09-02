@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@1,300&display=swap');
+
+:root {
+    --bg-dark: #050000;
+    --blood-red: #2a0005;
+    --bright-red: #ff0a2b;
+    --rose-pink: #b38b8f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 50%, var(--blood-red) 0%, var(--bg-dark) 85%);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* The Smooth Explosive Flash Layer (Fades over 1.5s) */
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 50% 50%, #9a0015 0%, transparent 85%);
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.flash::after {
+    opacity: 1;
+    transition: opacity 0.02s ease-out; /* Instant flash in */
+}
+
+/* Subtle dark damask/thorn pattern overlay */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image: 
+        radial-gradient(#5c000c 2px, transparent 2.5px),
+        radial-gradient(#5c000c 2px, transparent 2.5px);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
+}
+
+/* Pink Lightning Overlay */
+#lightning {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, #ff00cc 0%, transparent 80%);
+    mix-blend-mode: color-dodge;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+#lightning.strike {
+    animation: pinkLightning 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pinkLightning {
+    0% { opacity: 0; }
+    5% { opacity: 1; filter: brightness(2); }
+    10% { opacity: 0; }
+    15% { opacity: 0.8; filter: brightness(1.5); }
+    25% { opacity: 0; }
+    40% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+
+/* Container to hold the dynamic petals */
+#petal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+/* The Pure CSS Rose Petal Geometry */
+.petal {
+    position: absolute;
+    background: linear-gradient(135deg, #cc0000 0%, #4d0000 100%);
+    border-radius: 50% 0 50% 50%;
+    box-shadow: inset 2px 2px 6px rgba(255, 100, 100, 0.3), 
+                4px 6px 12px rgba(0, 0, 0, 0.7);
+    opacity: 0.85;
+    will-change: transform, top, opacity;
+}
+
+.petal-fall {
+    top: -10%;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg) rotateX(0deg) rotateY(0deg); opacity: 0; }
+    10% { opacity: 0.85; }
+    90% { opacity: 0.85; }
+    100% { transform: translateY(115vh) rotate(360deg) rotateX(360deg) rotateY(180deg); opacity: 0; }
+}
+
+.petal-burst {
+    top: 50%;
+    left: 50%;
+    animation: burst cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes burst {
+    0% { transform: translate(-50%, -50%) scale(0.2) rotate(0deg) rotateX(0deg); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--rot)) rotateX(360deg); opacity: 0; }
+}
+
+/* Main Typography Container */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Stylized Title */
+.title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 5.5rem;
+    font-weight: 900;
+    color: var(--bright-red);
+    letter-spacing: 6px;
+    line-height: 1.1;
+    cursor: pointer;
+    text-shadow: 
+        0 0 10px rgba(255, 10, 43, 0.3),
+        0 0 30px rgba(200, 0, 20, 0.5),
+        0 0 60px rgba(100, 0, 0, 0.8),
+        4px 4px 0px rgba(15, 0, 0, 0.9);
+    transition: letter-spacing 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                text-shadow 0.6s ease, transform 0.2s ease;
+    animation: slowHeartbeat 4s ease-in-out infinite alternate;
+}
+
+.title:hover {
+    letter-spacing: 14px;
+    animation: fastHeartbeat 0.8s ease-in-out infinite alternate;
+    text-shadow: 
+        0 0 15px rgba(255, 10, 43, 0.6),
+        0 0 45px rgba(255, 20, 50, 0.8),
+        0 0 80px rgba(255, 0, 0, 1),
+        4px 4px 0px rgba(15, 0, 0, 0.9);
+}
+
+.title:active { transform: scale(0.96); }
+
+/* Updated Flare Animation to exactly 2.5 seconds */
+.title.flare {
+    animation: textFlare 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--rose-pink);
+    letter-spacing: 4px;
+    margin-top: 1rem;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes slowHeartbeat {
+    0% { filter: brightness(0.9); transform: scale(1); }
+    100% { filter: brightness(1.15); transform: scale(1.02); }
+}
+
+@keyframes fastHeartbeat {
+    0% { filter: brightness(1); transform: scale(1.02); }
+    100% { filter: brightness(1.4); transform: scale(1.05); }
+}
+
+@keyframes textFlare {
+    0% { transform: scale(1); filter: blur(0); color: var(--bright-red); }
+    15% { transform: scale(1.15); filter: blur(3px); color: #ffffff; text-shadow: 0 0 80px #ff0a2b, 0 0 120px #ff00cc; }
+    100% { transform: scale(1); filter: blur(0); color: var(--bright-red); }
+}
+
+/* =========================================
+   CENTERED SPOTIFY-STYLE MUSIC PLAYER UI
+   ========================================= */
+.music-player-wrapper {
+    position: relative;
+    margin-top: 2.5rem;
+    display: inline-block;
+}
+
+/* Decorative Floating Roses around the player */
+.music-player-wrapper::before,
+.music-player-wrapper::after {
+    content: '🌹';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px rgba(255, 10, 43, 0.5)) hue-rotate(-20deg) brightness(0.8);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.music-player-wrapper::before {
+    left: -25px;
+    transform: translateY(-50%) rotate(-15deg);
+}
+
+.music-player-wrapper::after {
+    right: -25px;
+    transform: translateY(-50%) rotate(15deg);
+}
+
+.music-player {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(15, 0, 5, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 10, 43, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 10, 43, 0.1);
+}
+
+/* Spinning CD / Vinyl */
+.cd-disc {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        #111 0px, #222 2px, #111 4px
+    );
+    border: 2px solid #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 4s linear infinite;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+.cd-disc::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--blood-red);
+    border-radius: 50%;
+}
+
+.cd-disc::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--bg-dark);
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.cd-disc.paused {
+    animation-play-state: paused;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Track Info */
+.track-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    min-width: 130px;
+}
+
+.now-playing-label {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--bright-red);
+    margin-bottom: 2px;
+}
+
+.track-title {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.track-artist {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--rose-pink);
+}
+
+/* Controls */
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 15px;
+}
+
+.play-pause-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, color 0.2s ease;
+}
+
+.play-pause-btn:hover {
+    color: var(--bright-red);
+    transform: scale(1.1);
+}
+
+/* Custom Volume Slider */
+.volume-slider {
+    -webkit-appearance: none;
+    width: 70px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    background: var(--bright-red);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .title { font-size: 3rem; letter-spacing: 3px; }
+    .title:hover { letter-spacing: 6px; }
+    .subtitle { font-size: 1.2rem; }
+
+    .music-player {
+        padding: 10px;
+        gap: 10px;
+    }
+    .track-info { min-width: auto; flex-grow: 1; }
+    .volume-slider { width: 50px; }
+    
+    .music-player-wrapper::before { left: -15px; }
+    .music-player-wrapper::after { right: -15px; }
+}
