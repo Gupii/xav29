@@ -37,6 +37,12 @@
         // --- TUNING VARIABLE FOR EXPLOSION SYNC ---
         const IMPACT_DELAY_MS = 50; 
 
+        // --- HARDWARE PERFORMANCE DETECTION ---
+        // Dynamically limits particles on mobile devices to prevent lag
+        const isMobile = window.innerWidth <= 768;
+        const AMBIENT_PETAL_COUNT = isMobile ? 10 : 25;
+        const BURST_PETAL_COUNT = isMobile ? 35 : 80;
+
         const petalContainer = document.getElementById('petal-container');
         const title = document.getElementById('actionTitle');
         const body = document.body;
@@ -115,9 +121,10 @@
             petal.style.transform = `rotate(${Math.random() * 360}deg)`;
 
             if (Math.random() > 0.6) {
+                // Background petals (Removed blur filter on mobile for FPS)
                 petal.style.background = 'linear-gradient(135deg, #7a0000 0%, #220000 100%)';
                 petal.style.zIndex = '1';
-                petal.style.filter = 'blur(2px)';
+                if (!isMobile) petal.style.filter = 'blur(2px)';
             } else {
                 petal.style.zIndex = '15'; 
             }
@@ -126,10 +133,10 @@
             setTimeout(() => petal.remove(), fallDuration * 1000);
         }
 
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < AMBIENT_PETAL_COUNT; i++) {
             setTimeout(createFallingPetal, Math.random() * 4000);
         }
-        setInterval(createFallingPetal, 450);
+        setInterval(createFallingPetal, isMobile ? 800 : 450);
 
 
         // ----------------------------------------------------
@@ -143,7 +150,7 @@
             clickAudio.play().catch(err => console.log("Audio block:", err));
 
             setTimeout(() => {
-                // Trigger Text Flare (Lasts 2.5 seconds per CSS)
+                // Trigger Text Flare
                 title.classList.remove('flare');
                 void title.offsetWidth; 
                 title.classList.add('flare');
@@ -153,12 +160,12 @@
                 void lightning.offsetWidth;
                 lightning.classList.add('strike');
 
-                // Trigger Deep Red Background Flash (Instantly applies, removes class in 50ms, fades over 1.5s per CSS)
+                // Trigger Deep Red Background Flash
                 body.classList.add('flash');
                 setTimeout(() => body.classList.remove('flash'), 50);
 
                 // Spawn explosive radial petals
-                for (let i = 0; i < 80; i++) {
+                for (let i = 0; i < BURST_PETAL_COUNT; i++) {
                     const petal = document.createElement('div');
                     petal.classList.add('petal', 'petal-burst');
 
@@ -167,7 +174,7 @@
                     petal.style.height = `${size}px`;
 
                     const angle = Math.random() * Math.PI * 2;
-                    const distance = Math.random() * 80 + 40; 
+                    const distance = Math.random() * 60 + 30; // Mobile-safe travel distance
                     
                     const tx = Math.cos(angle) * distance + 'vw';
                     const ty = Math.sin(angle) * distance + 'vh';
