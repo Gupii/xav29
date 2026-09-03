@@ -9,13 +9,22 @@
 <body>
 
     <div id="transitionCurtain" class="transition-curtain">
-        <div id="abyssalRoseContainer" class="abyssal-rose-container">
-            </div>
+        <svg class="curtain-rose-svg" viewBox="-50 -50 100 100">
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(0)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(72)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(144)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(216)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(288)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(36)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(108)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(180)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(252)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(324)"/>
+            <circle cx="0" cy="0" r="15" fill="#050000" />
+        </svg>
     </div>
 
-    <canvas id="bgSoundwaveCanvas"></canvas>
-
-    <canvas id="petalsCanvas"></canvas>
+    <canvas id="mainCanvas"></canvas>
     <div id="lightning"></div>
 
     <section class="hero-section">
@@ -109,68 +118,59 @@
         const title = document.getElementById('actionTitle');
         const body = document.body;
         const lightning = document.getElementById('lightning');
+        let isTransitioning = false;
 
         // ----------------------------------------------------
         // ABYSSAL ROSE ROUTING ENGINE
         // ----------------------------------------------------
-        function buildAbyssalRoseCurtain() {
-            const container = document.getElementById('abyssalRoseContainer');
-            for(let i=0; i<14; i++) {
-                let p = document.createElement('div');
-                p.className = 'abyssal-petal';
-                p.style.transform = `rotate(${i * (360/14)}deg) translateY(-15px)`;
-                container.appendChild(p);
-            }
-            let core = document.createElement('div');
-            core.className = 'abyssal-core';
-            container.appendChild(core);
-        }
-        buildAbyssalRoseCurtain();
-
         function triggerTransition(e, url) {
             e.preventDefault(); 
+            // SILVER BULLET FIX: We halt the massive canvas render loop so the mobile CPU 
+            // can devote 100% of its power to the page transition animation.
+            isTransitioning = true;
+            document.getElementById('unfurlStage').style.display = 'none'; // Clear 3D DOM
+
             const curtain = document.getElementById('transitionCurtain');
             curtain.classList.add('engulf');
             setTimeout(() => {
                 window.location.href = url;
-            }, 1100);
+            }, 1000);
         }
 
-        // Canvas Setups
-        const canvas = document.getElementById('petalsCanvas');
+        // ----------------------------------------------------
+        // UNIFIED CANVAS ENGINE
+        // ----------------------------------------------------
+        const canvas = document.getElementById('mainCanvas');
         const ctx = canvas.getContext('2d', { alpha: true });
-        const waveCanvas = document.getElementById('bgSoundwaveCanvas');
-        const waveCtx = waveCanvas.getContext('2d');
         const burstSoundURL = "https://res.cloudinary.com/bqio04wg/video/upload/v1788338870/koiroylers-shine-02-355934.mp3";
 
         let width, height;
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
         function resizeCanvas() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
+            width = window.innerWidth; height = window.innerHeight;
+            canvas.width = width * dpr; canvas.height = height * dpr;
             ctx.scale(dpr, dpr);
-            waveCanvas.width = width * dpr;
-            waveCanvas.height = waveCanvas.offsetHeight * dpr;
-            waveCtx.scale(dpr, dpr);
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
+        const isMobile = window.innerWidth <= 768;
+
         // ----------------------------------------------------
-        // 1. TRUE 3D BLOOMING ROSE GENERATOR (Fixed Black Dot)
+        // 1. TRUE 3D BLOOMING ROSE (Optimized for Mobile)
         // ----------------------------------------------------
         function build3DRose() {
             const roseContainer = document.getElementById('detailedRose');
-            
-            // Inject Glowing Core to hide converging dark shadows
             const coreGlow = document.createElement('div');
             coreGlow.className = 'rose-glowing-core';
             roseContainer.appendChild(coreGlow);
 
-            const tiers = [
+            // On mobile, we only render 14 petals instead of 36 to save the framerate.
+            const tiers = isMobile ? [
+                { count: 8, width: 90,  height: 130, angleOffset: 15, openAngle: '25deg', grad: 'linear-gradient(135deg, #a80018, #3a0006)' },
+                { count: 6, width: 60,  height: 85,  angleOffset: 45, openAngle: '55deg', grad: 'linear-gradient(135deg, #ff1a38, #930018)' }
+            ] : [
                 { count: 12, width: 110, height: 160, angleOffset: 0,  openAngle: '12deg', grad: 'linear-gradient(135deg, #8a0010, #2a0005)' },
                 { count: 10, width: 90,  height: 130, angleOffset: 15, openAngle: '25deg', grad: 'linear-gradient(135deg, #a80018, #3a0006)' },
                 { count: 8,  width: 70,  height: 100, angleOffset: 30, openAngle: '45deg', grad: 'linear-gradient(135deg, #d90022, #5a000e)' },
@@ -182,18 +182,15 @@
                     const petal = document.createElement('div');
                     petal.className = 'bloom-petal-3d';
                     const rotZ = (360 / tier.count) * i + tier.angleOffset;
-                    petal.style.width = `${tier.width}px`;
-                    petal.style.height = `${tier.height}px`;
+                    petal.style.width = `${tier.width}px`; petal.style.height = `${tier.height}px`;
                     petal.style.background = tier.grad;
                     
-                    // Softened inner shadow to prevent harsh black origin
-                    petal.style.boxShadow = 'inset 2px 2px 5px rgba(255,100,100,0.2), 0 5px 15px rgba(20,0,5,0.4)';
+                    if (!isMobile) petal.style.boxShadow = 'inset 2px 2px 5px rgba(255,100,100,0.2), 0 5px 15px rgba(20,0,5,0.4)';
                     
-                    const openDelay = (3 - tIdx) * 0.12; 
+                    const openDelay = (tiers.length - 1 - tIdx) * 0.12; 
                     petal.style.setProperty('--open-delay', `${openDelay}s`);
                     petal.style.setProperty('--rz', `${rotZ}deg`);
                     petal.style.setProperty('--fold-open', tier.openAngle);
-                    
                     roseContainer.appendChild(petal);
                 }
             });
@@ -212,40 +209,30 @@
         // 3. ORGANIC ROSE PETALS WITH WIDE BURST DISPERSION
         // ----------------------------------------------------
         const particles = [];
-        const isMobile = window.innerWidth <= 768;
-        const MAX_AMBIENT = isMobile ? 16 : 32;
+        const MAX_AMBIENT = isMobile ? 8 : 20;
 
         class Petal {
             constructor(isBurst = false, x = 0, y = 0) {
                 this.isBurst = isBurst;
-                this.x = isBurst ? x : Math.random() * width;
-                this.y = isBurst ? y : Math.random() * -height;
+                this.x = isBurst ? x : Math.random() * width; this.y = isBurst ? y : Math.random() * -height;
                 this.size = Math.random() * (isBurst ? 16 : 12) + 9;
-                this.aspect = Math.random() * 0.35 + 0.65;
-                this.rot = Math.random() * Math.PI * 2;
-                this.rotSpeed = (Math.random() - 0.5) * 0.035;
-                this.opacity = isBurst ? 1 : Math.random() * 0.45 + 0.55;
+                this.aspect = Math.random() * 0.35 + 0.65; this.rot = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.035; this.opacity = isBurst ? 1 : Math.random() * 0.45 + 0.55;
 
                 if (isBurst) {
-                    const angle = Math.random() * Math.PI * 2;
-                    const speed = Math.random() * (isMobile ? 18 : 28) + 8;
-                    this.vx = Math.cos(angle) * speed;
-                    this.vy = Math.sin(angle) * speed;
-                    this.decay = Math.random() * 0.006 + 0.004; 
-                    this.rotSpeed = (Math.random() - 0.5) * 0.07;
+                    const angle = Math.random() * Math.PI * 2, speed = Math.random() * (isMobile ? 14 : 28) + 8;
+                    this.vx = Math.cos(angle) * speed; this.vy = Math.sin(angle) * speed;
+                    this.decay = Math.random() * 0.008 + 0.004; this.rotSpeed = (Math.random() - 0.5) * 0.07;
                     this.color = Math.random() > 0.3 ? '#cc001a' : '#77000d';
                 } else {
-                    this.vx = Math.random() * 0.8 - 0.4;
-                    this.vy = Math.random() * 1.1 + 0.9;
-                    this.swaySpeed = Math.random() * 0.02 + 0.01;
-                    this.swayOffset = Math.random() * 100;
+                    this.vx = Math.random() * 0.8 - 0.4; this.vy = Math.random() * 1.1 + 0.9;
+                    this.swaySpeed = Math.random() * 0.02 + 0.01; this.swayOffset = Math.random() * 100;
                     this.color = Math.random() > 0.4 ? '#b80017' : '#5a000a';
                 }
             }
             update(step) {
                 if (this.isBurst) {
-                    this.x += this.vx; this.y += this.vy;
-                    this.vx *= 0.965; this.vy *= 0.965;
+                    this.x += this.vx; this.y += this.vy; this.vx *= 0.965; this.vy *= 0.965;
                     this.opacity -= this.decay; this.rot += this.rotSpeed * 2;
                 } else {
                     this.y += this.vy; this.x += Math.sin(step * this.swaySpeed + this.swayOffset) * 0.65;
@@ -271,19 +258,16 @@
                 ctx.restore();
             }
         }
-
-        for (let i = 0; i < MAX_AMBIENT; i++) { particles.push(new Petal(false)); }
+        for (let i = 0; i < MAX_AMBIENT; i++) particles.push(new Petal(false));
 
         // ----------------------------------------------------
-        // 4. WEB AUDIO & SYMMETRICAL SOUNDWAVE ENGINE
+        // 4. WEB AUDIO & SOUNDWAVE ENGINE
         // ----------------------------------------------------
         const bgMusic = new Audio();
-        bgMusic.crossOrigin = "anonymous";
-        bgMusic.src = "https://res.cloudinary.com/bqio04wg/video/upload/v1788339928/audiomass_dannyscissorhands.mp3";
+        bgMusic.crossOrigin = "anonymous"; bgMusic.src = "https://res.cloudinary.com/bqio04wg/video/upload/v1788339928/audiomass_dannyscissorhands.mp3";
         bgMusic.loop = true; bgMusic.volume = 0.5;
 
         let audioCtx = null, analyser = null, freqData = null, isAudioSetup = false;
-
         function initAudioPipeline() {
             if (isAudioSetup) return;
             try {
@@ -298,21 +282,15 @@
             } catch (err) {}
         }
 
-        const cdDisc = document.getElementById('cdDisc');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const volumeSlider = document.getElementById('volumeSlider');
+        const cdDisc = document.getElementById('cdDisc'); const playPauseBtn = document.getElementById('playPauseBtn'); const volumeSlider = document.getElementById('volumeSlider');
         let isPlaying = false;
 
         function setPlayState(playing) {
             isPlaying = playing;
             if (isPlaying) {
-                initAudioPipeline();
-                if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-                bgMusic.play().catch(() => {});
-                playPauseBtn.innerText = "⏸"; cdDisc.classList.remove('paused');
-            } else {
-                bgMusic.pause(); playPauseBtn.innerText = "▶"; cdDisc.classList.add('paused');
-            }
+                initAudioPipeline(); if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+                bgMusic.play().catch(() => {}); playPauseBtn.innerText = "⏸"; cdDisc.classList.remove('paused');
+            } else { bgMusic.pause(); playPauseBtn.innerText = "▶"; cdDisc.classList.add('paused'); }
         }
 
         window.addEventListener('load', () => { bgMusic.play().then(() => setPlayState(true)).catch(() => {}); });
@@ -320,12 +298,17 @@
         volumeSlider.addEventListener('input', (e) => { e.stopPropagation(); bgMusic.volume = e.target.value; });
         document.body.addEventListener('click', function startAudio() { if (!isPlaying) setPlayState(true); document.body.removeEventListener('click', startAudio); }, { once: true });
 
-        const BAR_COUNT = isMobile ? 42 : 68;
+        const BAR_COUNT = isMobile ? 32 : 56;
         const barHeights = new Float32Array(BAR_COUNT).fill(3);
 
-        function drawBackgroundWaveform(tick) {
-            const w = waveCanvas.offsetWidth, h = waveCanvas.offsetHeight;
-            waveCtx.clearRect(0, 0, w, h);
+        function drawUnifiedWaveform(tick) {
+            // Draw in bottom section of screen
+            ctx.save();
+            const startY = height - 480;
+            ctx.translate(0, startY);
+            
+            // Fixed base transparency so it acts as background
+            ctx.globalAlpha = 0.35; 
 
             let hasLiveAudio = false;
             if (isAudioSetup && analyser && isPlaying) {
@@ -334,8 +317,9 @@
             }
 
             const totalSpacing = (BAR_COUNT - 1) * 4;
-            const barWidth = Math.max(2, (w - totalSpacing) / BAR_COUNT);
+            const barWidth = Math.max(2, (width - totalSpacing) / BAR_COUNT);
             const mid = (BAR_COUNT - 1) / 2;
+            const waveH = 480;
 
             for (let i = 0; i < BAR_COUNT; i++) {
                 const dist = Math.abs(i - mid) / mid;
@@ -347,40 +331,43 @@
                         const binIndex = Math.min(Math.floor(2 + dist * 32), freqData.length - 1);
                         const bandEnergy = freqData[binIndex] / 255;
                         const bassKick = (freqData[2] + freqData[3] + freqData[4]) / (3 * 255);
-                        const blendedEnergy = (bandEnergy * 0.65 + bassKick * 0.35) * (1.1 + dist * 0.9);
-                        targetHeight = Math.max(3, blendedEnergy * (h * 0.95) * centerPeakShape);
+                        targetHeight = Math.max(3, (bandEnergy * 0.65 + bassKick * 0.35) * (1.1 + dist * 0.9) * (waveH * 0.95) * centerPeakShape);
                     } else {
                         const pulse = Math.sin(tick * 0.08) * 0.35 + 0.65;
                         const wave1 = Math.sin(tick * 0.1 - dist * 3.5) * 0.25;
                         const wave2 = Math.cos(tick * 0.06 + dist * 2.0) * 0.2;
-                        targetHeight = Math.max(3, Math.max(0.2, pulse + wave1 + wave2) * (h * 0.88) * centerPeakShape);
+                        targetHeight = Math.max(3, Math.max(0.2, pulse + wave1 + wave2) * (waveH * 0.88) * centerPeakShape);
                     }
                 }
-
                 barHeights[i] += (targetHeight - barHeights[i]) * (isPlaying ? 0.22 : 0.035);
-                const x = i * (barWidth + 4), y = h - barHeights[i];
+                const currentH = barHeights[i], x = i * (barWidth + 4), y = waveH - currentH;
 
-                const gradient = waveCtx.createLinearGradient(0, h, 0, y);
-                gradient.addColorStop(0, 'rgba(210, 0, 35, 0.75)');
-                gradient.addColorStop(0.5, 'rgba(255, 10, 43, 0.45)');
-                gradient.addColorStop(1, 'rgba(255, 0, 110, 0.12)');
-                waveCtx.fillStyle = gradient;
+                const grad = ctx.createLinearGradient(0, waveH, 0, y);
+                grad.addColorStop(0, 'rgba(210, 0, 35, 0.75)'); grad.addColorStop(0.5, 'rgba(255, 10, 43, 0.45)'); grad.addColorStop(1, 'rgba(255, 0, 110, 0.12)');
+                ctx.fillStyle = grad;
                 
                 const radius = Math.min(barWidth / 2, 4);
-                waveCtx.beginPath(); waveCtx.moveTo(x, h); waveCtx.lineTo(x, y + radius);
-                waveCtx.quadraticCurveTo(x, y, x + radius, y); waveCtx.lineTo(x + barWidth - radius, y);
-                waveCtx.quadraticCurveTo(x + barWidth, y, x + barWidth, y + radius); waveCtx.lineTo(x + barWidth, h);
-                waveCtx.closePath(); waveCtx.fill();
+                ctx.beginPath(); ctx.moveTo(x, waveH); ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y, x + radius, y); ctx.lineTo(x + barWidth - radius, y);
+                ctx.quadraticCurveTo(x + barWidth, y, x + barWidth, y + radius); ctx.lineTo(x + barWidth, waveH);
+                ctx.closePath(); ctx.fill();
             }
+            ctx.restore();
         }
 
         // ----------------------------------------------------
-        // 5. MAIN RENDER LOOP 
+        // 5. UNIFIED RENDER LOOP 
         // ----------------------------------------------------
         let tick = 0;
         function mainRenderLoop() {
+            if (isTransitioning) return; // Immediately stop all canvas math to let the page transition smoothly
+
             ctx.clearRect(0, 0, width, height); tick++;
 
+            // 1. Draw Waveform First (Background)
+            drawUnifiedWaveform(tick);
+
+            // 2. Draw Touch Trail
             const now = performance.now();
             for (let i = touchTrail.length - 1; i >= 0; i--) {
                 const pt = touchTrail[i], age = now - pt.time;
@@ -388,18 +375,15 @@
                 const progress = age / 500, alpha = (1 - progress) * 0.45, radius = (1 - progress * 0.45) * 18; 
                 ctx.save(); ctx.beginPath();
                 const glowGrad = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, radius);
-                glowGrad.addColorStop(0, `rgba(255, 130, 190, ${alpha})`);
-                glowGrad.addColorStop(0.5, `rgba(255, 20, 147, ${alpha * 0.4})`);
-                glowGrad.addColorStop(1, 'rgba(255, 10, 43, 0)');
+                glowGrad.addColorStop(0, `rgba(255, 130, 190, ${alpha})`); glowGrad.addColorStop(0.5, `rgba(255, 20, 147, ${alpha * 0.4})`); glowGrad.addColorStop(1, 'rgba(255, 10, 43, 0)');
                 ctx.fillStyle = glowGrad; ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
             }
 
+            // 3. Draw Petals (Foreground)
             for (let i = particles.length - 1; i >= 0; i--) {
                 const p = particles[i]; p.update(tick); p.draw();
                 if (p.isBurst && p.opacity <= 0) particles.splice(i, 1);
             }
-
-            drawBackgroundWaveform(tick);
             requestAnimationFrame(mainRenderLoop);
         }
         requestAnimationFrame(mainRenderLoop);
@@ -411,15 +395,13 @@
                 title.classList.remove('flare'); void title.offsetWidth; title.classList.add('flare');
                 lightning.classList.remove('strike'); void lightning.offsetWidth; lightning.classList.add('strike');
                 body.classList.add('flash'); setTimeout(() => body.classList.remove('flash'), 50);
-                const burstCount = isMobile ? 45 : 85, rect = title.getBoundingClientRect();
+                const burstCount = isMobile ? 30 : 65, rect = title.getBoundingClientRect();
                 for (let i = 0; i < burstCount; i++) particles.push(new Petal(true, rect.left + rect.width / 2, rect.top + rect.height / 2));
             }, IMPACT_DELAY_MS);
         }
         title.addEventListener('click', triggerBurst);
 
-        // ----------------------------------------------------
-        // 6. "WHAT DO I DO?" UNFURL & REVERSE LOGIC
-        // ----------------------------------------------------
+        // Unfurl Logic
         const unfurlStage = document.getElementById('unfurlStage');
         const unfurlBtn = document.getElementById('unfurlTriggerBtn');
         function toggleRoseUnfurl(e) { e.stopPropagation(); unfurlStage.classList.toggle('open'); }
