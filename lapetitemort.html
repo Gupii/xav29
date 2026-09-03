@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Strict viewport lock: Disables pinch-to-zoom completely -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>La Petite Mort</title>
     
     <link rel="stylesheet" href="lapetitemort.css">
@@ -14,7 +15,8 @@
 
     <main class="hero-content">
         <h1 class="title" id="actionTitle">LA PETITE MORT</h1>
-        <p class="subtitle">An Introduction</p>
+        <!-- Introduction and Yellow Slash Title added below -->
+        <p class="subtitle">An Introduction <br> <span class="slash">/</span> <span class="author-yellow">xavier</span></p>
 
         <!-- Centered Spotify-Style Music Player with Rose Decor -->
         <div class="music-player-wrapper">
@@ -38,7 +40,6 @@
         const IMPACT_DELAY_MS = 50; 
 
         // --- HARDWARE PERFORMANCE DETECTION ---
-        // Dynamically limits particles on mobile devices to prevent lag
         const isMobile = window.innerWidth <= 768;
         const AMBIENT_PETAL_COUNT = isMobile ? 10 : 25;
         const BURST_PETAL_COUNT = isMobile ? 35 : 80;
@@ -121,7 +122,6 @@
             petal.style.transform = `rotate(${Math.random() * 360}deg)`;
 
             if (Math.random() > 0.6) {
-                // Background petals (Removed blur filter on mobile for FPS)
                 petal.style.background = 'linear-gradient(135deg, #7a0000 0%, #220000 100%)';
                 petal.style.zIndex = '1';
                 if (!isMobile) petal.style.filter = 'blur(2px)';
