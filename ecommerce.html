@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>C2B2C E-Commerce | Xavier</title>
+    <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body>
+
+    <div id="transitionCurtain" class="transition-curtain incoming">
+        <div id="abyssalRoseContainer" class="abyssal-rose-container">
+            </div>
+    </div>
+
+    <header class="market-header">
+        <h1 class="market-title">Hardware Exchange</h1>
+        <p class="market-subtitle">C2B2C Market Dynamics & Inventory</p>
+    </header>
+
+    <div class="dashboard-grid">
+        <div class="data-card">
+            <h2 class="card-title"><span>🌹</span> Active Inventory</h2>
+            <ul class="inventory-list">
+                <li><span>Vision SFF Rig (RTX 3060 Ti)</span> <span class="stock-status in-stock">[IN STOCK]</span></li>
+                <li><span>Thermalright PX7 Paste</span> <span class="stock-status in-stock">[IN STOCK]</span></li>
+                <li><span>Corsair RM750x PSU</span> <span class="stock-status sold">[SOLD]</span></li>
+            </ul>
+        </div>
+
+        <div class="data-card">
+            <h2 class="card-title"><span>⚙️</span> Operational Pipelines</h2>
+            <p style="color: #b38b8f; font-size: 0.9rem; line-height: 1.5;">
+                Routing hardware trade-ins through custom refurbishing pipelines. All pre-owned units undergo chassis deep cleaning, thermal die repasting, and heavy benchmark diagnostics before market re-entry.
+            </p>
+        </div>
+    </div>
+
+    <a href="lapetitemort.html" class="return-btn">Return to Introduction</a>
+
+    <script>
+        // Build the physical rose curtain dynamically
+        function buildAbyssalRoseCurtain() {
+            const container = document.getElementById('abyssalRoseContainer');
+            for(let i=0; i<14; i++) {
+                let p = document.createElement('div');
+                p.className = 'abyssal-petal';
+                p.style.transform = `rotate(${i * (360/14)}deg) translateY(-15px)`;
+                container.appendChild(p);
+            }
+            let core = document.createElement('div');
+            core.className = 'abyssal-core';
+            container.appendChild(core);
+        }
+        buildAbyssalRoseCurtain();
+
+        // Holds blacked-out screen for 1 second, then violently retracts
+        window.addEventListener('load', () => {
+            const curtain = document.getElementById('transitionCurtain');
+            setTimeout(() => {
+                curtain.classList.remove('incoming');
+                curtain.classList.add('retract');
+                
+                // Cleanup DOM after animation completes to free memory
+                setTimeout(() => {
+                    curtain.style.display = 'none';
+                }, 1200);
+            }, 1000); // 1000ms holding delay
+        });
+    </script>
+</body>
+</html>
