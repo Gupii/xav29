@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
 :root {
     --bg-dark: #050000;
     --blood-red: #2a0005;
     --bright-red: #ff0a2b;
     --rose-pink: #b38b8f;
+    --rose-gold: #ffcc00;
+    --warm-cream: #fcece8;
+    --warm-amber: #f4d3a1;
 }
 
 * {
@@ -15,44 +18,25 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
-    touch-action: none; 
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-dark);
-    background-image: radial-gradient(circle at 50% 50%, var(--blood-red) 0%, var(--bg-dark) 85%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-image: radial-gradient(circle at 50% 30%, var(--blood-red) 0%, var(--bg-dark) 85%);
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: pan-y;
     position: relative;
 }
 
-/* Smooth Flash Overlay (Fades over 1.5s) */
-body::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at 50% 50%, #9a0015 0%, transparent 85%);
-    opacity: 0;
-    z-index: 1;
-    pointer-events: none;
-    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-body.flash::after {
-    opacity: 1;
-    transition: opacity 0.02s ease-out;
-}
-
-/* Subtle Damask Pattern Overlay */
+/* Subtle Damask Pattern */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     opacity: 0.08; 
     background-image: 
@@ -64,268 +48,321 @@ body::before {
     pointer-events: none;
 }
 
-/* Hardware-Accelerated Petals Canvas */
-#petalsCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* Flash Overlay */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 50% 50%, #9a0015 0%, transparent 85%);
+    opacity: 0;
     z-index: 2;
     pointer-events: none;
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Pink Lightning Overlay */
+body.flash::after {
+    opacity: 1;
+    transition: opacity 0.02s ease-out;
+}
+
+/* Background Canvas Elements */
+#bgSoundwaveCanvas {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 480px;
+    z-index: 12; pointer-events: none; opacity: 0.45;
+}
+
+#petalsCanvas {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 16; pointer-events: none;
+}
+
 #lightning {
-    position: absolute;
-    inset: 0;
+    position: fixed; inset: 0; z-index: 18; pointer-events: none;
     background: radial-gradient(circle at 50% 50%, #ff00cc 0%, transparent 80%);
     opacity: 0;
-    pointer-events: none;
-    z-index: 3;
 }
 
-#lightning.strike {
-    animation: pinkLightning 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+#lightning.strike { animation: pinkLightning 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 @keyframes pinkLightning {
-    0% { opacity: 0; }
-    5% { opacity: 0.6; }
-    10% { opacity: 0; }
-    15% { opacity: 0.4; }
-    25% { opacity: 0; }
-    40% { opacity: 0.2; }
-    100% { opacity: 0; }
+    0% { opacity: 0; } 5% { opacity: 0.6; } 10% { opacity: 0; }
+    15% { opacity: 0.4; } 25% { opacity: 0; } 40% { opacity: 0.2; } 100% { opacity: 0; }
 }
 
-/* Main Typography Container */
+/* =========================================
+   ABYSSAL ROSE PAGE TRANSITION ENGINE
+   ========================================= */
+.transition-curtain {
+    position: fixed; inset: 0; z-index: 999999;
+    pointer-events: none; display: flex; align-items: center; justify-content: center;
+    background: transparent; transition: backdrop-filter 0.5s ease, background 0.5s ease;
+}
+
+.transition-curtain.engulf {
+    pointer-events: auto;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(5, 0, 0, 0.4);
+}
+
+.abyssal-rose-container {
+    position: relative; width: 0; height: 0;
+    transform: scale(0) rotate(0deg); opacity: 0;
+}
+
+.transition-curtain.engulf .abyssal-rose-container {
+    animation: abyssalEngulf 1.2s cubic-bezier(0.7, 0, 0.1, 1) forwards;
+    opacity: 1;
+}
+
+@keyframes abyssalEngulf {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: scale(150) rotate(360deg); opacity: 1; }
+}
+
+.abyssal-petal {
+    position: absolute; top: -50px; left: -50px;
+    width: 100px; height: 100px;
+    background: linear-gradient(135deg, #0a0002, #b30018, #0a0002);
+    border-radius: 50% 0 50% 50%;
+    transform-origin: 50px 50px;
+    box-shadow: 0 0 15px rgba(255, 10, 43, 0.2);
+}
+
+.abyssal-core {
+    position: absolute; top: -40px; left: -40px;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: #050000;
+    box-shadow: 0 0 60px 30px #050000, inset 0 0 20px #000;
+}
+
+/* =========================================
+   SECTION 1: HERO VIEWPORT
+   ========================================= */
+.hero-section {
+    min-height: 100vh; width: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; position: relative;
+    z-index: 20; padding: 2rem 1.2rem 4rem;
+}
+
+.hero-side-quote {
+    position: absolute; top: 15%; left: 5vw; max-width: 280px; text-align: left;
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: #ffffff; line-height: 1.45; opacity: 0.95; z-index: 22; pointer-events: none;
+}
+
+.quote-first-letter {
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(2.8rem, 4.5vw, 3.8rem);
+    color: #ffffff; line-height: 0.85; float: left; margin-right: 8px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.quote-author {
+    display: block; font-size: 0.85rem; font-style: italic;
+    color: var(--rose-pink); margin-top: 8px; letter-spacing: 1px;
+}
+
 .hero-content {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    padding: 0 1rem;
-    will-change: transform;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; width: 100%; max-width: 900px;
 }
 
-/* Fluid Scaled Title */
 .title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(2.4rem, 8vw, 5.5rem);
-    font-weight: 900;
-    color: var(--bright-red);
-    letter-spacing: clamp(2px, 1vw, 6px);
-    line-height: 1.1;
-    cursor: pointer;
-    text-shadow: 
-        0 0 12px rgba(255, 10, 43, 0.4),
-        0 0 25px rgba(200, 0, 20, 0.4);
-    transition: transform 0.25s ease;
-    animation: slowHeartbeat 4s ease-in-out infinite alternate;
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 900; color: var(--bright-red); letter-spacing: clamp(1px, 0.5vw, 3px);
+    line-height: 1.3; cursor: pointer; padding: 0 1rem;
+    text-shadow: 0 0 12px rgba(255, 10, 43, 0.4), 0 0 25px rgba(200, 0, 20, 0.4);
+    transition: transform 0.25s ease; animation: slowHeartbeat 4s ease-in-out infinite alternate;
 }
-
-.title:hover {
-    transform: scale(1.04);
-}
-
-.title:active { 
-    transform: scale(0.96); 
-}
-
-.title.flare {
-    animation: textFlare 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+.title:hover { transform: scale(1.02); }
+.title:active { transform: scale(0.98); }
+.title.flare { animation: textFlare 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    font-style: italic;
-    color: var(--rose-pink);
-    letter-spacing: clamp(2px, 0.5vw, 4px);
-    margin-top: 0.8rem;
-    opacity: 0.85;
-    pointer-events: none;
-    line-height: 1.6;
-}
-
-.slash {
-    color: rgba(255, 255, 255, 0.3);
-    margin: 0 8px;
-    font-style: normal;
-}
-
-.author-yellow {
-    color: #ffcc00;
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 5px;
-    text-transform: lowercase;
-    text-shadow: 0 0 10px rgba(255, 204, 0, 0.35);
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-style: italic; color: var(--rose-pink); letter-spacing: 3px;
+    margin-top: 1rem; opacity: 0.85; pointer-events: none; line-height: 1.4;
 }
 
 @keyframes slowHeartbeat {
     0% { transform: scale(1); opacity: 0.92; }
-    100% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1.015); opacity: 1; }
 }
 
 @keyframes textFlare {
     0% { transform: scale(1); color: var(--bright-red); }
-    15% { transform: scale(1.08); color: #ffffff; text-shadow: 0 0 35px #ff0a2b, 0 0 70px #ff00cc; }
+    15% { transform: scale(1.06); color: #ffffff; text-shadow: 0 0 35px #ff0a2b, 0 0 70px #ff00cc; }
     100% { transform: scale(1); color: var(--bright-red); }
 }
 
 /* Spotify Player UI */
 .music-player-wrapper {
-    position: relative;
-    margin-top: 2.2rem;
-    display: inline-block;
-    width: 100%;
-    max-width: 380px;
+    position: relative; margin-top: 2.5rem; display: inline-block;
+    width: 100%; max-width: 360px;
 }
-
 .music-player {
-    position: relative;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(18, 2, 7, 0.92); /* Solid opaque overlay replaces lagging backdrop-filter */
-    padding: 10px 16px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 10, 43, 0.3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+    position: relative; z-index: 100; display: flex; align-items: center; gap: 12px;
+    background: rgba(18, 2, 7, 0.94); padding: 10px 16px; border-radius: 20px;
+    border: 1px solid rgba(255, 10, 43, 0.3); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
     justify-content: space-between;
 }
-
-/* Spinning Vinyl CD */
 .cd-disc {
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-    border-radius: 50%;
+    width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
     background: radial-gradient(circle, #2a0005 0%, #15151b 45%, #050508 100%);
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: spin 4s linear infinite;
-    will-change: transform;
+    border: 1.5px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center;
+    justify-content: center; animation: spin 4s linear infinite;
+}
+.cd-disc::before { content: ''; position: absolute; width: 14px; height: 14px; background: var(--bright-red); border-radius: 50%; }
+.cd-disc::after { content: ''; position: absolute; width: 5px; height: 5px; background: #000; border-radius: 50%; }
+.cd-disc.paused { animation-play-state: paused; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.track-info { display: flex; flex-direction: column; justify-content: center; text-align: left; flex-grow: 1; min-width: 0; }
+.now-playing-label { font-family: -apple-system, sans-serif; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--bright-red); margin-bottom: 2px; }
+.track-title { font-family: -apple-system, sans-serif; font-size: 0.85rem; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.track-artist { font-family: -apple-system, sans-serif; font-size: 0.7rem; font-weight: 400; color: var(--rose-pink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.player-controls { display: flex; align-items: center; gap: 10px; border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 12px; }
+.play-pause-btn { background: transparent; border: none; color: #ffffff; font-size: 1.1rem; cursor: pointer; padding: 4px; }
+.play-pause-btn:active { color: var(--bright-red); }
+.volume-slider { -webkit-appearance: none; width: 45px; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 4px; outline: none; }
+.volume-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #ffffff; }
+
+.scroll-cue {
+    position: absolute; bottom: 25px; display: flex; flex-direction: column; align-items: center;
+    gap: 6px; opacity: 0.75; transition: opacity 0.3s ease; text-decoration: none;
+}
+.scroll-cue-text { font-family: 'Cinzel Decorative', serif; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-pink); }
+.scroll-cue-arrow { font-size: 1rem; color: var(--bright-red); animation: floatArrow 2s infinite ease-in-out; }
+@keyframes floatArrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+/* =========================================
+   SECTION 2: FULL-SECTION IMAGE SHOWCASE
+   ========================================= */
+.intro-section {
+    min-height: 100vh; width: 100%; position: relative; z-index: 10; display: flex;
+    align-items: center; justify-content: center; padding: 4rem 1.2rem; overflow: hidden;
 }
 
-.cd-disc::before {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: var(--bright-red);
-    border-radius: 50%;
+.intro-full-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.intro-full-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; filter: brightness(0.58) contrast(1.1); }
+.intro-full-vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(5, 0, 0, 0.15) 10%, rgba(5, 0, 0, 0.75) 80%, #050000 100%),
+                linear-gradient(to bottom, #050000 0%, transparent 20%, transparent 80%, #050000 100%);
 }
 
-.cd-disc::after {
-    content: '';
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #000;
-    border-radius: 50%;
+.intro-ornate-frame {
+    position: relative; z-index: 20; width: 100%; max-width: 540px; min-height: 480px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    padding: 3.5rem 2rem 3rem; border: 1px solid rgba(255, 10, 43, 0.4); border-radius: 20px;
+    background: rgba(10, 0, 3, 0.65); box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 10, 43, 0.08);
 }
 
-.cd-disc.paused {
-    animation-play-state: paused;
+.rose-corner { position: absolute; font-size: 1.35rem; opacity: 0.9; filter: drop-shadow(0 0 8px rgba(255, 10, 43, 0.65)); pointer-events: none; z-index: 5; }
+.rose-tl { top: 12px; left: 14px; } .rose-tr { top: 12px; right: 14px; transform: scaleX(-1); }
+.rose-bl { bottom: 12px; left: 14px; transform: scaleY(-1); } .rose-br { bottom: 12px; right: 14px; transform: scale(-1); }
+
+.greet-title {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-style: italic; font-weight: 500; color: var(--warm-cream); letter-spacing: 2px;
+    line-height: 1; margin-bottom: 1rem; text-shadow: 0 0 15px rgba(252, 236, 232, 0.3);
 }
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+.name-container { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 2rem; }
+.rose-crown-arch { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.2rem; filter: drop-shadow(0 0 8px rgba(255, 10, 43, 0.5)); line-height: 1; }
+.rose-crown-sparkle { color: rgba(244, 211, 161, 0.6); font-size: 0.85rem; }
+
+.name-line { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 4vw, 1.8rem); font-style: italic; font-weight: 400; color: #e2cad0; letter-spacing: 1.5px; line-height: 1.3; }
+.name-line .highlight-xavier { font-weight: 600; color: var(--warm-amber); letter-spacing: 2px; text-transform: lowercase; text-shadow: 0 0 12px rgba(244, 211, 161, 0.3); display: inline-block; margin-left: 4px; }
+
+/* =========================================
+   "WHAT DO I DO?" TRUE 3D BLOOMING ROSE
+   ========================================= */
+.unfurl-stage {
+    position: relative; width: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; min-height: 60px;
 }
 
-/* Track Info */
-.track-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    flex-grow: 1;
-    min-width: 0; 
+.unfurl-trigger-btn {
+    position: relative; z-index: 50; background: rgba(42, 0, 5, 0.85);
+    border: 1px solid rgba(255, 10, 43, 0.45); color: var(--warm-cream);
+    font-family: 'Cinzel Decorative', serif; font-size: 0.82rem; letter-spacing: 2px;
+    padding: 0.75rem 1.6rem; border-radius: 25px; cursor: pointer; display: inline-flex;
+    align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(255, 10, 43, 0.2);
+    transition: transform 0.4s 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s 0.8s ease, border-color 0.3s ease;
+    will-change: transform, opacity;
+}
+.unfurl-trigger-btn:hover { transform: scale(1.04); border-color: var(--bright-red); box-shadow: 0 6px 25px rgba(255, 10, 43, 0.4); }
+.unfurl-stage.open .unfurl-trigger-btn { opacity: 0; pointer-events: none; transform: scale(0.6); transition: transform 0.3s ease, opacity 0.3s ease; }
+
+/* 3D Rose Wrapper */
+.rose-flower-unit {
+    position: absolute; width: 420px; height: 420px;
+    pointer-events: none; display: flex; align-items: center; justify-content: center;
+    z-index: 45; perspective: 1000px; transform-style: preserve-3d;
 }
 
-.now-playing-label {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--bright-red);
-    margin-bottom: 2px;
+#detailedRose {
+    position: absolute; top: 50%; left: 50%; width: 0; height: 0;
+    transform-style: preserve-3d; z-index: 0; pointer-events: none;
 }
 
-.track-title {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+/* Glowing Core to fix the black dot intersection */
+.rose-glowing-core {
+    position: absolute; top: -15px; left: -15px; width: 30px; height: 30px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,10,43,0.8) 0%, transparent 70%);
+    box-shadow: 0 0 20px rgba(255,10,43,0.6); z-index: 10; opacity: 0;
+    transition: opacity 1s 0.5s ease; pointer-events: none;
+}
+.unfurl-stage.open .rose-glowing-core { opacity: 1; }
+
+.bloom-petal-3d {
+    position: absolute; bottom: 0; left: 50%; transform-origin: bottom center;
+    border-radius: 50% 0 50% 50%;
+    transform: translateX(-50%) rotateZ(var(--rz)) rotateX(85deg) scale(0.1);
+    opacity: 0; transition: transform 1s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s 0.6s ease;
+    will-change: transform, opacity; pointer-events: none;
+}
+.unfurl-stage.open .bloom-petal-3d {
+    transform: translateX(-50%) rotateZ(var(--rz)) rotateX(var(--fold-open)) scale(1);
+    opacity: 1; transition: transform 1.4s var(--open-delay) cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s var(--open-delay) ease;
 }
 
-.track-artist {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: var(--rose-pink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+/* Text Content Card */
+.rose-core-content {
+    position: relative; z-index: 60; width: 86%; padding: 1.5rem 1.2rem;
+    border-radius: 16px; background: rgba(14, 0, 4, 0.92); border: 1px solid rgba(255, 10, 43, 0.5);
+    box-shadow: 0 0 35px rgba(255, 10, 43, 0.4), inset 0 0 15px rgba(255, 10, 43, 0.15);
+    opacity: 0; transform: scale(0.85); transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+}
+.unfurl-stage.open .rose-core-content {
+    opacity: 1; transform: scale(1); pointer-events: auto;
+    transition: transform 0.8s 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s 0.8s ease;
 }
 
-/* Controls */
-.player-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    padding-left: 12px;
-}
+.rose-core-title { font-family: 'Cinzel Decorative', serif; font-size: 0.88rem; font-weight: 700; color: var(--bright-red); letter-spacing: 2px; margin-bottom: 0.8rem; text-transform: uppercase; }
+.rose-core-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; text-align: left; margin-bottom: 1rem; }
+.rose-core-list li { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; color: var(--warm-cream); line-height: 1.35; display: flex; align-items: flex-start; gap: 6px; }
+.rose-core-list li strong { color: var(--warm-amber); font-style: italic; font-weight: 600; letter-spacing: 0.5px; }
+.rose-bullet { color: var(--bright-red); font-size: 0.75rem; line-height: 1.4; }
+.rose-close-hint { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.76rem; color: var(--rose-pink); letter-spacing: 1px; display: block; opacity: 0.85; }
 
-.play-pause-btn {
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
+/* Custom Link overrides inside the card */
+.ecommerce-link {
+    text-decoration: none; color: inherit; cursor: pointer; display: flex;
+    align-items: flex-start; gap: 6px; transition: transform 0.2s ease, color 0.2s ease;
 }
-
-.play-pause-btn:active {
-    color: var(--bright-red);
-}
-
-.volume-slider {
-    -webkit-appearance: none;
-    width: 50px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    outline: none;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #ffffff;
-}
+.ecommerce-link:hover { transform: translateX(5px); }
+.ecommerce-link:hover strong { color: var(--bright-red); }
 
 @media (max-width: 768px) {
-    .volume-slider { 
-        width: 38px; 
-    }
+    .hero-side-quote { position: static; max-width: 90%; margin-top: 1rem; margin-bottom: 1.5rem; align-self: flex-start; padding-left: 0.5rem; }
+    .intro-ornate-frame { padding: 3rem 1.2rem; min-height: 440px; }
+    .rose-flower-unit { width: 320px; height: 320px; }
+    .rose-core-content { width: 96%; padding: 1.2rem 0.9rem; }
+    #bgSoundwaveCanvas { height: 360px; opacity: 0.45; }
+    .volume-slider { width: 35px; }
 }
