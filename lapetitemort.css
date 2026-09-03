@@ -15,6 +15,11 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    /* Completely disables pinch-to-zoom and pull-to-refresh bouncing */
+    touch-action: none; 
+}
+
 body {
     background-color: var(--bg-dark);
     background-image: radial-gradient(circle at 50% 50%, var(--blood-red) 0%, var(--bg-dark) 85%);
@@ -45,12 +50,12 @@ body.flash::after {
     transition: opacity 0.02s ease-out; /* Instant flash in */
 }
 
-/* Subtle dark damask/thorn pattern overlay (Removed mix-blend-mode for performance) */
+/* Subtle dark damask/thorn pattern overlay */
 body::before {
     content: "";
     position: absolute;
     inset: 0;
-    opacity: 0.08; /* Lowered opacity slightly to compensate for normal blend mode */
+    opacity: 0.08; 
     background-image: 
         radial-gradient(#5c000c 2px, transparent 2.5px),
         radial-gradient(#5c000c 2px, transparent 2.5px);
@@ -105,7 +110,7 @@ body::before {
     box-shadow: inset 2px 2px 6px rgba(255, 100, 100, 0.3), 
                 4px 6px 12px rgba(0, 0, 0, 0.7);
     opacity: 0.85;
-    will-change: transform, opacity; /* Optimized for GPU */
+    will-change: transform, opacity; 
 }
 
 .petal-fall {
@@ -146,7 +151,6 @@ body::before {
 /* Stylized Title with Fluid Scaling */
 .title {
     font-family: 'Cinzel Decorative', serif;
-    /* Fluid scaling: never smaller than 2.5rem, grows with viewport, caps at 5.5rem */
     font-size: clamp(2.5rem, 8vw, 5.5rem);
     font-weight: 900;
     color: var(--bright-red);
@@ -161,7 +165,6 @@ body::before {
     animation: slowHeartbeat 4s ease-in-out infinite alternate;
 }
 
-/* Replaced heavy letter-spacing animation with efficient GPU scaling */
 .title:hover {
     transform: scale(1.05);
     animation: fastHeartbeat 0.8s ease-in-out infinite alternate;
@@ -183,9 +186,26 @@ body::before {
     font-style: italic;
     color: var(--rose-pink);
     letter-spacing: clamp(2px, 0.5vw, 4px);
-    margin-top: 1rem;
-    opacity: 0.8;
+    margin-top: 0.8rem;
+    opacity: 0.85;
     pointer-events: none;
+    line-height: 1.6;
+}
+
+/* Subtitle Name Additions */
+.slash {
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 8px;
+    font-style: normal;
+}
+
+.author-yellow {
+    color: #ffcc00;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: lowercase;
+    text-shadow: 0 0 12px rgba(255, 204, 0, 0.3);
 }
 
 @keyframes slowHeartbeat {
@@ -209,13 +229,12 @@ body::before {
    ========================================= */
 .music-player-wrapper {
     position: relative;
-    margin-top: 2.5rem;
+    margin-top: 2.2rem;
     display: inline-block;
     width: 100%;
     max-width: 380px;
 }
 
-/* Decorative Floating Roses around the player */
 .music-player-wrapper::before,
 .music-player-wrapper::after {
     content: '🌹';
@@ -306,14 +325,14 @@ body::before {
     justify-content: center;
     text-align: left;
     flex-grow: 1;
-    min-width: 0; /* Prevents text overflow */
+    min-width: 0; 
 }
 
 .now-playing-label {
     font-family: 'Inter', -apple-system, sans-serif;
     font-size: 0.55rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     color: var(--bright-red);
     margin-bottom: 2px;
 }
@@ -389,7 +408,6 @@ body::before {
 
 /* Mobile Adjustments for Player */
 @media (max-width: 768px) {
-    /* Hide floating roses on mobile to prevent horizontal overflow */
     .music-player-wrapper::before,
     .music-player-wrapper::after {
         display: none; 
