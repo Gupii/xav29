@@ -9,8 +9,19 @@
 <body>
 
     <div id="transitionCurtain" class="transition-curtain incoming">
-        <div id="abyssalRoseContainer" class="abyssal-rose-container">
-            </div>
+        <svg class="curtain-rose-svg" viewBox="-50 -50 100 100">
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(0)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(72)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(144)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(216)"/>
+            <path d="M0,0 C-30,-25 -40,-60 0,-70 C40,-60 30,-25 0,0 Z" fill="#2a0005" transform="rotate(288)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(36)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(108)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(180)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(252)"/>
+            <path d="M0,0 C-20,-15 -30,-45 0,-50 C30,-45 20,-15 0,0 Z" fill="#7a000e" transform="rotate(324)"/>
+            <circle cx="0" cy="0" r="15" fill="#050000" />
+        </svg>
     </div>
 
     <header class="market-header">
@@ -39,33 +50,14 @@
     <a href="lapetitemort.html" class="return-btn">Return to Introduction</a>
 
     <script>
-        // Build the physical rose curtain dynamically
-        function buildAbyssalRoseCurtain() {
-            const container = document.getElementById('abyssalRoseContainer');
-            for(let i=0; i<14; i++) {
-                let p = document.createElement('div');
-                p.className = 'abyssal-petal';
-                p.style.transform = `rotate(${i * (360/14)}deg) translateY(-15px)`;
-                container.appendChild(p);
-            }
-            let core = document.createElement('div');
-            core.className = 'abyssal-core';
-            container.appendChild(core);
-        }
-        buildAbyssalRoseCurtain();
-
         // Holds blacked-out screen for 1 second, then violently retracts
         window.addEventListener('load', () => {
             const curtain = document.getElementById('transitionCurtain');
             setTimeout(() => {
                 curtain.classList.remove('incoming');
                 curtain.classList.add('retract');
-                
-                // Cleanup DOM after animation completes to free memory
-                setTimeout(() => {
-                    curtain.style.display = 'none';
-                }, 1200);
-            }, 1000); // 1000ms holding delay
+                setTimeout(() => { curtain.style.display = 'none'; }, 1200);
+            }, 1000); 
         });
     </script>
 </body>
