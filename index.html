@@ -16,17 +16,19 @@
     <!-- Center-to-Top-Center Logo Animation -->
     <div id="header-container">
         <img 
-            src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1792523553/ezgif.com-effects_1.webp" 
+            src="https://res.cloudinary.com/bqio04wg/image/upload/v1792523553/ezgif.com-effects_1.webp" 
             id="animated-logo" 
             alt="Xav Logo"
         >
         
+        <!-- Tagline -->
         <div id="tagline">From consumers, to consumers.</div>
 
+        <!-- Nav Buttons -->
         <div id="nav-buttons" class="nav-buttons">
             <button class="btn btn-clean" onclick="transitionToCatalogue(event)">Catalogue</button>
             <button class="btn btn-solid" onclick="transitionToServices(event)">Services</button>
-            <button class="btn btn-outline" onclick="openContactMorph()">Get in Contact</button>
+            <button class="btn btn-outline" onclick="openContactBubble()">Get in Contact</button>
         </div>
     </div>
 
@@ -84,53 +86,52 @@
         
     </div>
 
-    <!-- Retro Pixel Banner -->
-    <div class="pixel-banner">
+    <!-- FIX: Entire Pixel Banner is now the click target, pausing animation on hover -->
+    <div class="pixel-banner" onclick="openPixelModal()">
         <div class="pixel-marquee">
-            <span>NOW FOR SALE: <u class="pixel-trigger" onclick="openPixelModal()">1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
-            <span>NOW FOR SALE: <u class="pixel-trigger" onclick="openPixelModal()">1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
-            <span>NOW FOR SALE: <u class="pixel-trigger" onclick="openPixelModal()">1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
-            <span>NOW FOR SALE: <u class="pixel-trigger" onclick="openPixelModal()">1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
         </div>
     </div>
 
-    <!-- Morphing White Contact Button & Form -->
-    <div id="contactMorph" class="contact-wrapper">
-        <div class="fab-click-area" onclick="openContactMorph()">
-            <span class="fab-text">Reach out</span>
+    <!-- Original Dark Red Floating Action Button -->
+    <div id="reachOutFab" class="fab-bubble" onclick="openContactBubble()">
+        Reach out
+    </div>
+
+    <!-- Contact Form Container -->
+    <div id="contactFormContainer" class="contact-form-container">
+        <div class="contact-form-header">
+            <h3>Get in Touch</h3>
+            <button class="close-form-btn" onclick="closeContactBubble(event)">&times;</button>
         </div>
         
-        <div class="form-content">
-            <div class="contact-form-header">
-                <h3>Get in Touch</h3>
-                <button class="close-form-btn" onclick="closeContactMorph(event)">&times;</button>
-            </div>
-            
-            <div class="form-group">
-                <label>Purpose of contact:</label>
-                <select id="contactPurpose" onchange="updateDynamicSection()">
-                    <option value="custom">Custom PC building</option>
-                    <option value="repairs">Computer services and repairs</option>
-                    <option value="others">Others / advice</option>
-                </select>
-            </div>
-
-            <div class="form-group" id="dynamicSection">
-                <!-- Injected via JS -->
-            </div>
-
-            <div class="form-group">
-                <label>Contact Number (if applicable):</label>
-                <input type="text" id="contactNumber" placeholder="e.g. 86865419">
-            </div>
-
-            <div class="form-group">
-                <label>Email (if applicable):</label>
-                <input type="email" id="contactEmail" placeholder="your@email.com">
-            </div>
-
-            <button class="btn-whatsapp" onclick="submitToWhatsApp()">Send via WhatsApp</button>
+        <div class="form-group">
+            <label>Purpose of contact:</label>
+            <select id="contactPurpose" onchange="updateDynamicSection()">
+                <option value="custom">Custom PC building</option>
+                <option value="repairs">Computer services and repairs</option>
+                <option value="others">Others / advice</option>
+            </select>
         </div>
+
+        <div class="form-group" id="dynamicSection">
+            <!-- Injected via JS -->
+        </div>
+
+        <div class="form-group">
+            <label>Contact Number (if applicable):</label>
+            <input type="text" id="contactNumber" placeholder="e.g. 86865419">
+        </div>
+
+        <div class="form-group">
+            <label>Email (if applicable):</label>
+            <input type="email" id="contactEmail" placeholder="your@email.com">
+        </div>
+
+        <button class="btn-whatsapp" onclick="submitToWhatsApp()">Send via WhatsApp</button>
     </div>
 
     <!-- Instant Inquire Modal with 3D Carousel & Bizgram -->
@@ -257,8 +258,10 @@
             const body = document.body;
 
             const fromSubpage = document.referrer.includes("services.html") || document.referrer.includes("catalogue.html");
+            const isReload = (performance.navigation && performance.navigation.type === 1) || 
+                             (window.performance.getEntriesByType && window.performance.getEntriesByType("navigation")[0]?.type === "reload");
 
-            if (fromSubpage) {
+            if (fromSubpage && !isReload) {
                 const elements = [logo, tagline, navButtons, mainContent];
                 elements.forEach(el => el.style.transition = "none");
                 
@@ -271,13 +274,12 @@
                 void logo.offsetWidth;
                 elements.forEach(el => el.style.transition = "");
 
-                requestAnimationFrame(() => {
-                    entryOverlay.classList.add("fade-out");
-                });
-                setTimeout(() => entryOverlay.remove(), 1000);
-
+                if(entryOverlay) {
+                    requestAnimationFrame(() => entryOverlay.classList.add("fade-out"));
+                    setTimeout(() => entryOverlay.style.display = "none", 800);
+                }
             } else {
-                entryOverlay.style.display = "none";
+                if(entryOverlay) entryOverlay.style.display = "none";
 
                 setTimeout(() => {
                     logo.classList.add("docked");
@@ -292,7 +294,7 @@
                         }, 400);
 
                     }, 1200); 
-                }, 2000);
+                }, 2500); 
             }
 
             updateDynamicSection();
@@ -362,13 +364,15 @@
             }, 400); 
         }
 
-        function openContactMorph() {
-            document.getElementById('contactMorph').classList.add('active');
+        function openContactBubble() {
+            document.getElementById('contactFormContainer').classList.add('active');
+            document.getElementById('reachOutFab').style.transform = "scale(0)";
         }
 
-        function closeContactMorph(event) {
+        function closeContactBubble(event) {
             if(event) event.stopPropagation();
-            document.getElementById('contactMorph').classList.remove('active');
+            document.getElementById('contactFormContainer').classList.remove('active');
+            document.getElementById('reachOutFab').style.transform = "scale(1)";
         }
 
         function updateDynamicSection() {
