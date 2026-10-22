@@ -197,69 +197,83 @@ img {
 
 
 /* =========================================
-   6. FLOATING ACTION BUTTON & CONTACT FORM
+   6. MORPHING WHITE CONTACT BUTTON & FORM (REVERTED)
    ========================================= */
-.fab-bubble {
+.contact-wrapper {
     position: fixed;
-    bottom: 80px;
-    right: 30px;
-    background-color: #5e080d; 
-    color: #f4e8c9; 
-    padding: 16px 28px;
-    border-radius: 50px;
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-    z-index: 960;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
-}
-.fab-bubble:hover {
-    transform: scale(1.05);
-    background-color: #7a0b12;
+    bottom: 45px; 
+    right: 0;
+    background-color: #ffffff; 
+    color: #1a1a1a; 
+    width: 85px;
+    height: 85px;
+    /* White Corner Blob Shape */
+    border-radius: 100% 0 0 0;
+    z-index: 1050; /* Super high index to sit over nav buttons on mobile */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    box-shadow: -5px -5px 20px rgba(0,0,0,0.4);
 }
 
-.contact-form-container {
-    position: fixed;
-    bottom: 80px;
-    right: 30px;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 12px;
-    width: 320px;
-    max-width: 90vw;
-    padding: 1.5rem;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-    z-index: 970;
-    transform: scale(0);
-    transform-origin: bottom right;
-    opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
-    pointer-events: none;
+.contact-wrapper:not(.active):hover {
+    background-color: #f0f0f0;
 }
-.contact-form-container.active {
-    transform: scale(1);
-    opacity: 1;
-    pointer-events: auto;
+
+.contact-wrapper.active {
+    width: 340px;
+    height: 480px; 
+    max-width: 95vw;
+    border-radius: 16px 0 0 0; 
+    box-shadow: -10px -10px 40px rgba(0,0,0,0.8);
+    cursor: default;
+    background-color: #ffffff;
+}
+
+.fab-click-area {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; align-items: flex-end; justify-content: flex-end;
+    padding-bottom: 25px; padding-right: 18px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.fab-text {
+    font-size: 0.85rem; font-weight: 600; color: #1a1a1a;
+}
+
+.contact-wrapper.active .fab-click-area {
+    pointer-events: none; opacity: 0;
+}
+
+.form-content {
+    width: 340px; height: 480px; max-width: 95vw; padding: 1.8rem;
+    position: absolute; top: 0; left: 0; display: flex; flex-direction: column;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease; transition-delay: 0s;
+}
+
+.contact-wrapper.active .form-content {
+    opacity: 1; pointer-events: auto; transition-delay: 0.2s;
 }
 
 .contact-form-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
-.contact-form-header h3 { color: #ffffff; font-size: 1.1rem; font-weight: 500; }
-.close-form-btn { background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; transition: color 0.2s; }
-.close-form-btn:hover { color: #fff; }
+.contact-form-header h3 { color: #1a1a1a; font-size: 1.2rem; font-weight: 600; }
+
+.close-form-btn { background: none; border: none; color: #888; font-size: 1.6rem; cursor: pointer; transition: color 0.2s; }
+.close-form-btn:hover { color: #000; }
 
 .form-group { margin-bottom: 1rem; text-align: left; }
-.form-group label { display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.form-group label { display: block; font-size: 0.75rem; color: #555; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;}
 
 .form-group select, .form-group input, .form-group textarea {
-    width: 100%; padding: 0.6rem; background-color: #262626;
-    border: 1px solid #444; border-radius: 6px; color: #fff; font-family: inherit; font-size: 0.85rem;
+    width: 100%; padding: 0.6rem; background-color: #f9f9f9;
+    border: 1px solid #ccc; border-radius: 6px; color: #000; font-family: inherit; font-size: 0.85rem;
 }
-.form-group select:focus, .form-group input:focus, .form-group textarea:focus { border-color: #888; }
+.form-group select:focus, .form-group input:focus, .form-group textarea:focus { border-color: #555; }
 
 .btn-whatsapp {
     width: 100%; background-color: #25D366; color: #fff; border: none; padding: 0.8rem;
-    border-radius: 6px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; margin-top: 0.5rem; 
+    border-radius: 6px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; margin-top: auto; 
 }
 .btn-whatsapp:hover { background-color: #1ebc5a; }
 
@@ -409,6 +423,8 @@ img {
 /* =========================================
    11. SERVICES PAGE (PARALLAX LAYERS)
    ========================================= */
+.services-body { background-color: #1a1a1a; padding-bottom: 0; }
+
 .chapter-nav {
     position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
     background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -421,7 +437,7 @@ img {
 
 .intro-layer {
     position: relative; height: 100vh; width: 100%;
-    background-image: url('https://res.cloudinary.com/bqio04wg/image/upload/v1792653170/Featured.jpg');
+    background-image: url('https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1200/v1792653170/Featured.jpg');
     background-size: cover; background-position: center; z-index: 10;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
@@ -594,33 +610,53 @@ img {
    13. MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
-    #animated-logo.docked { transform: translate(-50%, 0) scale(0.25); }
-    .nav-buttons { top: 120px; flex-direction: column; gap: 0.8rem; }
-    .btn { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
-    #tagline { top: 80px; left: 5%; font-size: 1.1rem; }
-    #main-content { padding-top: 320px; }
+    /* Header & Navigation Fixes */
+    #animated-logo { width: 200px; }
+    #animated-logo.docked { top: 20px; transform: translate(-50%, 0) scale(0.4); } 
+    #tagline { top: 95px; left: 0; width: 100%; text-align: center; font-size: 1rem; }
+    
+    .nav-buttons { top: 135px; flex-wrap: wrap; justify-content: center; gap: 0.8rem; width: 100%; }
+    .btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+    
+    #main-content { padding-top: 260px; }
 
+    /* Showcases */
     .showcase-row, .showcase-row.reverse { flex-direction: column; gap: 2rem; }
     .sc-text { font-size: 2.2rem; }
-
     .bg-motto { font-size: 1.8rem; }
 
-    .site-footer { flex-direction: column; text-align: center; gap: 2rem; padding: 2rem 1.5rem 6rem 1.5rem; }
-    .footer-right { text-align: center; }
+    /* Footer Fix (Split Left & Right instead of Stacked) */
+    .site-footer {
+        flex-direction: row; flex-wrap: wrap; text-align: left;
+        padding: 2rem 1.5rem 6rem 1.5rem; gap: 1.5rem; justify-content: space-between;
+    }
+    .footer-left { flex: 1; min-width: 150px; }
+    .footer-right { flex: 1; text-align: right; min-width: 120px; }
 
+    /* Contact Form Fix (Z-Index Overlaps) */
+    .contact-wrapper { bottom: 45px; right: 0; border-radius: 100% 0 0 0; z-index: 1050; }
+    .contact-wrapper.active { width: 100vw; max-width: 100vw; border-radius: 0; bottom: 45px; right: 0;}
+    .form-content { width: 100vw; max-width: 100vw; }
+
+    /* Services Page Parallax Images & Navigation */
+    .sticky-bg img { max-width: 85vw; max-height: 40vh; object-fit: contain; }
+    .back-btn { top: 15px; left: 10px; font-size: 0.8rem; padding: 8px 12px; z-index: 1100; }
+    
+    .chapter-nav { 
+        top: auto; bottom: 80px; flex-direction: row; gap: 10px; 
+        width: 95%; justify-content: center; padding: 10px; font-size: 0.75rem; 
+    }
+    .chap-link { font-size: 0.75rem; text-align: center; }
+    .service-info-card { padding: 2rem; }
+    .section-title-layer2 { font-size: 2rem; text-align: center; }
+
+    /* Modals & Carousel */
     .pixel-marquee { font-size: 0.6rem; }
     .mm-gallery-grid { flex-direction: column; }
     .pixel-title { font-size: 1rem; }
-
-    .contact-form-container { right: 5%; width: 90%; }
-
     .carousel-3d-stage { width: 250px; }
     .car-3d-item.prev { transform: translateX(-55%) scale(0.65) translateZ(-100px); }
     .car-3d-item.next { transform: translateX(55%) scale(0.65) translateZ(-100px); }
-    
-    .service-info-card { padding: 2rem; }
-    .section-title-layer2 { font-size: 2rem; text-align: center; }
-    .chapter-nav { flex-direction: column; gap: 10px; width: 90%; text-align: center; }
 
     .cat-modal-overlay { padding: 0; }
     .cat-modal-content { height: 100vh; border-radius: 0; flex-direction: column; overflow-y: auto; }
