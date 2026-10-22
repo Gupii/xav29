@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Xav | Services</title>
-    <!-- Inherits your global styles -->
+    <!-- FIX: Preload the image into memory with high priority to eliminate slow cut-in -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1200/v1792653170/Featured.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="services-body">
 
-    <!-- Seamless Page Entry Overlay -->
     <div id="entry-overlay" class="page-entry-overlay"></div>
 
-    <!-- Back Button -->
     <a href="index.html" class="back-btn" onclick="transitionToHome(event)">&larr; Back to Home</a>
 
-    <!-- Dynamic Chapter Navigation Header -->
     <nav class="chapter-nav">
         <a href="#pt1-assembly" class="chap-link" data-target="pt1-assembly">Pt 1: Custom Assembly</a>
         <a href="#pt2-upgrades" class="chap-link" data-target="pt2-upgrades">Pt 2: Upgrades & Swaps</a>
@@ -23,6 +21,8 @@
 
     <!-- INTRO LAYER -->
     <div id="intro-layer" class="intro-layer">
+        <!-- FIX: Background rendered natively in HTML to bypass CSS load delays -->
+        <img class="intro-bg-img" src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1200/v1792653170/Featured.jpg" alt="Featured PC" fetchpriority="high" loading="eager">
         <div class="intro-overlay"></div>
         <h1 id="intro-text">About our services.</h1>
         <div class="scroll-down-hint">Scroll down &darr;</div>
@@ -110,7 +110,6 @@
         </div>
     </section>
 
-    <!-- Page Load, Transition & Scroll Observer Logic -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("entry-overlay");
@@ -135,30 +134,20 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('data-target');
                     const targetEl = document.getElementById(targetId);
-                    window.scrollTo({
-                        top: targetEl.offsetTop,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetEl.offsetTop, behavior: 'smooth' });
                 });
             });
 
             const sections = document.querySelectorAll('.parallax-section');
             const navLinks = document.querySelectorAll('.chap-link');
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '-50% 0px -50% 0px', 
-                threshold: 0
-            };
-
+            const observerOptions = { root: null, rootMargin: '-50% 0px -50% 0px', threshold: 0 };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         navLinks.forEach(link => {
                             link.classList.remove('active');
-                            if (link.getAttribute('data-target') === entry.target.id) {
-                                link.classList.add('active');
-                            }
+                            if (link.getAttribute('data-target') === entry.target.id) { link.classList.add('active'); }
                         });
                     }
                 });
@@ -171,14 +160,10 @@
             e.preventDefault();
             const overlay = document.getElementById("entry-overlay");
             overlay.style.display = "block";
-            
             void overlay.offsetWidth;
             overlay.style.transition = "opacity 0.4s ease";
             overlay.classList.remove("fade-out");
-            
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 400);
+            setTimeout(() => { window.location.href = "index.html"; }, 400);
         }
     </script>
 </body>
