@@ -226,23 +226,18 @@ img { max-width: 100%; display: block; }
 /* =========================================
    8. RETRO PIXEL BANNER
    ========================================= */
-/* FIX: Cursor pointer applied to the whole banner */
 .pixel-banner {
     position: fixed; bottom: 0; left: 0; width: 100%; background-color: #000000;
     border-top: 2px solid #222; padding: 14px 0; z-index: 950; overflow: hidden; display: flex; align-items: center;
     cursor: pointer;
 }
-/* FIX: Stops animation on hover so the user can easily click */
 .pixel-banner:hover .pixel-marquee { animation-play-state: paused; }
 
 .pixel-marquee {
     display: flex; white-space: nowrap; font-family: 'Press Start 2P', monospace;
     font-size: 0.75rem; color: #ffffff; animation: pixelScroll 24s linear infinite;
 }
-
-.pixel-marquee span u {
-    text-underline-offset: 4px; text-decoration-thickness: 1.5px; transition: color 0.2s;
-}
+.pixel-marquee span u { text-underline-offset: 4px; text-decoration-thickness: 1.5px; transition: color 0.2s; }
 .pixel-banner:hover .pixel-marquee span u { color: #00f3ff; }
 
 @keyframes pixelScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -323,12 +318,7 @@ img { max-width: 100%; display: block; }
     background-color: #080808; z-index: 10;
     display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;
 }
-
-/* FIX: Image loads natively via HTML for instant display */
-.intro-bg-img {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
-}
-
+.intro-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .intro-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65); z-index: 2; }
 #intro-text {
     position: relative; z-index: 3; color: #ffffff; font-size: 3.5rem; font-weight: 600; letter-spacing: -1px;
@@ -451,13 +441,11 @@ img { max-width: 100%; display: block; }
 .cat-details-section { flex: 1; padding: 3rem 2.5rem; overflow-y: auto; text-align: left; }
 .cat-details-section h2 { font-size: 2rem; color: #ffffff; letter-spacing: -0.5px; margin-bottom: 1rem; }
 .cat-divider { width: 50px; height: 3px; background-color: #e5c158; margin-bottom: 2rem; }
-
 .bench-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .bench-item { background: #222; padding: 1rem; border-radius: 6px; display: flex; flex-direction: column; }
 .bench-game { color: #fff; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem;}
 .bench-fps { color: #00f3ff; font-family: 'Impact', sans-serif; font-size: 1.4rem; margin-bottom: 0.2rem;}
 .bench-res { color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;}
-
 .cat-buy-btn {
     width: 100%; background: #fff; color: #000; font-weight: 600; border: none; padding: 1.2rem;
     border-radius: 8px; font-size: 1rem; letter-spacing: 1px; cursor: pointer;
@@ -485,9 +473,7 @@ img { max-width: 100%; display: block; }
 .cat-specs-box li, .cat-warranty-box li {
     font-size: 0.95rem; color: #ccc; margin-bottom: 0.8rem; padding-left: 1.2rem; position: relative; line-height: 1.4;
 }
-.cat-specs-box li::before, .cat-warranty-box li::before {
-    content: "■"; color: #444; position: absolute; left: 0; font-size: 0.6rem; top: 3px;
-}
+.cat-specs-box li::before, .cat-warranty-box li::before { content: "■"; color: #444; position: absolute; left: 0; font-size: 0.6rem; top: 3px; }
 .highlight-spec strong { color: #e5c158; }
 .fine-print { font-size: 0.85rem !important; color: #888 !important; margin-top: 1.2rem; }
 .fine-print::before { display: none; }
@@ -497,34 +483,52 @@ img { max-width: 100%; display: block; }
    13. MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
-    /* Fixed Logo Animation Scaling */
+    /* MOBILE HEADER FIXES */
     #animated-logo { width: 220px; }
     #animated-logo.docked { transform: translate(-50%, 0) scale(0.35); top: 10px; }
-    #tagline { top: 95px; left: 0; width: 100%; text-align: center; font-size: 1.1rem; }
     
+    #tagline { top: 95px; left: 0; width: 100%; text-align: center; font-size: 1.1rem; }
     .nav-buttons { top: 140px; flex-direction: column; gap: 0.8rem; }
     .btn { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
     #main-content { padding-top: 360px; }
 
-    /* Fix image overlap on Services Page */
-    .sticky-bg img { max-width: 85vw; max-height: 45vh; opacity: 0.25; object-fit: contain; }
-
-    /* Back buttons easily accessible below notches */
+    /* SERVICES PAGE FIXES */
+    .sticky-bg img { max-width: 85vw; max-height: 50vh; opacity: 0.35; object-fit: contain; }
     .back-btn { top: 15px; left: 15px; padding: 8px 12px; font-size: 0.8rem; z-index: 2500; }
 
     .showcase-row, .showcase-row.reverse { flex-direction: column; gap: 2rem; }
     .sc-text { font-size: 2.2rem; }
     .bg-motto { font-size: 1.8rem; }
 
-    /* Distributed Footer layout */
-    .site-footer { flex-direction: row; flex-wrap: wrap; text-align: left; justify-content: space-between; gap: 1rem; padding: 2rem 1.5rem 6rem 1.5rem; }
+    /* DISTRIBUTED FOOTER FIX */
+    .site-footer { 
+        flex-direction: row; 
+        flex-wrap: nowrap; 
+        align-items: flex-start;
+        justify-content: space-between; 
+        gap: 0.5rem; 
+        padding: 2rem 1rem 6rem 1rem; 
+    }
+    .footer-left, .footer-right { width: 50%; }
+    .footer-left { text-align: left; }
     .footer-right { text-align: right; }
-    .footer-left p, .footer-right p { font-size: 0.75rem; }
+    .footer-left h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .footer-left p, .footer-right p { font-size: 0.75rem; word-wrap: break-word; }
 
-    .pixel-marquee { font-size: 0.6rem; }
-    .mm-gallery-grid { flex-direction: column; }
-    .pixel-title { font-size: 1rem; }
+    /* PIXEL BANNER & MODAL FIXES */
+    .pixel-banner { padding: 10px 0; }
+    .pixel-marquee { font-size: 0.55rem; } /* Scaled down for mobile */
+    .mm-gallery-grid { flex-direction: column; gap: 1rem; }
+    
+    .pixel-modal-card { 
+        width: 95%; max-width: 95%; padding: 2.5rem 1rem 1.5rem 1rem; 
+        max-height: 85vh; overflow-y: auto; 
+    }
+    .pixel-close-btn { top: 10px; right: 10px; }
+    .pixel-title { font-size: 1.1rem; }
+    .pixel-specs { font-size: 0.85rem; }
 
+    /* CATALOGUE MODAL FIXES */
     .carousel-3d-stage { width: 250px; }
     .car-3d-item.prev { transform: translateX(-55%) scale(0.65) translateZ(-100px); }
     .car-3d-item.next { transform: translateX(55%) scale(0.65) translateZ(-100px); }
