@@ -16,19 +16,17 @@
     <!-- Center-to-Top-Center Logo Animation -->
     <div id="header-container">
         <img 
-            src="https://res.cloudinary.com/bqio04wg/image/upload/v1792523553/ezgif.com-effects_1.webp" 
+            src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1792523553/ezgif.com-effects_1.webp" 
             id="animated-logo" 
             alt="Xav Logo"
         >
         
-        <!-- Tagline (Reveals slowly after logo docks) -->
         <div id="tagline">From consumers, to consumers.</div>
 
-        <!-- Nav Buttons -->
         <div id="nav-buttons" class="nav-buttons">
             <button class="btn btn-clean" onclick="transitionToCatalogue(event)">Catalogue</button>
             <button class="btn btn-solid" onclick="transitionToServices(event)">Services</button>
-            <button class="btn btn-outline" onclick="openContactBubble()">Get in Contact</button>
+            <button class="btn btn-outline" onclick="openContactMorph()">Get in Contact</button>
         </div>
     </div>
 
@@ -39,28 +37,28 @@
             <div class="showcase-row">
                 <div class="sc-text">for you</div>
                 <div class="sc-img">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792564600/20260614_172932.jpg" alt="Showcase 1" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792564600/20260614_172932.jpg" alt="Showcase 1" loading="lazy">
                 </div>
             </div>
 
             <div class="showcase-row reverse">
                 <div class="sc-text">for us</div>
                 <div class="sc-img">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792564600/20260701_225207.jpg" alt="Showcase 2" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792564600/20260701_225207.jpg" alt="Showcase 2" loading="lazy">
                 </div>
             </div>
 
             <div class="showcase-row">
                 <div class="sc-text">for everyone</div>
                 <div class="sc-img">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792564599/IMG_1192.jpg" alt="Showcase 3" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792564599/IMG_1192.jpg" alt="Showcase 3" loading="lazy">
                 </div>
             </div>
 
             <div class="showcase-row reverse">
                 <div class="sc-text">By us.</div>
                 <div class="sc-img">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1788336895/20260902_161438.jpg" alt="Showcase 4" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1788336895/20260902_161438.jpg" alt="Showcase 4" loading="lazy">
                 </div>
             </div>
         </main>
@@ -96,42 +94,43 @@
         </div>
     </div>
 
-    <!-- Original Dark Red Floating Action Button -->
-    <div id="reachOutFab" class="fab-bubble" onclick="openContactBubble()">
-        Reach out
-    </div>
-
-    <!-- Compact Expandable Contact Form (Dark Mode) -->
-    <div id="contactFormContainer" class="contact-form-container">
-        <div class="contact-form-header">
-            <h3>Get in Touch</h3>
-            <button class="close-form-btn" onclick="closeContactBubble(event)">&times;</button>
+    <!-- Morphing White Contact Button & Form -->
+    <div id="contactMorph" class="contact-wrapper">
+        <div class="fab-click-area" onclick="openContactMorph()">
+            <span class="fab-text">Reach out</span>
         </div>
         
-        <div class="form-group">
-            <label>Purpose of contact:</label>
-            <select id="contactPurpose" onchange="updateDynamicSection()">
-                <option value="custom">Custom PC building</option>
-                <option value="repairs">Computer services and repairs</option>
-                <option value="others">Others / advice</option>
-            </select>
-        </div>
+        <div class="form-content">
+            <div class="contact-form-header">
+                <h3>Get in Touch</h3>
+                <button class="close-form-btn" onclick="closeContactMorph(event)">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label>Purpose of contact:</label>
+                <select id="contactPurpose" onchange="updateDynamicSection()">
+                    <option value="custom">Custom PC building</option>
+                    <option value="repairs">Computer services and repairs</option>
+                    <option value="others">Others / advice</option>
+                </select>
+            </div>
 
-        <div class="form-group" id="dynamicSection">
-            <!-- Injected via JS -->
-        </div>
+            <div class="form-group" id="dynamicSection">
+                <!-- Injected via JS -->
+            </div>
 
-        <div class="form-group">
-            <label>Contact Number (if applicable):</label>
-            <input type="text" id="contactNumber" placeholder="e.g. 86865419">
-        </div>
+            <div class="form-group">
+                <label>Contact Number (if applicable):</label>
+                <input type="text" id="contactNumber" placeholder="e.g. 86865419">
+            </div>
 
-        <div class="form-group">
-            <label>Email (if applicable):</label>
-            <input type="email" id="contactEmail" placeholder="your@email.com">
-        </div>
+            <div class="form-group">
+                <label>Email (if applicable):</label>
+                <input type="email" id="contactEmail" placeholder="your@email.com">
+            </div>
 
-        <button class="btn-whatsapp" onclick="submitToWhatsApp()">Send via WhatsApp</button>
+            <button class="btn-whatsapp" onclick="submitToWhatsApp()">Send via WhatsApp</button>
+        </div>
     </div>
 
     <!-- Instant Inquire Modal with 3D Carousel & Bizgram -->
@@ -146,12 +145,12 @@
             <div class="carousel-3d-wrapper">
                 <button class="car-nav" onclick="prevCar()">&#10094;</button>
                 <div class="carousel-3d-stage" id="carouselStage">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792576701/IMG_1192-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792576700/IMG_20260809_161424_025-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792576702/IMG_1190-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792576703/20260906_113405-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792576705/20260701_225207-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792576707/20260614_172932-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792576701/IMG_1192-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792576700/IMG_20260809_161424_025-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792576702/IMG_1190-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792576703/20260906_113405-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792576705/20260701_225207-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792576707/20260614_172932-removebg-preview.png" class="car-3d-item" alt="Showcase PC">
                 </div>
                 <button class="car-nav" onclick="nextCar()">&#10095;</button>
             </div>
@@ -169,7 +168,6 @@
                     <p class="highlight-rule">PC parts picking has an additional fee of $30.</p>
                 </div>
 
-                <!-- Updated Bizgram Link -->
                 <a href="https://bizgram.com/pricelists/download/606" target="_blank" class="btn btn-solid pdf-btn">Download Full Bizgram Catalogue (PDF)</a>
             </div>
         </div>
@@ -184,13 +182,13 @@
             
             <div class="mm-gallery-grid">
                 <div class="mm-gallery-item">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3670.jpg" alt="PC Angle 1" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1786903755/IMG_3670.jpg" alt="PC Angle 1" loading="lazy">
                 </div>
                 <div class="mm-gallery-item">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903756/IMG_3678.jpg" alt="PC Angle 2" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1786903756/IMG_3678.jpg" alt="PC Angle 2" loading="lazy">
                 </div>
                 <div class="mm-gallery-item">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1786903755/IMG_3671.jpg" alt="PC Angle 3" loading="lazy">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1786903755/IMG_3671.jpg" alt="PC Angle 3" loading="lazy">
                 </div>
             </div>
         </div>
@@ -364,16 +362,13 @@
             }, 400); 
         }
 
-        // ORIGINAL REACH OUT BUTTON LOGIC
-        function openContactBubble() {
-            document.getElementById('contactFormContainer').classList.add('active');
-            document.getElementById('reachOutFab').style.transform = "scale(0)";
+        function openContactMorph() {
+            document.getElementById('contactMorph').classList.add('active');
         }
 
-        function closeContactBubble(event) {
+        function closeContactMorph(event) {
             if(event) event.stopPropagation();
-            document.getElementById('contactFormContainer').classList.remove('active');
-            document.getElementById('reachOutFab').style.transform = "scale(1)";
+            document.getElementById('contactMorph').classList.remove('active');
         }
 
         function updateDynamicSection() {
