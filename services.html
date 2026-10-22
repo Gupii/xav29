@@ -31,7 +31,7 @@
     <!-- PT 1: CUSTOM ASSEMBLY LAYER -->
     <section id="pt1-assembly" class="parallax-section">
         <div class="sticky-bg">
-            <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792653410/pcpcpcpc.webp" alt="Custom Assembly">
+            <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1000/v1792653410/pcpcpcpc.webp" alt="Custom Assembly">
         </div>
         
         <div class="scroll-content">
@@ -70,7 +70,7 @@
     <!-- PT 2: UPGRADES & SWAPS LAYER -->
     <section id="pt2-upgrades" class="parallax-section">
         <div class="sticky-bg">
-            <img src="https://res.cloudinary.com/bqio04wg/image/upload/v1792656440/servicing101.jpg" alt="Upgrades and Swaps">
+            <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1000/v1792656440/servicing101.jpg" alt="Upgrades and Swaps">
         </div>
         
         <div class="scroll-content">
@@ -117,23 +117,19 @@
             const introLayer = document.getElementById("intro-layer");
             const introText = document.getElementById("intro-text");
             
-            // Fade out the solid grey transition blanket
             requestAnimationFrame(() => {
                 overlay.classList.add("fade-out");
             });
 
-            // Clean up the overlay div after transition
             setTimeout(() => {
                 overlay.style.display = "none";
             }, 1000);
 
-            // Intro background fade and text reveal
             setTimeout(() => {
                 introLayer.classList.add("darkened");
                 setTimeout(() => introText.classList.add("revealed"), 400);
             }, 300);
 
-            // Smooth scrolling for Chapter Links
             document.querySelectorAll('.chap-link').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -146,7 +142,6 @@
                 });
             });
 
-            // Intersection Observer to highlight active Chapter in Header
             const sections = document.querySelectorAll('.parallax-section');
             const navLinks = document.querySelectorAll('.chap-link');
 
@@ -172,7 +167,6 @@
             sections.forEach(sec => observer.observe(sec));
         });
 
-        // Smooth reverse transition back to index.html
         function transitionToHome(e) {
             e.preventDefault();
             const overlay = document.getElementById("entry-overlay");
