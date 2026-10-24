@@ -66,14 +66,12 @@ img { max-width: 100%; display: block; }
     width: 280px; transition: all 1.2s cubic-bezier(0.25, 1, 0.3, 1);
 }
 #animated-logo.docked { top: 20px; transform: translate(-50%, 0) scale(0.35); }
-
 #tagline {
     position: absolute; top: 130px; left: 0; width: 100%; text-align: center;
     color: #e6f3f5; font-family: "Californian FB", "Times New Roman", serif;
     font-size: 1.5rem; letter-spacing: 0.5px; opacity: 0; z-index: 950; transition: opacity 1.5s ease;
 }
 #tagline.revealed { opacity: 1; }
-
 .nav-buttons {
     position: absolute; top: 180px; left: 50%; transform: translateX(-50%); display: flex; gap: 1.5rem;
     opacity: 0; visibility: hidden; transition: opacity 1.2s ease; pointer-events: auto;
@@ -193,7 +191,7 @@ img { max-width: 100%; display: block; }
     background-color: #5e080d; color: #f4e8c9; 
     padding: 16px 28px; border-radius: 50px; font-weight: 500; font-size: 1rem;
     cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-    z-index: 3000;
+    z-index: 3000; /* Highest so it never hides behind elements */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
 }
 .fab-bubble:hover { transform: scale(1.05); background-color: #7a0b12; }
@@ -237,13 +235,6 @@ img { max-width: 100%; display: block; }
 }
 .instant-modal.active { display: block; }
 .instant-modal-content { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; text-align: center; }
-
-.fixed-close-btn {
-    position: fixed; top: 1.5rem; right: 1.5rem; background: #222; border: 1px solid #555;
-    border-radius: 50%; width: 44px; height: 44px; color: #fff; font-size: 1.5rem; cursor: pointer;
-    z-index: 2100; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
-}
-.fixed-close-btn:hover { background: #444; }
 
 .inq-p1 { color: #a0a0a0; font-size: 1.2rem; margin-bottom: 0.5rem; font-style: italic; }
 .inq-p2 { color: #ffffff; font-family: "Georgia", serif; font-size: 1.5rem; text-decoration: underline; text-underline-offset: 4px; margin-bottom: 2.5rem; }
@@ -302,14 +293,14 @@ img { max-width: 100%; display: block; }
 
 @keyframes pixelScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-
 /* =========================================
-   10. STANDARD MODALS (TOS)
+   10. MODAL OVERLAYS (Z-INDEX 4000)
    ========================================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 1000;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s ease; 
+    z-index: 4000; /* Forces modals to cover the FAB entirely */
 }
 .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
@@ -321,11 +312,11 @@ img { max-width: 100%; display: block; }
 }
 .modal-overlay.active .tos-card { transform: translateY(0); }
 
-.fixed-close-btn-tos {
+.fixed-close-btn-tos, .pixel-close-btn {
     position: absolute; top: 15px; right: 20px; background: #444; border: none; border-radius: 50%;
-    width: 32px; height: 32px; color: #fff; font-size: 1.2rem; cursor: pointer; transition: background 0.2s;
+    width: 32px; height: 32px; color: #fff; font-size: 1.2rem; cursor: pointer; transition: background 0.2s; z-index: 3200;
 }
-.fixed-close-btn-tos:hover { background: #666; }
+.fixed-close-btn-tos:hover, .pixel-close-btn:hover { background: #666; }
 
 .tos-content { color: #bbb; font-size: 0.9rem; line-height: 1.6; margin-top: 1rem;}
 .tos-content h3 { color: #fff; margin: 1.5rem 0 0.5rem; font-size: 1.1rem; font-weight: 500; }
@@ -444,7 +435,7 @@ img { max-width: 100%; display: block; }
 /* Split-Pane Listing Modal */
 .cat-modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9);
-    display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 2000; padding: 2rem;
+    display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 4000; padding: 2rem;
 }
 .cat-modal-overlay.active { opacity: 1; pointer-events: auto; }
 
@@ -462,7 +453,6 @@ img { max-width: 100%; display: block; }
 }
 .cat-close-btn:hover { background: #444; }
 
-/* Lag-Free Hardware Accelerated Gallery */
 .cat-gallery-section { flex: 1.2; position: relative; background-color: #080808; display: flex; align-items: center; justify-content: center; }
 .cat-carousel-viewport { width: 100%; height: 100%; overflow: hidden; position: relative; }
 .cat-carousel-track { display: flex; width: 100%; height: 100%; will-change: transform; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); transform: translate3d(0, 0, 0); }
@@ -544,7 +534,7 @@ img { max-width: 100%; display: block; }
     #main-content { padding-top: 360px; }
 
     /* SERVICES PAGE FIXES */
-    .sticky-bg img { max-width: 85vw; max-height: 45vh; opacity: 0.25; object-fit: contain; }
+    .sticky-bg img { max-width: 85vw; max-height: 50vh; opacity: 0.25; object-fit: contain; }
     .back-btn { top: 15px; left: 15px; padding: 8px 12px; font-size: 0.8rem; z-index: 2500; }
 
     .showcase-row, .showcase-row.reverse { flex-direction: column; gap: 2rem; }
@@ -564,9 +554,20 @@ img { max-width: 100%; display: block; }
 
     /* PIXEL BANNER & MODAL FIXES */
     .pixel-banner { padding: 10px 0; }
-    .pixel-marquee { font-size: 0.55rem; }
+    .pixel-marquee { font-size: 0.55rem; } 
     
-    /* MODAL FIXES */
+    /* REVIEWS MODAL MOBILE FIXES */
+    .reviews-modal-card { 
+        width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; 
+        border-radius: 0; padding-top: 4rem; justify-content: center; border: none;
+    }
+    .reviews-title { font-size: 1.4rem; text-align: center; margin-bottom: 0; padding: 0 10px; }
+    /* Scales down the fixed 3D ring to fit mobile */
+    .scene { transform: scale(0.65); margin-top: 0; } 
+    .review-nav-btns { margin-bottom: 5rem; z-index: 3100; } 
+    .pixel-close-btn { top: 15px; right: 15px; z-index: 3200; }
+
+    /* CATALOGUE MODAL FIXES */
     .carousel-3d-stage { width: 250px; }
     .car-3d-item.prev { transform: translateX(-55%) scale(0.65) translateZ(-100px); }
     .car-3d-item.next { transform: translateX(55%) scale(0.65) translateZ(-100px); }
@@ -576,7 +577,7 @@ img { max-width: 100%; display: block; }
     .chapter-nav { flex-direction: column; gap: 10px; width: 90%; text-align: center; }
 
     .cat-modal-overlay { padding: 0; }
-    .cat-modal-content { height: 100vh; border-radius: 0; flex-direction: column; overflow-y: auto; }
+    .cat-modal-content { height: 100vh; border-radius: 0; flex-direction: column; overflow-y: auto; border: none;}
     .cat-gallery-section { flex: none; height: 350px; width: 100%; }
     .cat-details-section { flex: none; padding: 2rem 1.5rem; }
     .bench-grid { grid-template-columns: 1fr; }
