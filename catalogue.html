@@ -10,13 +10,10 @@
 </head>
 <body class="catalogue-body">
 
-    <!-- Seamless Page Entry Overlay -->
     <div id="entry-overlay" class="page-entry-overlay catalogue-entry"></div>
 
-    <!-- Back Button -->
     <a href="index.html" class="back-btn" onclick="transitionToHome(event)">&larr; Back to Home</a>
 
-    <!-- Main Catalogue Container -->
     <div class="catalogue-page-wrapper">
         <h1 class="cat-page-title">THE CATALOGUE</h1>
         <p class="cat-page-sub">Available pre-built systems. Ready for deployment.</p>
@@ -26,18 +23,26 @@
             <p><strong>CONDITION & WARRANTY NOTICE:</strong> Most components inside these builds use refurbished parts that have been rigorously stress-tested to vet their condition before being used. All parts are assumed to have no manufacturer warranty unless otherwise stated. My personal warranty extends past 1 month for certain components, assuming there is active manufacturer warranty remaining.</p>
         </div>
 
+        <!-- Active Listings Grid -->
+        <div class="cat-grid">
+            <p style="color: #666; font-style: italic; width: 100%; text-align: center; margin-bottom: 2rem;">New builds incoming...</p>
+        </div>
+
+        <!-- ARCHIVE SECTION -->
+        <h2 class="cat-section-header">ARCHIVE / PREVIOUS BUILDS</h2>
+        
         <div class="cat-grid">
             
-            <!-- Listing Card 1: High End 1440P PC -->
-            <div class="cat-card" onclick="openListingModal('listing-1')">
+            <!-- Archived Listing Card 1: High End 1440P PC -->
+            <div class="cat-card archived" onclick="openListingModal('listing-1')">
                 <div class="cat-card-img-box">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792572586/20261019_041305.jpg" alt="High end 1440P GAMING PC" loading="eager">
+                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_800/v1792572586/20261019_041305.jpg" alt="High end 1440P GAMING PC" loading="lazy">
                     <div class="cat-card-overlay">
-                        <span>View Details</span>
+                        <span>View Specs</span>
                     </div>
                 </div>
                 <div class="cat-card-info">
-                    <span class="cat-badge">IN STOCK</span>
+                    <span class="cat-badge sold">SOLD</span>
                     <h3>High end 1440P GAMING PC</h3>
                     <p class="cat-short-specs">3070ti • 5800x • 32gb RAM • 1TB NVMe SSD</p>
                 </div>
@@ -51,14 +56,13 @@
         <div class="cat-modal-content">
             <button class="cat-close-btn" onclick="closeListingModal('listing-1', event)">&times;</button>
             
-            <!-- Left Side: Lag-Free GPU Accelerated Gallery -->
+            <!-- Lag-Free GPU Accelerated Gallery -->
             <div class="cat-gallery-section">
                 <button class="cat-nav-btn left" onclick="moveCatSlide(-1)">&#10094;</button>
                 <button class="cat-nav-btn right" onclick="moveCatSlide(1)">&#10095;</button>
                 
                 <div class="cat-carousel-viewport">
                     <div class="cat-carousel-track" id="catTrack">
-                        <!-- Compressed, Optimized Cloudinary URLs -->
                         <div class="cat-slide"><img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1000/v1792572586/20261019_041305.jpg" alt="PC Angle 1"></div>
                         <div class="cat-slide"><img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1000/v1792572594/20261019_041251.jpg" alt="PC Angle 2"></div>
                         <div class="cat-slide"><img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_1000/v1792572557/photo_2026-10-19_01-38-13.jpg" alt="PC Angle 3"></div>
@@ -71,7 +75,7 @@
                 </div>
             </div>
 
-            <!-- Right Side: Specs & Benchmarks -->
+            <!-- Specs & Benchmarks -->
             <div class="cat-details-section">
                 <h2>High end 1440P GAMING PC</h2>
                 <div class="cat-divider"></div>
@@ -94,26 +98,10 @@
                 <div class="cat-benchmarks-box">
                     <h4>VERIFIED BENCHMARKS</h4>
                     <div class="bench-grid">
-                        <div class="bench-item">
-                            <span class="bench-game">Battlefield 6</span>
-                            <span class="bench-fps">80+ FPS</span>
-                            <span class="bench-res">1440P High</span>
-                        </div>
-                        <div class="bench-item">
-                            <span class="bench-game">Forza Horizon 6</span>
-                            <span class="bench-fps">90+ FPS</span>
-                            <span class="bench-res">1440P Ultra</span>
-                        </div>
-                        <div class="bench-item">
-                            <span class="bench-game">CS2</span>
-                            <span class="bench-fps">200-300 FPS</span>
-                            <span class="bench-res">1440P High</span>
-                        </div>
-                        <div class="bench-item">
-                            <span class="bench-game">VALORANT</span>
-                            <span class="bench-fps">500+ FPS</span>
-                            <span class="bench-res">1440P</span>
-                        </div>
+                        <div class="bench-item"><span class="bench-game">Battlefield 6</span><span class="bench-fps">80+ FPS</span><span class="bench-res">1440P High</span></div>
+                        <div class="bench-item"><span class="bench-game">Forza Horizon 6</span><span class="bench-fps">90+ FPS</span><span class="bench-res">1440P Ultra</span></div>
+                        <div class="bench-item"><span class="bench-game">CS2</span><span class="bench-fps">200-300 FPS</span><span class="bench-res">1440P High</span></div>
+                        <div class="bench-item"><span class="bench-game">VALORANT</span><span class="bench-fps">500+ FPS</span><span class="bench-res">1440P</span></div>
                     </div>
                 </div>
 
@@ -126,35 +114,27 @@
                     </ul>
                 </div>
 
-                <button class="cat-buy-btn" onclick="openContactFromCat()">INQUIRE / PURCHASE</button>
+                <!-- Disabled Sold Button -->
+                <button class="cat-buy-btn sold" disabled>SOLD OUT</button>
             </div>
         </div>
     </div>
 
-    <!-- Interface Logic -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById("entry-overlay");
-            requestAnimationFrame(() => {
-                overlay.classList.add("fade-out");
-            });
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 1000);
+            requestAnimationFrame(() => overlay.classList.add("fade-out"));
+            setTimeout(() => overlay.style.display = "none", 1000);
         });
 
         function transitionToHome(e) {
             e.preventDefault();
             const overlay = document.getElementById("entry-overlay");
             overlay.style.display = "block";
-            
             void overlay.offsetWidth;
             overlay.style.transition = "opacity 0.4s ease";
             overlay.classList.remove("fade-out");
-            
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 400);
+            setTimeout(() => window.location.href = "index.html", 400);
         }
 
         let catSlideIndex = 0;
@@ -164,15 +144,12 @@
             const modal = document.getElementById(modalId);
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; 
-            
-            catSlideIndex = 0;
-            updateCatGallery();
+            catSlideIndex = 0; updateCatGallery();
         }
 
         function closeListingModal(modalId, event) {
             if(event) event.stopPropagation();
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
+            document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
@@ -182,18 +159,12 @@
         }
 
         function updateCatGallery() {
-            const track = document.getElementById('catTrack');
-            track.style.transform = `translate3d(-${catSlideIndex * 100}%, 0, 0)`;
-        }
-
-        function openContactFromCat() {
-            window.open(`https://wa.me/6586865419?text=Hello XAVPC, I am interested in purchasing the High End 1440P GAMING PC.`, '_blank');
+            document.getElementById('catTrack').style.transform = `translate3d(-${catSlideIndex * 100}%, 0, 0)`;
         }
 
         window.onclick = function(event) {
             if (event.target.classList.contains('cat-modal-overlay')) {
-                event.target.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                event.target.classList.remove('active'); document.body.style.overflow = 'auto';
             }
         };
     </script>
