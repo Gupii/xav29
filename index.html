@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Xav | Personal Site</title>
-    <!-- Retro Pixel Font -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
 
-    <!-- Seamless Page Entry Overlay -->
     <div id="entry-overlay" class="page-entry-overlay"></div>
 
-    <!-- Center-to-Top-Center Logo Animation -->
+    <!-- Center-to-Top-Center Logo Animation & Trust Badges -->
     <div id="header-container">
+        
+        <div id="trust-left" class="trust-badge left" onclick="openReviewsModal()">why trust us?</div>
+        
         <img 
             src="https://res.cloudinary.com/bqio04wg/image/upload/v1792523553/ezgif.com-effects_1.webp" 
             id="animated-logo" 
             alt="Xav Logo"
         >
         
-        <!-- Tagline -->
+        <div id="trust-right" class="trust-badge right">5 <span class="sparkle-star">★</span> 129 Reviews</div>
+
         <div id="tagline">From consumers, to consumers.</div>
 
-        <!-- Nav Buttons -->
         <div id="nav-buttons" class="nav-buttons">
             <button class="btn btn-clean" onclick="transitionToCatalogue(event)">Catalogue</button>
             <button class="btn btn-solid" onclick="transitionToServices(event)">Services</button>
@@ -32,7 +33,6 @@
         </div>
     </div>
 
-    <!-- Main Website Content -->
     <div id="main-content">
         
         <main class="showcase-section" id="showcase-section">
@@ -67,7 +67,6 @@
 
         <p class="inquire-text" onclick="openInquireModal()">inquire about custom builds.</p>
 
-        <!-- Company Footer -->
         <footer class="site-footer">
             <div class="footer-left">
                 <h3>Connect with us</h3>
@@ -86,13 +85,15 @@
         
     </div>
 
-    <!-- FIX: Entire Pixel Banner is now the click target, pausing animation on hover -->
-    <div class="pixel-banner" onclick="openPixelModal()">
+    <!-- Retro Pixel Banner (Removed 1440P link as requested) -->
+    <div class="pixel-banner">
         <div class="pixel-marquee">
-            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
-            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
-            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
-            <span>NOW FOR SALE: <u>1440P GAMING PC</u> &nbsp;&nbsp;&bull;&nbsp;&nbsp; PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
+            <span>PC SERVICES &nbsp;&nbsp;&bull;&nbsp;&nbsp; CUSTOM BUILDS &nbsp;&nbsp;&bull;&nbsp;&nbsp; UPGRADES &nbsp;&nbsp;&bull;&nbsp;&nbsp; BUYBACK &nbsp;&nbsp;&bull;&nbsp;&nbsp; </span>
         </div>
     </div>
 
@@ -117,9 +118,7 @@
             </select>
         </div>
 
-        <div class="form-group" id="dynamicSection">
-            <!-- Injected via JS -->
-        </div>
+        <div class="form-group" id="dynamicSection"></div>
 
         <div class="form-group">
             <label>Contact Number (if applicable):</label>
@@ -174,23 +173,75 @@
         </div>
     </div>
 
-    <!-- Pixelated 1440p PC Modal -->
-    <div id="pixelModal" class="modal-overlay">
-        <div class="modal-card pixel-modal-card">
-            <button class="pixel-close-btn" onclick="closePixelModal(event)">&times;</button>
-            <h2 class="pixel-title">1440P GAMING PC</h2>
-            <p class="pixel-specs">i5-12400F // RTX 3070 // 32GB RAM</p>
+    <!-- 3D Reviews Carousel Modal -->
+    <div id="reviewsModal" class="modal-overlay">
+        <div class="modal-card reviews-modal-card">
+            <button class="pixel-close-btn" onclick="closeReviewsModal(event)">&times;</button>
+            <h2 class="reviews-title">Verified Carousell Reviews</h2>
             
-            <div class="mm-gallery-grid">
-                <div class="mm-gallery-item">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1786903755/IMG_3670.jpg" alt="PC Angle 1" loading="lazy">
+            <div class="scene">
+                <div class="carousel" id="reviews3D">
+                    
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Excellent service! My PC had a software issue that seemed beyond repair, but he manage to fix it. He was very friendly, patient, and professional throughout the whole process. I really appreciated that he took the time to explain what caused the issue instead of just fixing it. Thank you for your time and effort in servicing my PC. Truly appreciate the help and would definitely recommend!"[cite: 20]</p>
+                        <span class="rev-user">@afiqidris62332[cite: 20]</span>
+                    </div>
+                    
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Very prompt and knowledgeable. Built an SFF with him, and the PC turn out to be fantastic. The whole experience was very pleasant."[cite: 21]</p>
+                        <span class="rev-user">@tengleongs50486[cite: 21]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Seller was friendly and extremely responsive regarding questions about the build and is very knowledgeable about his craft. PC was delivered in pristine condition with wire management fully taken care of. Recommended seller for prebuilt PCs. will deal again if the need arises."[cite: 22]</p>
+                        <span class="rev-user">@coastalsquire[cite: 22]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Been wanting to upgrade my rig forever and decided to get in touch. walked me through the entire process and guided me on components to purchase. great service provided and my pc is in great condition. for future upgrades i would not hesitate to look for again. highly recommended!"[cite: 23]</p>
+                        <span class="rev-user">@edward.chia.8[cite: 23]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Friendly and responsive, answered any questions I had with detailed explanations. Helped to troubleshoot and ensured that everything was working before leaving."[cite: 24]</p>
+                        <span class="rev-user">@soreil[cite: 24]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"was really nice when showing me the pc, even explaining how to check specs cos i noob. now i can play heavy games!!? if uw buy pc ask this guy he legit pro"[cite: 25]</p>
+                        <span class="rev-user">@airaairaaira0[cite: 25]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"great experience with xavier!! went extra mile to help me settle my build n solve issues. very recommended 👍👍"[cite: 26]</p>
+                        <span class="rev-user">@yrjdnr[cite: 26]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Seller answered all my questions quickly and professionally, and even helped me to source out cpu coolers to swap out for my PC when requested. The after-sales tips was really appreciated from him as well. All in all, the service was extremely affordable, and this seller is truly genuine in his work. Would recommend strongly 👍"[cite: 27]</p>
+                        <span class="rev-user">@collectiblesandcards[cite: 27]</span>
+                    </div>
+
+                    <div class="review-cell">
+                        <div class="stars">★★★★★</div>
+                        <p class="rev-text">"Bro was professionally trained😎👍 The desktop services were handled very smoothly and it works again thx"[cite: 28]</p>
+                        <span class="rev-user">@iutility7[cite: 28]</span>
+                    </div>
+
                 </div>
-                <div class="mm-gallery-item">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1786903756/IMG_3678.jpg" alt="PC Angle 2" loading="lazy">
-                </div>
-                <div class="mm-gallery-item">
-                    <img src="https://res.cloudinary.com/bqio04wg/image/upload/q_auto,f_auto,w_600/v1786903755/IMG_3671.jpg" alt="PC Angle 3" loading="lazy">
-                </div>
+            </div>
+
+            <div class="review-nav-btns">
+                <button onclick="rotateReviews(-1)">&#10094; Prev</button>
+                <button onclick="rotateReviews(1)">Next &#10095;</button>
             </div>
         </div>
     </div>
@@ -254,6 +305,8 @@
             const tagline = document.getElementById("tagline");
             const navButtons = document.getElementById("nav-buttons");
             const mainContent = document.getElementById("main-content");
+            const trustLeft = document.getElementById("trust-left");
+            const trustRight = document.getElementById("trust-right");
             const entryOverlay = document.getElementById("entry-overlay");
             const body = document.body;
 
@@ -262,16 +315,18 @@
                              (window.performance.getEntriesByType && window.performance.getEntriesByType("navigation")[0]?.type === "reload");
 
             if (fromSubpage && !isReload) {
-                const elements = [logo, tagline, navButtons, mainContent];
+                const elements = [logo, tagline, navButtons, mainContent, trustLeft, trustRight];
                 elements.forEach(el => el.style.transition = "none");
                 
                 logo.classList.add("docked");
                 tagline.classList.add("revealed");
                 navButtons.classList.add("revealed");
+                trustLeft.classList.add("revealed");
+                trustRight.classList.add("revealed");
                 mainContent.classList.add("revealed");
                 body.classList.remove("locked");
 
-                void logo.offsetWidth;
+                void logo.offsetWidth; 
                 elements.forEach(el => el.style.transition = "");
 
                 if(entryOverlay) {
@@ -287,23 +342,60 @@
                     setTimeout(() => {
                         tagline.classList.add("revealed");
                         navButtons.classList.add("revealed");
+                        trustLeft.classList.add("revealed");
+                        trustRight.classList.add("revealed");
                         mainContent.classList.add("revealed");
                             
                         setTimeout(() => {
                             body.classList.remove("locked");
                         }, 400);
 
-                    }, 1200); 
+                    }, 1000); 
                 }, 2500); 
             }
 
             updateDynamicSection();
             init3DCarousel();
+            initReviews3D();
         });
+
+        // 3D Reviews Carousel Engine
+        let reviewIndex = 0;
+        function initReviews3D() {
+            const cells = document.querySelectorAll('.review-cell');
+            const radius = window.innerWidth < 768 ? 200 : 400; 
+            cells.forEach((cell, i) => {
+                const angle = i * (360 / cells.length);
+                cell.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+            });
+            rotateReviews(0);
+        }
+
+        function rotateReviews(dir) {
+            const cells = document.querySelectorAll('.review-cell');
+            if(!cells.length) return;
+            const radius = window.innerWidth < 768 ? 200 : 400;
+            reviewIndex += dir;
+            const angle = reviewIndex * -(360 / cells.length);
+            document.getElementById('reviews3D').style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
+        }
+
+        window.addEventListener('resize', initReviews3D);
+
+        function openReviewsModal() {
+            document.getElementById('reviewsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            initReviews3D();
+        }
+
+        function closeReviewsModal(event) {
+            if(event) event.stopPropagation();
+            document.getElementById('reviewsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
 
         function transitionToCatalogue(e) {
             e.preventDefault();
-            
             const wrapper = document.createElement('div');
             wrapper.classList.add('tech-transition-wrapper');
             wrapper.style.left = e.clientX + 'px';
@@ -314,18 +406,14 @@
             const poly = document.createElement('div'); poly.className = 'tech-poly';
             const core = document.createElement('div'); core.className = 'tech-core';
             
-            wrapper.appendChild(ring1);
-            wrapper.appendChild(ring2);
-            wrapper.appendChild(poly);
-            wrapper.appendChild(core);
+            wrapper.appendChild(ring1); wrapper.appendChild(ring2);
+            wrapper.appendChild(poly); wrapper.appendChild(core);
             document.body.appendChild(wrapper);
             
             void wrapper.offsetWidth;
             wrapper.classList.add('active');
 
-            setTimeout(() => {
-                window.location.href = 'catalogue.html';
-            }, 1000); 
+            setTimeout(() => { window.location.href = 'catalogue.html'; }, 1000); 
         }
 
         function transitionToServices(e) {
@@ -346,22 +434,6 @@
                 const y = el.getBoundingClientRect().top + window.scrollY - 150;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
-        }
-
-        function openPixelModal() {
-            const modal = document.getElementById('pixelModal');
-            modal.classList.remove('closing');
-            modal.classList.add('active');
-        }
-
-        function closePixelModal(event) {
-            if(event) event.stopPropagation();
-            const modal = document.getElementById('pixelModal');
-            modal.classList.add('closing');
-            setTimeout(() => {
-                modal.classList.remove('active');
-                modal.classList.remove('closing');
-            }, 400); 
         }
 
         function openContactBubble() {
@@ -403,7 +475,6 @@
         function submitToWhatsApp() {
             const purpose = document.getElementById('contactPurpose').value;
             let details = "";
-
             if (purpose === 'custom') {
                 const type = document.getElementById('customType').value;
                 details = `Purpose: Custom PC Building%0A- Type: ${type}`;
@@ -414,10 +485,8 @@
                 const desc = document.getElementById('otherDesc').value || "No description provided.";
                 details = `Purpose: Others / Advice%0A- Details: ${desc}`;
             }
-
             const number = document.getElementById('contactNumber').value || "N/A";
             const email = document.getElementById('contactEmail').value || "N/A";
-
             const payload = `Hello XAVPC, I have an inquiry.%0A%0A${details}%0A%0AContact Number: ${number}%0AEmail: ${email}`;
             window.open(`https://wa.me/6586865419?text=${payload}`, '_blank');
         }
@@ -440,48 +509,26 @@
             const total = carItems.length;
             carItems.forEach((item, index) => {
                 item.classList.remove('active', 'prev', 'next', 'hidden');
-                
-                if (index === currentCarIndex) {
-                    item.classList.add('active');
-                } else if (index === (currentCarIndex - 1 + total) % total) {
-                    item.classList.add('prev');
-                } else if (index === (currentCarIndex + 1) % total) {
-                    item.classList.add('next');
-                } else {
-                    item.classList.add('hidden');
-                }
+                if (index === currentCarIndex) { item.classList.add('active'); } 
+                else if (index === (currentCarIndex - 1 + total) % total) { item.classList.add('prev'); } 
+                else if (index === (currentCarIndex + 1) % total) { item.classList.add('next'); } 
+                else { item.classList.add('hidden'); }
             });
         }
 
-        function nextCar() {
-            currentCarIndex = (currentCarIndex + 1) % carItems.length;
-            update3DCarousel();
-        }
+        function nextCar() { currentCarIndex = (currentCarIndex + 1) % carItems.length; update3DCarousel(); }
+        function prevCar() { currentCarIndex = (currentCarIndex - 1 + carItems.length) % carItems.length; update3DCarousel(); }
 
-        function prevCar() {
-            currentCarIndex = (currentCarIndex - 1 + carItems.length) % carItems.length;
-            update3DCarousel();
-        }
-
-        function openInquireModal() {
-            document.getElementById('inquireModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeInquireModal() {
-            document.getElementById('inquireModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
+        function openInquireModal() { document.getElementById('inquireModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeInquireModal() { document.getElementById('inquireModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
-                if (event.target.id === 'pixelModal') {
-                    closePixelModal();
-                } else {
+                if (event.target.id === 'pixelModal' || event.target.id === 'reviewsModal') {
                     event.target.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 }
             }
         };
